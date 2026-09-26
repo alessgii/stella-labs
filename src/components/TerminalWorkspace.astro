@@ -1,0 +1,227 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<div class={`terminal-workspace relative w-full max-w-lg rounded-2xl border border-white/10 bg-space-950/80 p-5 shadow-2xl backdrop-blur-xl ${className}`}>
+  <!-- Ventana Header / Top Bar -->
+  <div class="mb-4 flex items-center justify-between border-b border-white/5 pb-3">
+    <div class="flex items-center gap-2">
+      <span class="h-3 w-3 rounded-full bg-rose-500/80"></span>
+      <span class="h-3 w-3 rounded-full bg-amber-500/80"></span>
+      <span class="h-3 w-3 rounded-full bg-emerald-500/80"></span>
+    </div>
+    <div class="flex items-center gap-1.5 font-mono text-[11px] text-gray-500">
+      <svg class="h-3 w-3 text-astra-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 17l6-6-6-6M12 19h8"></path>
+      </svg>
+      <span>guest@stellalabs:~</span>
+    </div>
+  </div>
+
+  <!-- Prompt de comando interactivo -->
+  <div class="mb-4 flex items-center gap-2 rounded-lg bg-black/40 px-3 py-2 font-mono text-xs text-gray-300">
+    <span class="text-astra-400">➜</span>
+    <span class="text-cosmic-400">~/services</span>
+    <span class="text-gray-400">$ watch --inspect</span>
+    <span data-terminal-cmd class="text-white font-semibold">service:events</span>
+    <span class="inline-block h-3.5 w-1.5 bg-astra-400 animate-pulse"></span>
+  </div>
+
+  <!-- Contenedor de Pantallas Rotativas -->
+  <div class="relative min-h-[175px]">
+    <!-- MÓDULO 1: EVENTOS -->
+    <div
+      data-module="0"
+      class="terminal-card transition-all duration-500 opacity-100 transform translate-y-0"
+    >
+      <div class="rounded-xl border border-white/10 bg-white/5 p-4 transition-colors hover:border-astra-400/40">
+        <div class="flex items-center justify-between text-xs">
+          <span class="font-mono text-astra-400">MODULE_01 // EVENT_SYSTEM</span>
+          <span class="inline-flex items-center gap-1 rounded bg-emerald-500/10 px-2 py-0.5 font-mono text-[11px] text-emerald-400">
+            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span> LISTENING
+          </span>
+        </div>
+        <h3 class="mt-2.5 text-sm font-semibold text-white">Registro de Asistencia & Talleres</h3>
+        <p class="mt-1 text-xs leading-relaxed text-gray-400">
+          Validación en tiempo real con credencial o QR. Generación automatizada de turnos y métricas de entrada.
+        </p>
+        <div class="mt-3 flex items-center gap-3 font-mono text-[10px] text-gray-500">
+          <span>auth: enabled</span>
+          <span>•</span>
+          <span class="text-astra-400">db: mariadb/connected</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MÓDULO 2: TORNEOS -->
+    <div
+      data-module="1"
+      class="terminal-card absolute inset-0 hidden transition-all duration-500 opacity-0 transform translate-y-2"
+    >
+      <div class="rounded-xl border border-white/10 bg-white/5 p-4 transition-colors hover:border-cosmic-400/40">
+        <div class="flex items-center justify-between text-xs">
+          <span class="font-mono text-cosmic-400">MODULE_02 // TOURNAMENT_ARENA</span>
+          <span class="inline-flex items-center gap-1 rounded bg-amber-500/10 px-2 py-0.5 font-mono text-[11px] text-amber-300">
+            <span class="h-1.5 w-1.5 rounded-full bg-amber-400 animate-ping"></span> BRACKETS_OPEN
+          </span>
+        </div>
+        <h3 class="mt-2.5 text-sm font-semibold text-white">Liga & Torneos E-Sports</h3>
+        <p class="mt-1 text-xs leading-relaxed text-gray-400">
+          Competencias de Super Smash Bros, Mario Kart 8 y Clash Royale con seguimiento de eliminatorias directas.
+        </p>
+        <div class="mt-3 flex items-center gap-3 font-mono text-[10px] text-gray-500">
+          <span class="text-cosmic-400">arenas: 3 activas</span>
+          <span>•</span>
+          <span>mode: double-elim</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MÓDULO 3: MINI JUEGOS -->
+    <div
+      data-module="2"
+      class="terminal-card absolute inset-0 hidden transition-all duration-500 opacity-0 transform translate-y-2"
+    >
+      <div class="rounded-xl border border-white/10 bg-white/5 p-4 transition-colors hover:border-sky-400/40">
+        <div class="flex items-center justify-between text-xs font-mono">
+          <span class="text-sky-400">MODULE_03 // SANDBOX_EXP</span>
+          <span class="text-gray-500">v0.4-beta</span>
+        </div>
+        <h3 class="mt-2.5 text-sm font-semibold text-white">Mini juegos & Motores de prueba</h3>
+        <p class="mt-1 text-xs leading-relaxed text-gray-400">
+          Pruebas interactivas de pathfinding, canvas, lógica algorítmica y entretenimiento local para el campus.
+        </p>
+        <div class="mt-3 flex items-center gap-3 font-mono text-[10px] text-gray-500">
+          <span>runtime: wasm/canvas</span>
+          <span>•</span>
+          <span class="text-sky-400">fps: 60/stable</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra de progreso e indicadores de selector manual -->
+  <div class="my-3 flex items-center justify-between px-1">
+    <div class="flex items-center gap-1.5">
+      <button
+        type="button"
+        data-index="0"
+        class="terminal-dot h-1.5 w-6 rounded-full bg-astra-400 transition-all"
+        aria-label="Ver Eventos"
+      ></button>
+      <button
+        type="button"
+        data-index="1"
+        class="terminal-dot h-1.5 w-2 rounded-full bg-white/20 transition-all hover:bg-white/40"
+        aria-label="Ver Torneos"
+      ></button>
+      <button
+        type="button"
+        data-index="2"
+        class="terminal-dot h-1.5 w-2 rounded-full bg-white/20 transition-all hover:bg-white/40"
+        aria-label="Ver Juegos"
+      ></button>
+    </div>
+    <span data-terminal-step class="font-mono text-[10px] text-gray-500">01 / 03</span>
+  </div>
+
+  <!-- Card Inferior: Telemetría en vivo -->
+  <div class="flex items-center justify-between rounded-lg bg-black/50 px-3 py-2 text-xs font-mono text-gray-400 border border-white/5">
+    <div class="flex items-center gap-2">
+      <span class="relative flex h-2 w-2">
+        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+      </span>
+      <span data-telemetry-log>core-engine: healthy</span>
+    </div>
+    <span data-telemetry-metric class="text-astra-400">active_workers: 4</span>
+  </div>
+</div>
+
+<script>
+  const modulesData = [
+    {
+      cmd: "service:events",
+      step: "01 / 03",
+      log: "event-broker: listening",
+      metric: "latency: 14ms"
+    },
+    {
+      cmd: "service:tournaments",
+      step: "02 / 03",
+      log: "arenas: smash | mk8 | clash",
+      metric: "brackets: sync"
+    },
+    {
+      cmd: "service:sandbox",
+      step: "03 / 03",
+      log: "wasm-runtime: ok",
+      metric: "fps: 60/stable"
+    }
+  ];
+
+  document.querySelectorAll<HTMLElement>(".terminal-workspace").forEach((terminal) => {
+    const cards = terminal.querySelectorAll<HTMLElement>("[data-module]");
+    const dots = terminal.querySelectorAll<HTMLButtonElement>(".terminal-dot");
+    const cmdEl = terminal.querySelector<HTMLElement>("[data-terminal-cmd]");
+    const stepEl = terminal.querySelector<HTMLElement>("[data-terminal-step]");
+    const logEl = terminal.querySelector<HTMLElement>("[data-telemetry-log]");
+    const metricEl = terminal.querySelector<HTMLElement>("[data-telemetry-metric]");
+
+    let currentIndex = 0;
+    let timer: ReturnType<typeof setInterval>;
+
+    function switchModule(index: number) {
+      cards.forEach((card, i) => {
+        if (i === index) {
+          card.classList.remove("hidden", "opacity-0", "translate-y-2");
+          card.classList.add("opacity-100", "translate-y-0");
+
+          if (dots[i]) {
+            dots[i].classList.remove("w-2", "bg-white/20");
+            dots[i].classList.add("w-6", "bg-astra-400");
+          }
+        } else {
+          card.classList.remove("opacity-100", "translate-y-0");
+          card.classList.add("opacity-0", "translate-y-2");
+          setTimeout(() => card.classList.add("hidden"), 300);
+
+          if (dots[i]) {
+            dots[i].classList.remove("w-6", "bg-astra-400");
+            dots[i].classList.add("w-2", "bg-white/20");
+          }
+        }
+      });
+
+      if (cmdEl) cmdEl.textContent = modulesData[index].cmd;
+      if (stepEl) stepEl.textContent = modulesData[index].step;
+      if (logEl) logEl.textContent = modulesData[index].log;
+      if (metricEl) metricEl.textContent = modulesData[index].metric;
+
+      currentIndex = index;
+    }
+
+    // Eventos clic en cada botón indicador
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        clearInterval(timer);
+        const idx = Number(dot.getAttribute("data-index"));
+        switchModule(idx);
+        startInterval();
+      });
+    });
+
+    function startInterval() {
+      timer = setInterval(() => {
+        const next = (currentIndex + 1) % modulesData.length;
+        switchModule(next);
+      }, 4500);
+    }
+
+    startInterval();
+  });
+</script>
