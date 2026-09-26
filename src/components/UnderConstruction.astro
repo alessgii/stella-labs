@@ -1,0 +1,146 @@
+---
+import Button from "./Button.astro";
+
+interface Props {
+  title?: string;
+  message?: string;
+  badge?: string;
+  backHref?: string;
+  backLabel?: string;
+}
+
+const {
+  title = "Esta sección aún está en desarrollo",
+  message = "Estamos diseñando y ensamblando este módulo dentro de StellaLabs. Vuelve pronto para probar los primeros experimentos.",
+  badge = "Módulo en construcción",
+  backHref = "/",
+  backLabel = "Volver al inicio",
+} = Astro.props;
+---
+
+<div
+  class="relative flex flex-grow flex-col items-center justify-center overflow-hidden px-6 py-20 text-center"
+>
+  <!-- Textura de fondo y aura ambiental (coherencia con el Hero) -->
+  <div
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(#38bdf810_1px,transparent_1px)] [background-size:28px_28px]"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="pointer-events-none absolute h-80 w-80 rounded-full bg-sky-500/10 blur-[110px]"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative z-10 flex flex-col items-center max-w-2xl">
+    <!-- Contenedor del Isotipo con efecto reactor/pulso -->
+    <div class="relative mb-8 flex items-center justify-center">
+      <!-- Pulso radiante detrás -->
+      <div
+        class="absolute h-28 w-28 rounded-full bg-sky-500/20 blur-xl animate-pulse"
+        aria-hidden="true"
+      ></div>
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 100 100"
+        class="relative h-24 w-24 drop-shadow-[0_8px_25px_rgba(56,189,248,0.25)] transition-transform duration-300 hover:scale-105"
+        aria-hidden="true"
+      >
+        <defs>
+          <linearGradient id="wip-stella-grad" x1="15%" y1="0%" x2="85%" y2="100%">
+            <stop offset="0%" stop-color="#38bdf8" />
+            <stop offset="60%" stop-color="#2563eb" />
+            <stop offset="100%" stop-color="#1e3a8a" />
+          </linearGradient>
+
+          <mask id="wip-stella-mask">
+            <rect width="100" height="100" fill="white" />
+            <path
+              d="M 50 49 Q 50 64 65 64 Q 50 64 50 79 Q 50 64 35 64 Q 50 64 50 49 Z"
+              fill="black"
+            />
+          </mask>
+
+          <filter id="wip-glow-blur" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+          </filter>
+        </defs>
+
+        <!-- Anillo orbital punteado sutil -->
+        <ellipse
+          cx="50"
+          cy="64"
+          rx="42"
+          ry="15"
+          fill="none"
+          stroke="#38bdf8"
+          stroke-width="0.9"
+          stroke-dasharray="3 3"
+          opacity="0.4"
+          transform="rotate(-15 50 64)"
+        />
+
+        <!-- Resplandor estelar interno -->
+        <circle
+          cx="50"
+          cy="64"
+          r="12"
+          fill="#38bdf8"
+          filter="url(#wip-glow-blur)"
+          class="animate-pulse"
+        />
+
+        <!-- Cuerpo del matraz -->
+        <path
+          d="M 40 12 H 60 C 61.5 12 62 13 62 15 C 62 17 61 18 58 18 V 38 L 81.5 76 C 84.5 81 81.5 86 76 86 H 24 C 18.5 86 15.5 81 18.5 76 L 42 38 V 18 C 39 18 38 17 38 15 C 38 13 38.5 12 40 12 Z"
+          fill="url(#wip-stella-grad)"
+          mask="url(#wip-stella-mask)"
+        />
+      </svg>
+    </div>
+
+    <!-- Badge técnico de estado -->
+    <div
+      class="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-3.5 py-1 text-xs font-mono text-amber-300"
+    >
+      <span class="relative flex h-2 w-2">
+        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75"></span>
+        <span class="relative inline-flex h-2 w-2 rounded-full bg-amber-500"></span>
+      </span>
+      {badge}
+    </div>
+
+    <!-- Título con gradiente -->
+    <h1
+      class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl"
+    >
+      {title}<span class="text-accent">.</span>
+    </h1>
+
+    <!-- Mensaje explicativo -->
+    <p class="mt-5 max-w-lg text-base leading-relaxed text-gray-300 sm:text-lg">
+      {message}
+    </p>
+
+    <!-- Botón de retorno -->
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+      <Button href={backHref} variant="secondary">
+        <span class="inline-flex items-center gap-2">
+          <svg
+            class="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M19 12H5"></path>
+            <path d="M12 19l-7-7 7-7"></path>
+          </svg>
+          {backLabel}
+        </span>
+      </Button>
+    </div>
+  </div>
+</div>
