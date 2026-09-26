@@ -1,0 +1,171 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="StellaLabs — Registro de eventos">
+    <Header />
+    
+    <!-- SECCIÓN DE TORNEOS -->
+    <section
+        id="torneos"
+        class="relative w-full overflow-hidden border-t border-white/10 px-6 py-16 md:px-10 lg:py-24"
+    >
+        <!-- Resplandor de fondo -->
+        <div
+            class="pointer-events-none absolute left-1/2 top-0 h-[400px] w-full max-w-[600px] -translate-x-1/2 rounded-full bg-cosmic-500/10 blur-[130px]"
+            aria-hidden="true"
+        >
+        </div>
+
+        <div class="relative z-10 mx-auto max-w-7xl">
+            <!-- Encabezado de la sección -->
+            <div class="mb-12 text-center md:mb-16">
+                <div
+                    class="mb-4 inline-flex items-center gap-2 rounded-full border border-cosmic-500/30 bg-cosmic-500/10 px-3.5 py-1 text-xs font-mono text-cosmic-400"
+                >
+                    <span
+                        class="h-1.5 w-1.5 rounded-full bg-cosmic-400 animate-pulse"
+                    ></span>
+                    LIGA EXPERIMENTAL
+                </div>
+                <h2
+                    class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl"
+                >
+                    Participa en <span
+                        class="bg-gradient-to-r from-astra-400 to-cosmic-400 bg-clip-text text-transparent"
+                        >torneos de videojuegos</span
+                    >
+                </h2>
+                <p
+                    class="mx-auto mt-4 mb-6 max-w-2xl text-base text-gray-400 sm:text-lg"
+                >
+                    Compite con la comunidad, demuestra tu habilidad y gana
+                    premios. Elige tu arena y asegura tu lugar en la próxima
+                    edición.
+                </p>
+            </div>
+
+            <!-- Grid de Tarjetas (Ya era responsive, 1 columna en móvil, 3 en desktop) -->
+            <div class="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+                
+                <!-- TARJETA 1: Super Smash Bros -->
+                <div
+                    class="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-space-900/60 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-astra-400/50 hover:shadow-[0_10px_40px_-10px_rgba(56,189,248,0.15)]"
+                >
+                    <div class="relative h-48 w-full overflow-hidden bg-space-800">
+                        <div class="absolute inset-0 z-10 bg-gradient-to-t from-space-900 to-transparent"></div>
+                        <img
+                            src="/img/super-smash-bros-ultimate.webp"
+                            alt="Super Smash Bros Ultimate"
+                            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div class="absolute right-3 top-3 z-20 rounded bg-space-950/80 px-2 py-1 font-mono text-[10px] font-bold text-emerald-400 backdrop-blur-md border border-emerald-500/20">
+                            PRÓXIMAMENTE
+                        </div>
+                    </div>
+
+                    <div class="flex flex-grow flex-col p-6">
+                        <h3 class="text-xl font-bold text-white transition-colors group-hover:text-astra-400">
+                            Super Smash Bros. Ultimate
+                        </h3>
+                        <p class="mt-2 flex-grow text-sm leading-relaxed text-gray-400">
+                            Demuestra quién es el mejor en el escenario. Torneo 1v1 sin objetos, destino final, solo habilidad pura.
+                        </p>
+
+                        <div class="mb-6 mt-4 space-y-2 border-t border-white/5 pt-4">
+                            <div class="flex items-center gap-2 text-xs text-gray-400">
+                                <svg class="h-3.5 w-3.5 text-astra-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span>Fecha por definir</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs text-gray-400">
+                                <svg class="h-3.5 w-3.5 text-cosmic-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                <span>Modalidad Presencial</span>
+                            </div>
+                        </div>
+
+                        <a href="/registro-smash" class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition-all hover:border-astra-400 hover:bg-astra-400 hover:text-space-950">
+                            Registrarme
+                            <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- TARJETA 2: Mario Kart 8 -->
+                <div class="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-space-900/60 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/50 hover:shadow-[0_10px_40px_-10px_rgba(56,189,248,0.15)]">
+                    <div class="relative h-48 w-full overflow-hidden bg-space-800">
+                        <div class="absolute inset-0 z-10 bg-gradient-to-t from-space-900 to-transparent"></div>
+                        <img src="img/mk8.webp" alt="Mario Kart 8 Deluxe" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <div class="absolute right-3 top-3 z-20 rounded bg-space-950/80 px-2 py-1 font-mono text-[10px] font-bold text-emerald-400 backdrop-blur-md border border-emerald-500/20">
+                            PRÓXIMAMENTE
+                        </div>
+                    </div>
+
+                    <div class="flex flex-grow flex-col p-6">
+                        <h3 class="text-xl font-bold text-white transition-colors group-hover:text-astra-400">
+                            Mario Kart 8 Deluxe
+                        </h3>
+                        <p class="mt-2 flex-grow text-sm leading-relaxed text-gray-400">
+                            Acelera, derrapa y cuídate de los caparazones azules. Torneo de copas en 150cc para coronar al más rápido.
+                        </p>
+
+                        <div class="mb-6 mt-4 space-y-2 border-t border-white/5 pt-4">
+                            <div class="flex items-center gap-2 text-xs text-gray-400">
+                                <svg class="h-3.5 w-3.5 text-astra-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span>Fecha por definir</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs text-gray-400">
+                                <svg class="h-3.5 w-3.5 text-cosmic-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                <span>Modalidad Presencial</span>
+                            </div>
+                        </div>
+
+                        <a href="/registro-mariokart" class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition-all hover:border-astra-400 hover:bg-astra-400 hover:text-space-950">
+                            Registrarme
+                            <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- TARJETA 3: Clash Royale -->
+                <div class="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-space-900/60 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-cosmic-400/50 hover:shadow-[0_10px_40px_-10px_rgba(168,85,247,0.15)]">
+                    <div class="relative h-48 w-full overflow-hidden bg-space-800">
+                        <div class="absolute inset-0 z-10 bg-gradient-to-t from-space-900 to-transparent"></div>
+                        <img src="img/clash-royale.jpg" alt="Clash Royale" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <div class="absolute right-3 top-3 z-20 rounded bg-space-950/80 px-2 py-1 font-mono text-[10px] font-bold text-emerald-400 backdrop-blur-md border border-emerald-500/20">
+                            PRÓXIMAMENTE
+                        </div>
+                    </div>
+
+                    <div class="flex flex-grow flex-col p-6">
+                        <h3 class="text-xl font-bold text-white transition-colors group-hover:text-cosmic-400">
+                            Clash Royale
+                        </h3>
+                        <p class="mt-2 flex-grow text-sm leading-relaxed text-gray-400">
+                            Prepara tu mejor mazo y defiende tus torres. Torneo de eliminación directa al mejor de 3 partidas.
+                        </p>
+
+                        <div class="mb-6 mt-4 space-y-2 border-t border-white/5 pt-4">
+                            <div class="flex items-center gap-2 text-xs text-gray-400">
+                                <svg class="h-3.5 w-3.5 text-astra-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span>Fecha por definir</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs text-gray-400">
+                                <svg class="h-3.5 w-3.5 text-cosmic-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>Modalidad Online / Mixta</span>
+                            </div>
+                        </div>
+
+                        <a href="/registro-clash" class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition-all hover:border-cosmic-500 hover:bg-cosmic-500 hover:text-white">
+                            Registrarme
+                            <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <Footer />
+</Layout>

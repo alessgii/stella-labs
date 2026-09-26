@@ -1,9 +1,25 @@
-@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 
+@import "tailwindcss";
+
+/* 3. Configuración del tema */
 @theme {
+  --font-sans: "Space Grotesk", sans-serif;
+
   --color-dark: #07050f;
   --color-accent: #4895f6;
-  --color-secundary: #a855f7;
-  --font-sans: "Space Grotesk", sans-serif;
+  --color-secondary: #a855f7;
+
+  --color-space-700: #231b45;
+  --color-space-800: #16112e;
+  --color-space-900: #0d0a1c;
+  --color-space-950: #07050f;
+
+  --color-astra-400: #38bdf8;
+  --color-astra-500: #0ea5e9;
+
+  --color-cosmic-400: #c084fc;
+  --color-cosmic-500: #a855f7;
+  --color-cosmic-600: #9333ea;
+  --color-cosmic-900: #3b0764;
 }
