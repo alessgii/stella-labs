@@ -140,6 +140,51 @@ import Footer from "../components/Footer.astro";
     </div>
   </section>
 
+  <!-- SECCIÓN ACERCA DE (INDEX) -->
+<section id="acerca-de" class="relative w-full overflow-hidden border-t border-white/10 px-6 py-16 md:px-10 lg:py-24">
+  <!-- Luz ambiental suave detrás del contenedor -->
+  <div
+    class="pointer-events-none absolute left-1/2 top-1/2 h-[350px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cosmic-500/10 blur-[140px]"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative z-10 mx-auto max-w-5xl">
+    <div class="rounded-3xl border border-white/10 bg-space-900/50 p-8 text-center backdrop-blur-xl sm:p-12 md:p-16">
+      
+      <!-- Eyebrow Badge -->
+      <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-astra-400/20 bg-astra-400/10 px-3.5 py-1 text-xs font-mono text-astra-400">
+        <span class="h-1.5 w-1.5 rounded-full bg-astra-400 animate-pulse"></span>
+        INICIATIVA INDEPENDIENTE
+      </div>
+
+      <!-- Título con gradiente StellaLabs -->
+      <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
+        Tecnología real, <br class="hidden sm:inline" />
+        <span class="bg-gradient-to-r from-astra-400 via-sky-300 to-cosmic-400 bg-clip-text text-transparent">
+          por y para estudiantes
+        </span>
+      </h2>
+
+      <!-- Párrafo conciso -->
+      <p class="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-gray-300 sm:text-base md:text-lg">
+        <strong class="text-white">StellaLabs</strong> es un laboratorio experimental surgido en las aulas de ingeniería. Desarrollamos utilidades para el día a día del campus, compartimos documentación técnica directa a la terminal y fomentamos la comunidad mediante torneos y proyectos abiertos.
+      </p>
+
+      <!-- Botón de llamada a la acción -->
+      <div class="mt-8 flex justify-center">
+        <a
+          href="/acerca-de"
+          class="group inline-flex items-center gap-2 rounded-xl bg-astra-400 px-6 py-3 text-xs font-bold uppercase tracking-wider text-space-950 shadow-lg shadow-astra-400/20 transition-all hover:bg-sky-300 hover:shadow-astra-400/40 active:scale-95"
+        >
+          <span>Conocer más</span>
+          <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
   <!-- SECCIÓN: LOS 3 PILARES (PROPÓSITO) -->
   <section id="proposito" class="relative w-full border-t border-white/10 px-6 py-24 md:px-10">
     <div class="mx-auto max-w-7xl">
