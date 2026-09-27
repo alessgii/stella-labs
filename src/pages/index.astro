@@ -180,6 +180,160 @@ import Footer from "../components/Footer.astro";
     </div>
   </section>
 
+  <!-- SECCIÓN DE GUÍAS Y MINI CURSOS (INDEX) -->
+<section id="guias" class="relative w-full overflow-hidden border-t border-white/10 px-6 py-16 md:px-10 lg:py-24">
+  <!-- Luces ambientales difusas -->
+  <div
+    class="pointer-events-none absolute right-1/4 top-0 h-[380px] w-[500px] rounded-full bg-astra-400/10 blur-[140px]"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative z-10 mx-auto max-w-7xl">
+    <!-- Encabezado de la sección -->
+    <div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end mb-12 sm:mb-16">
+      <div class="max-w-2xl">
+        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-astra-400/20 bg-astra-400/10 px-3.5 py-1 text-xs font-mono text-astra-400">
+          <span class="h-1.5 w-1.5 rounded-full bg-astra-400 animate-pulse"></span>
+          KNOWLEDGE BASE
+        </div>
+        <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
+          Guías técnicas y <span class="bg-gradient-to-r from-astra-400 via-sky-300 to-cosmic-400 bg-clip-text text-transparent">mini cursos</span>
+        </h2>
+        <p class="mt-4 text-sm leading-relaxed text-gray-400 sm:text-base">
+          Material de apoyo para talleres prácticos, laboratorios y materias técnicas.</p>
+      </div>
+
+      <!-- Enlace / Botón a la página completa -->
+      <a
+        href="/guias"
+        class="inline-flex shrink-0 items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 py-2.5 text-xs font-semibold text-white transition-all hover:border-astra-400 hover:bg-white/10"
+      >
+        <span>Ver todas las guías</span>
+        <span class="text-astra-400 transition-transform group-hover:translate-x-1">→</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+      
+      <!-- TARJETA 1: LINUX (ACTIVA) -->
+      <div class="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-space-900/60 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-astra-400/50 hover:shadow-[0_10px_35px_-10px_rgba(56,189,248,0.15)] sm:p-7">
+        <div>
+          <div class="flex items-center justify-between border-b border-white/5 pb-4">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg border border-astra-400/30 bg-astra-400/10 text-astra-400">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <span class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 font-mono text-[10px] font-bold text-emerald-400">
+              DISPONIBLE
+            </span>
+          </div>
+
+          <h3 class="mt-5 text-lg font-bold text-white transition-colors group-hover:text-astra-400">
+            Introducción a Linux & Servidores
+          </h3>
+          <p class="mt-2 text-xs leading-relaxed text-gray-400 sm:text-sm">
+            Virtualización en VMware, instalación guiada de Debian GNOME, comandos CLI esenciales y despliegue de un servidor Apache.
+          </p>
+
+          <div class="mt-4 flex items-center gap-3 font-mono text-[11px] text-gray-400">
+            <span class="text-astra-400">4 Horas</span>
+            <span>•</span>
+            <span>Taller Presencial</span>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-white/5">
+          <a
+            href="/guias/linux"
+            class="inline-flex w-full items-center justify-center gap-1.5 rounded-xl bg-astra-400 px-4 py-2.5 text-xs font-bold text-space-950 transition-all hover:bg-sky-300"
+          >
+            Abrir guía del taller
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- TARJETA 2: GIT (PRÓXIMAMENTE) -->
+      <div class="relative flex flex-col justify-between rounded-2xl border border-white/5 bg-space-900/30 p-6 backdrop-blur-xl sm:p-7">
+        <div>
+          <div class="flex items-center justify-between border-b border-white/5 pb-4">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-400">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+              </svg>
+            </div>
+            <span class="rounded-full border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 font-mono text-[10px] font-bold text-amber-300">
+              PRÓXIMAMENTE
+            </span>
+          </div>
+
+          <h3 class="mt-5 text-lg font-bold text-white">
+            Git, GitHub & Flujos de Trabajo
+          </h3>
+          <p class="mt-2 text-xs leading-relaxed text-gray-400 sm:text-sm">
+            Control de versiones para proyectos de clase: ramas sin miedo, resolución de conflictos cotidianos y Pull Requests.
+          </p>
+
+          <div class="mt-4 flex items-center gap-3 font-mono text-[11px] text-gray-500">
+            <span>Terminal + Web</span>
+            <span>•</span>
+            <span class="text-amber-400/80">En redacción</span>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-white/5">
+          <button
+            disabled
+            class="w-full cursor-not-allowed rounded-xl border border-white/10 bg-white/5 py-2.5 text-center text-xs font-medium text-gray-500"
+          >
+            En preparación
+          </button>
+        </div>
+      </div>
+
+      <!-- TARJETA 3: DESARROLLO WEB (PRÓXIMAMENTE) -->
+      <div class="relative flex flex-col justify-between rounded-2xl border border-white/5 bg-space-900/30 p-6 backdrop-blur-xl sm:p-7">
+        <div>
+          <div class="flex items-center justify-between border-b border-white/5 pb-4">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-400">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            </div>
+            <span class="rounded-full border border-cosmic-400/20 bg-cosmic-500/10 px-2 py-0.5 font-mono text-[10px] font-bold text-cosmic-400">
+              PRÓXIMAMENTE
+            </span>
+          </div>
+
+          <h3 class="mt-5 text-lg font-bold text-white">
+            Desarrollo Web & Despliegue
+          </h3>
+          <p class="mt-2 text-xs leading-relaxed text-gray-400 sm:text-sm">
+            Bases de frontend y backend: contenido aún en planificación.
+          </p>
+
+          <div class="mt-4 flex items-center gap-3 font-mono text-[11px] text-gray-500">
+            <span>Fullstack base</span>
+            <span>•</span>
+            <span class="text-cosmic-400/80">Planificando</span>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-white/5">
+          <button
+            disabled
+            class="w-full cursor-not-allowed rounded-xl border border-white/10 bg-white/5 py-2.5 text-center text-xs font-medium text-gray-500"
+          >
+            En preparación
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
       <section
         id="torneos"
         class="relative w-full overflow-hidden border-t border-white/10 px-6 py-16 md:px-10 lg:py-24"
@@ -219,7 +373,7 @@ import Footer from "../components/Footer.astro";
                 </p>
             </div>
 
-            <!-- Grid de Tarjetas (Ya era responsive, 1 columna en móvil, 3 en desktop) -->
+            <!-- Grid de Tarjetas -->
             <div class="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
                 
                 <!-- TARJETA 1: Super Smash Bros -->

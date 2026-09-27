@@ -1,0 +1,1193 @@
+---
+// src/pages/guias/linux.astro
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+
+type UnitTheme = 'cyan' | 'purple' | 'amber' | 'emerald' | 'rose';
+
+interface Slide {
+  id: number;
+  unitTheme?: UnitTheme;
+  sessionBadge?: string;
+  title: string;
+  subtitle?: string;
+  isCover?: boolean;
+  isUnitDivider?: boolean;
+  unitNumber?: string;
+  unitTopics?: Array<{ number: string; title: string; desc: string }>;
+  isRecap?: boolean;
+  leftContent?: {
+    type: 'points' | 'cards';
+    items: Array<{ title?: string; text: string; highlight?: string }>;
+  };
+  rightContent?: {
+    type: 'terminal' | 'checklist' | 'cards' | 'diagram';
+    title?: string;
+    items?: Array<{ label: string; desc?: string; checked?: boolean }>;
+    lines?: string[];
+    cards?: Array<{ title: string; desc: string }>;
+  };
+}
+
+interface ThemeConfig {
+  badge: string;
+  dot: string;
+  gradient: string;
+  glow1: string;
+  glow2: string;
+  bullet: string;
+  textAccent: string;
+  checkbox: string;
+  tag: string;
+  barGradient: string;
+  btnGradient: string;
+}
+
+const themeStyles: Record<UnitTheme, ThemeConfig> = {
+  cyan: {
+    badge: "text-cyan-400 bg-cyan-950/40 border-cyan-800/50",
+    dot: "bg-cyan-400",
+    gradient: "from-cyan-400 to-indigo-400",
+    glow1: "bg-indigo-600/15",
+    glow2: "bg-cyan-600/15",
+    bullet: "text-cyan-400",
+    textAccent: "text-cyan-400",
+    checkbox: "text-cyan-500",
+    tag: "text-cyan-400/80",
+    barGradient: "from-cyan-500 to-indigo-500",
+    btnGradient: "from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 shadow-cyan-600/20"
+  },
+  purple: {
+    badge: "text-purple-300 bg-purple-950/40 border-purple-800/50",
+    dot: "bg-purple-400",
+    gradient: "from-purple-400 to-indigo-400",
+    glow1: "bg-purple-600/15",
+    glow2: "bg-indigo-600/15",
+    bullet: "text-purple-400",
+    textAccent: "text-purple-400",
+    checkbox: "text-purple-500",
+    tag: "text-purple-400/80",
+    barGradient: "from-purple-500 to-indigo-500",
+    btnGradient: "from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 shadow-purple-600/20"
+  },
+  amber: {
+    badge: "text-amber-300 bg-amber-950/40 border-amber-800/50",
+    dot: "bg-amber-400",
+    gradient: "from-amber-400 to-orange-400",
+    glow1: "bg-amber-600/15",
+    glow2: "bg-orange-600/15",
+    bullet: "text-amber-400",
+    textAccent: "text-amber-400",
+    checkbox: "text-amber-500",
+    tag: "text-amber-400/80",
+    barGradient: "from-amber-500 to-orange-500",
+    btnGradient: "from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 shadow-amber-600/20"
+  },
+  emerald: {
+    badge: "text-emerald-300 bg-emerald-950/40 border-emerald-800/50",
+    dot: "bg-emerald-400",
+    gradient: "from-emerald-400 to-teal-400",
+    glow1: "bg-emerald-600/15",
+    glow2: "bg-teal-600/15",
+    bullet: "text-emerald-400",
+    textAccent: "text-emerald-400",
+    checkbox: "text-emerald-500",
+    tag: "text-emerald-400/80",
+    barGradient: "from-emerald-500 to-teal-500",
+    btnGradient: "from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 shadow-emerald-600/20"
+  },
+  rose: {
+    badge: "text-rose-300 bg-rose-950/40 border-rose-800/50",
+    dot: "bg-rose-400",
+    gradient: "from-rose-400 to-pink-400",
+    glow1: "bg-rose-600/15",
+    glow2: "bg-indigo-600/15",
+    bullet: "text-rose-400",
+    textAccent: "text-rose-400",
+    checkbox: "text-rose-500",
+    tag: "text-rose-400/80",
+    barGradient: "from-rose-500 to-pink-500",
+    btnGradient: "from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 shadow-rose-600/20"
+  }
+};
+
+const slides: Slide[] = [
+  // 1. Portada
+  {
+    id: 1,
+    isCover: true,
+    unitTheme: "cyan",
+    sessionBadge: "TALLER PRESENCIAL // GUÍA EN VIVO",
+    title: "Taller: Introducción a Linux",
+    subtitle: "De la máquina virtual al despliegue de tu primer servidor web, con Debian GNU/Linux y entorno GNOME sobre VMware.",
+    leftContent: {
+      type: "cards",
+      items: [
+        { title: "DURACIÓN", text: "4 h (2x2h)" },
+        { title: "DISTRO", text: "Debian (GNOME)" },
+        { title: "ENTORNO", text: "VMware" },
+        { title: "MODALIDAD", text: "Práctica guiada" }
+      ]
+    }
+  },
+
+  // --- INTERMEDIA: UNIDAD 01 ---
+  {
+    id: 2,
+    isUnitDivider: true,
+    unitTheme: "cyan",
+    unitNumber: "UNIDAD 01",
+    sessionBadge: "SESIÓN 1 // 45 MIN • TEORÍA FUNDAMENTAL",
+    title: "Fundamentos y Arquitectura de GNU/Linux",
+    subtitle: "Comprende el núcleo del sistema, la filosofía Unix de almacenamiento unificado y la estructura del espacio de usuario.",
+    unitTopics: [
+      { number: "01.1", title: "Kernel vs GNU", desc: "El rol del núcleo Linux frente a las herramientas del sistema operativo." },
+      { number: "01.2", title: "Ecosistema y Debian", desc: "Filosofía de distribuciones y la importancia de la distro madre." },
+      { number: "01.3", title: "Árbol Raíz y CLI", desc: "La jerarquía / unificada y los conceptos esenciales de la consola." }
+    ]
+  },
+  // Contenido Unidad 1
+  {
+    id: 3,
+    unitTheme: "cyan",
+    sessionBadge: "UNIDAD 01 // 45 MIN • ARQUITECTURA",
+    title: "Kernel vs. GNU",
+    subtitle: "La distinción fundamental del sistema operativo.",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "Kernel Linux:", text: "Es exclusivamente el núcleo del sistema, encargado de la gestión de hardware, memoria y CPU." },
+        { highlight: "GNU:", text: "Aporta las herramientas esenciales, intérprete de comandos, librerías y utilidades de usuario." },
+        { highlight: "GNU/Linux:", text: "El sistema completo y funcional se llama formalmente GNU/Linux al integrar ambas partes." }
+      ]
+    },
+    rightContent: {
+      type: "terminal",
+      title: "arquitectura.txt",
+      lines: [
+        "+-------------------------------------+",
+        "|   Espacio de Usuario (GNU / Apps)   |",
+        "+-------------------------------------+",
+        "|   Llamadas al Sistema (glibc)       |",
+        "+-------------------------------------+",
+        "|   Núcleo (Kernel Linux)             |",
+        "+-------------------------------------+",
+        "|   Hardware Físico / Virtual         |",
+        "+-------------------------------------+",
+      ]
+    }
+  },
+  {
+    id: 4,
+    unitTheme: "cyan",
+    sessionBadge: "UNIDAD 01 // 45 MIN • DISTRIBUCIONES",
+    title: "Distribuciones y la «Distro Madre»",
+    subtitle: "Ecosistemas derivados de la base Debian.",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "Definición de Distro:", text: "Kernel + utilidades GNU + gestor de paquetes + filosofía propia." },
+        { highlight: "Debian:", text: "La «distro madre» por excelencia, reconocida por su estabilidad y rigor en paquetes." },
+        { highlight: "Derivadas clave:", text: "Es la base directa sobre la que se construyen Ubuntu, Kali Linux, Linux Mint y gran parte de los servidores web." }
+      ]
+    },
+    rightContent: {
+      type: "terminal",
+      title: "arbol_distros.txt",
+      lines: [
+        "Debian GNU/Linux (Base / Servidores)",
+        "├── Ubuntu",
+        "│   ├── Linux Mint",
+        "│   └── Pop!_OS",
+        "└── Kali Linux (Seguridad y Auditoría)"
+      ]
+    }
+  },
+  {
+    id: 5,
+    unitTheme: "cyan",
+    sessionBadge: "UNIDAD 01 // 45 MIN • FILOSOFÍA UNIX",
+    title: "Filosofía: «Todo es un Archivo»",
+    subtitle: "El estándar de organización unificada en Linux.",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "Árbol único:", text: "Existe un único árbol de jerarquía absoluta que comienza siempre en la raíz (/)." },
+        { highlight: "Sin letras de unidad:", text: "No existen particiones separadas por letras como C:\\ o D:\\." },
+        { highlight: "Dispositivos como flujos:", text: "Discos, terminales y periféricos se representan como rutas de archivo accesibles." }
+      ]
+    },
+    rightContent: {
+      type: "terminal",
+      title: "raiz_unificada.sh",
+      lines: [
+        "$ ls -l /dev/sda",
+        "brw-rw---- 1 root disk 8, 0 abr 12 10:00 /dev/sda",
+        "",
+        "# Todo el almacenamiento se acopla al árbol raíz /"
+      ]
+    }
+  },
+  {
+    id: 6,
+    unitTheme: "cyan",
+    sessionBadge: "UNIDAD 01 // 45 MIN • ESPACIO PERSONAL",
+    title: "Directorios Primordiales: Espacio Personal",
+    subtitle: "Separación estricta entre usuario ordinario y administrador.",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "/home:", text: "Alberga las carpetas personales de los usuarios regulares del sistema (/home/usuario)." },
+        { highlight: "/root:", text: "Home exclusivo del superusuario administrador (root), aislado del resto." },
+        { highlight: "Seguridad:", text: "Ningún usuario normal tiene acceso a leer o modificar los archivos dentro de /root." }
+      ]
+    },
+    rightContent: {
+      type: "terminal",
+      title: "rutas_personales.map",
+      lines: [
+        "/",
+        "├── home/              <- Espacio de trabajo personal",
+        "│   └── alumno/        <- Tus documentos y configuraciones",
+        "└── root/              <- Directorio privado del administrador"
+      ]
+    }
+  },
+  {
+    id: 7,
+    unitTheme: "cyan",
+    sessionBadge: "UNIDAD 01 // 45 MIN • SISTEMA Y DATOS",
+    title: "Directorios Primordiales: Sistema y Datos",
+    subtitle: "Configuración global, datos variables y binarios.",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "/etc:", text: "Archivos de configuración global de programas y del sistema operativo." },
+        { highlight: "/var:", text: "Datos variables que crecen con el tiempo: logs de actividad y la raíz web (/var/www)." },
+        { highlight: "/bin:", text: "Comandos y ejecutables esenciales requeridos para la operación del sistema." }
+      ]
+    },
+    rightContent: {
+      type: "terminal",
+      title: "rutas_sistema.map",
+      lines: [
+        "/",
+        "├── bin/               <- Comandos esenciales (ls, cp, rm)",
+        "├── etc/               <- Configuraciones (apache2, redes)",
+        "└── var/",
+        "    ├── log/           <- Registros de eventos del SO",
+        "    └── www/html/      <- Archivos de tu servidor web"
+      ]
+    }
+  },
+  {
+    id: 8,
+    unitTheme: "cyan",
+    sessionBadge: "UNIDAD 01 // 45 MIN • LÍNEA DE COMANDOS",
+    title: "La Terminal de Comandos (CLI)",
+    subtitle: "La interfaz de texto para administración profesional.",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "Precisión:", text: "Permite ejecutar órdenes exactas sin ambigüedades ni capas intermedias." },
+        { highlight: "Automatización:", text: "Facilidad de encadenar tareas complejas en scripts reproducibles." },
+        { highlight: "Eficiencia:", text: "Mínimo consumo de recursos de memoria y procesador frente a una GUI." }
+      ]
+    },
+    rightContent: {
+      type: "terminal",
+      title: "sintaxis_cli.sh",
+      lines: [
+        "# Estructura universal de comandos:",
+        "$ comando [opciones/flags] [argumento]",
+        "",
+        "# Ejemplo con banderas agrupadas:",
+        "$ ls -lah /var/log"
+      ]
+    }
+  },
+
+  // --- INTERMEDIA: UNIDAD 02 ---
+  {
+    id: 9,
+    isUnitDivider: true,
+    unitTheme: "purple",
+    unitNumber: "UNIDAD 02",
+    sessionBadge: "SESIÓN 1 // 60 MIN • LABORATORIO VIRTUAL",
+    title: "Virtualización e Instalación de Debian",
+    subtitle: "Configuración del entorno virtual en VMware, dimensionamiento de recursos, particionado de disco y gestión segura de superusuario.",
+    unitTopics: [
+      { number: "02.1", title: "Hipervisor Tipo 2", desc: "Aislamiento seguro sobre Windows o macOS." },
+      { number: "02.2", title: "Redes y Hardware", desc: "Configuración NAT, vCPUs, RAM y almacenamiento dinámico." },
+      { number: "02.3", title: "Instalación & Sudo", desc: "El truco para habilitar sudo de fábrica y configurar GRUB." }
+    ]
+  },
+  // Contenido Unidad 2
+  {
+    id: 10,
+    unitTheme: "purple",
+    sessionBadge: "UNIDAD 02 // 60 MIN • HIPERVISOR",
+    title: "Virtualización: Hipervisor Tipo 2",
+    subtitle: "Ejecución aislada y controlada de Debian sobre VMware.",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "Hipervisor Tipo 2:", text: "Software que corre encima del sistema anfitrión (Windows o macOS)." },
+        { highlight: "Asignación de hardware:", text: "VMware abstrae vCPU, memoria RAM y almacenamiento dinámico directo desde tu equipo." },
+        { highlight: "Entorno seguro:", text: "Permite practicar y particionar sin poner en riesgo los datos de tu máquina host." }
+      ]
+    },
+    rightContent: {
+      type: "terminal",
+      title: "esquema_vm.txt",
+      lines: [
+        "+-------------------------------------+",
+        "|  VM Debian GNU/Linux  (Huésped)     |",
+        "+-------------------------------------+",
+        "|  VMware Workstation   (Hipervisor)  |",
+        "+-------------------------------------+",
+        "|  Sistema Operativo Host (Windows)   |",
+        "+-------------------------------------+",
+      ]
+    }
+  },
+  {
+    id: 11,
+    unitTheme: "purple",
+    sessionBadge: "UNIDAD 02 // 60 MIN • DIMENSIONAMIENTO",
+    title: "Dimensionamiento de la VM",
+    subtitle: "Parámetros técnicos de hardware asignados en el taller.",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "vCPU:", text: "2 núcleos de procesamiento asignados para mantener fluidez en compilación e interfaz." },
+        { highlight: "Memoria RAM:", text: "2 a 3 GB para sostener el entorno de escritorio GNOME cómodamente." },
+        { highlight: "Almacenamiento:", text: "20 GB con disco dinámico (Thin Provisioning) que solo ocupa espacio conforme se usa." }
+      ]
+    },
+    rightContent: {
+      type: "checklist",
+      title: "Hardware Virtual Recomendado",
+      items: [
+        { label: "Procesador: 2 vCPU", checked: true },
+        { label: "Memoria: 2 GB o 3 GB RAM", checked: true },
+        { label: "Disco: 20 GB almacenamiento dinámico", checked: true }
+      ]
+    }
+  },
+  {
+    id: 12,
+    unitTheme: "purple",
+    sessionBadge: "UNIDAD 02 // 60 MIN • REDES EN LA VM",
+    title: "Redes en la VM: NAT vs. Puente",
+    subtitle: "Selección del adaptador de red para el despliegue del taller.",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "Red NAT:", text: "Comparte la dirección IP del host a través de una red virtual interna con enrutamiento propio." },
+        { highlight: "Red Puente (Bridge):", text: "La VM solicita su propia dirección IP independiente directo al router de la LAN." },
+        { highlight: "Selección del taller:", text: "Utilizaremos NAT para asegurar salida continua a internet sin agotar IPs en el aula." }
+      ]
+    },
+    rightContent: {
+      type: "terminal",
+      title: "red_nat.txt",
+      lines: [
+        "[ Router Local / Wi-Fi ]",
+        "         │",
+        "  [ PC Host (Windows) ] (Comparte red)",
+        "         │ (Switch virtual NAT)",
+        "  [ VM Debian ] (Acceso directo local)"
+      ]
+    }
+  },
+  {
+    id: 13,
+    unitTheme: "purple",
+    sessionBadge: "UNIDAD 02 // 60 MIN • INSTALADOR DEBIAN",
+    title: "Instalador de Debian: Idioma y Disco",
+    subtitle: "Puntos clave al iniciar el instalador gráfico.",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "Modo gráfico:", text: "Selecciona «Graphical Install» en el menú de bienvenida de la ISO." },
+        { highlight: "Idioma y región:", text: "Configura idioma español y distribución de teclado correspondiente a tu laptop." },
+        { highlight: "Particionado guiado:", text: "Elige «Guiado - utilizar todo el disco» para crear automáticamente la estructura base." }
+      ]
+    },
+    rightContent: {
+      type: "checklist",
+      title: "Checklist de Instalación (Paso 1)",
+      items: [
+        { label: "Modo: Graphical Install", checked: true },
+        { label: "Idioma español + teclado de tu laptop", checked: true },
+        { label: "Particionado guiado, todo en un disco", checked: true }
+      ]
+    }
+  },
+  {
+    id: 14,
+    unitTheme: "purple",
+    sessionBadge: "UNIDAD 02 // 60 MIN • ROOT Y SUDO",
+    title: "Usuarios: El Truco de Root y Sudo",
+    subtitle: "Cómo garantizar privilegios de administración directos.",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "Contraseña de root en blanco:", text: "Deja este campo totalmente vacío para que Debian deshabilite la cuenta directa de root." },
+        { highlight: "Sudo automático:", text: "Al dejarlo vacío, el instalador añade a tu usuario regular al grupo sudo de fábrica." },
+        { highlight: "Cuenta de usuario:", text: "Escribe tu nombre completo y define tu nombre de usuario en minúsculas y sin espacios." }
+      ]
+    },
+    rightContent: {
+      type: "terminal",
+      title: "installer_root.log",
+      lines: [
+        "Configurar contraseñas de superusuario:",
+        "Contraseña de root: [          ] <- EN BLANCO",
+        "",
+        "[+] Modo sudo automático activado",
+        "[+] Usuario alumno añadido a /etc/sudoers"
+      ]
+    }
+  },
+  {
+    id: 15,
+    unitTheme: "purple",
+    sessionBadge: "UNIDAD 02 // 60 MIN • TASKSEL Y GRUB",
+    title: "Tasksel, GRUB y Primer Reinicio",
+    subtitle: "Selección del software base y cargador de arranque.",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "Tasksel:", text: "Marca: Entorno de escritorio + GNOME + Utilidades estándar del sistema." },
+        { highlight: "Cargador GRUB:", text: "Instala GRUB en la unidad principal (/dev/sda o /dev/vda)." },
+        { highlight: "Cierre:", text: "Finaliza la instalación, retira/expulsa la ISO de Debian en VMware y reinicia." }
+      ]
+    },
+    rightContent: {
+      type: "checklist",
+      title: "Checklist de Cierre de Instalación",
+      items: [
+        { label: "Tasksel: Entorno de escritorio + GNOME + Utilidades", checked: true },
+        { label: "GRUB instalado en /dev/sda o /dev/vda", checked: true },
+        { label: "Reiniciar, expulsar ISO e iniciar sesión", checked: true }
+      ]
+    }
+  },
+
+  // --- INTERMEDIA: UNIDAD 03 ---
+  {
+    id: 16,
+    isUnitDivider: true,
+    unitTheme: "amber",
+    unitNumber: "UNIDAD 03",
+    sessionBadge: "SESIÓN 2 // 45 MIN • COMANDOS ESENCIALES",
+    title: "Entorno Gráfico y Línea de Comandos (CLI)",
+    subtitle: "Aprende a moverte por el sistema de ficheros, editar texto en consola e instalar software mediante repositorios APT.",
+    unitTopics: [
+      { number: "03.1", title: "Flujo en GNOME", desc: "Espacios de trabajo, atajos rápidos y apertura de consola." },
+      { number: "03.2", title: "Navegación y Archivos", desc: "pwd, cd, ls -lah, mkdir, touch, cp, mv y rm de forma segura." },
+      { number: "03.3", title: "Edición y APT", desc: "Inspección con cat, edición ligera con nano y uso de sudo apt." }
+    ]
+  },
+  // Contenido Unidad 3
+  {
+    id: 17,
+    unitTheme: "amber",
+    sessionBadge: "UNIDAD 03 // 45 MIN • ESCRITORIO GNOME",
+    title: "Entorno Gráfico GNOME",
+    subtitle: "Navegación eficiente en el escritorio de Debian.",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "Activities:", text: "Presiona la tecla Super (tecla Windows) para abrir la vista general de ventanas y aplicaciones." },
+        { highlight: "Espacios de trabajo:", text: "Gestión de escritorios virtuales dinámicos para separar terminales y navegador." },
+        { highlight: "Lanzar terminal:", text: "Presiona Ctrl + Alt + T para abrir de inmediato la consola de comandos." }
+      ]
+    },
+    rightContent: {
+      type: "cards",
+      cards: [
+        { title: "Tecla Super", desc: "Abre la vista general de Actividades y búsqueda rápida." },
+        { title: "Espacios Virtuales", desc: "Organiza ventanas en múltiples escritorios dinámicos." },
+        { title: "Ctrl + Alt + T", desc: "Atajo rápido para invocar una nueva ventana de terminal." }
+      ]
+    }
+  },
+  {
+    id: 18,
+    unitTheme: "amber",
+    sessionBadge: "UNIDAD 03 // 45 MIN • IDENTIFICACIÓN",
+    title: "Identificación del Sistema",
+    subtitle: "¿Quién soy, qué host tengo y qué versión corre?",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "whoami:", text: "Imprime el nombre del usuario actualmente autenticado en la consola." },
+        { highlight: "hostname:", text: "Muestra el nombre de red asignado al equipo en la red local." },
+        { highlight: "uname -r:", text: "Devuelve la versión exacta del kernel Linux activo." }
+      ]
+    },
+    rightContent: {
+      type: "terminal",
+      title: "identificacion.sh",
+      lines: [
+        "$ whoami",
+        "alumno",
+        "",
+        "$ hostname",
+        "debian",
+        "",
+        "$ uname -r",
+        "6.1.0-18-amd64"
+      ]
+    }
+  },
+  {
+    id: 19,
+    unitTheme: "amber",
+    sessionBadge: "UNIDAD 03 // 45 MIN • NAVEGACIÓN",
+    title: "Navegación de Directorios",
+    subtitle: "Ubicación y listado de ficheros en la terminal.",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "pwd:", text: "Muestra la ruta absoluta completa del directorio donde te encuentras." },
+        { highlight: "cd:", text: "Cambia de directorio (cd ~ va al home, cd .. sube un nivel)." },
+        { highlight: "ls -lah:", text: "Lista ficheros en formato largo (-l), con ocultos (-a) y tamaños legibles (-h)." }
+      ]
+    },
+    rightContent: {
+      type: "terminal",
+      title: "navegacion.sh",
+      lines: [
+        "$ pwd",
+        "/home/alumno",
+        "",
+        "$ cd /var/log",
+        "$ ls -lah",
+        "drwxr-xr-x 10 root root 4.0K abr 12 10:00 .",
+        "-rw-r--r--  1 root root 120K abr 12 10:15 syslog"
+      ]
+    }
+  },
+  {
+    id: 20,
+    unitTheme: "amber",
+    sessionBadge: "UNIDAD 03 // 45 MIN • GESTIÓN DE ARCHIVOS",
+    title: "Manipulación de Archivos y Carpetas",
+    subtitle: "Crear, mover, copiar y eliminar elementos de forma segura.",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "mkdir y touch:", text: "mkdir -p crea rutas con carpetas anidadas; touch crea archivos en blanco." },
+        { highlight: "cp y mv:", text: "cp duplica ficheros y carpetas; mv mueve o renombra elementos." },
+        { highlight: "rm -r:", text: "Elimina de forma recursiva. ¡Cuidado: en la terminal no hay papelera de reciclaje!" }
+      ]
+    },
+    rightContent: {
+      type: "terminal",
+      title: "archivos.sh",
+      lines: [
+        "$ cd ~ && mkdir -p taller_linux/pruebas",
+        "$ cd taller_linux/pruebas && touch notas.txt",
+        "",
+        "# Copiar y mover archivos:",
+        "$ cp notas.txt copia.txt",
+        "$ mv copia.txt respaldo.txt",
+        "",
+        "# Borrado directo:",
+        "$ rm -r respaldo.txt"
+      ]
+    }
+  },
+  {
+    id: 21,
+    unitTheme: "amber",
+    sessionBadge: "UNIDAD 03 // 45 MIN • EDICIÓN NANO",
+    title: "Lectura y Edición de Archivos",
+    subtitle: "Inspección rápida de contenido y edición en consola.",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "cat y head:", text: "cat imprime todo el archivo en pantalla; head muestra las primeras líneas." },
+        { highlight: "Editor nano:", text: "Editor ligero de consola para modificar ficheros de texto plano y configuración." },
+        { highlight: "Atajos clave:", text: "Presiona Ctrl+O para guardar y Ctrl+X para salir del editor." }
+      ]
+    },
+    rightContent: {
+      type: "terminal",
+      title: "edicion.sh",
+      lines: [
+        "$ nano notas.txt",
+        "",
+        "# Dentro de nano:",
+        "# Escribe tu contenido...",
+        "# Ctrl+O -> guarda cambios",
+        "# Ctrl+X -> sale al shell",
+        "",
+        "$ cat notas.txt && ls -l"
+      ]
+    }
+  },
+  {
+    id: 22,
+    unitTheme: "amber",
+    sessionBadge: "UNIDAD 03 // 45 MIN • GESTOR APT",
+    title: "Gestión de Paquetes con APT",
+    subtitle: "Actualización e instalación de utilidades en Debian.",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "sudo apt update:", text: "Actualiza el catálogo local consultando la lista de versiones de los repositorios." },
+        { highlight: "sudo apt install:", text: "Descarga e instala paquetes resolviendo dependencias (usar -y para confirmar)." },
+        { highlight: "fastfetch:", text: "Herramienta moderna para desplegar métricas y datos del sistema en la terminal." }
+      ]
+    },
+    rightContent: {
+      type: "terminal",
+      title: "actividad_guiada.sh",
+      lines: [
+        "# 1. Actualizar catálogo de repositorios:",
+        "$ sudo apt update",
+        "",
+        "# 2. Instalar herramienta de métricas:",
+        "$ sudo apt install -y fastfetch",
+        "",
+        "# 3. Ejecutar y visualizar información:",
+        "$ fastfetch"
+      ]
+    }
+  },
+
+  // --- INTERMEDIA: UNIDAD 04 ---
+  {
+    id: 23,
+    isUnitDivider: true,
+    unitTheme: "emerald",
+    unitNumber: "UNIDAD 04",
+    sessionBadge: "SESIÓN 2 // 50 MIN • SERVICIOS Y DESPLIEGUE",
+    title: "Servicios, Permisos y Despliegue Web",
+    subtitle: "Instala y gestiona el servicio Apache con systemd, configura permisos POSIX en /var/www y despliega tu propio sitio web con Git.",
+    unitTopics: [
+      { number: "04.1", title: "Daemons y systemctl", desc: "Ciclo de vida de servicios en segundo plano con Apache2." },
+      { number: "04.2", title: "Permisos POSIX", desc: "Gestión de chown $USER:www-data y permisos chmod 775." },
+      { number: "04.3", title: "Despliegue y Red", desc: "Clonación con Git y acceso web mediante la dirección IP de la VM." }
+    ]
+  },
+  // Contenido Unidad 4
+  {
+    id: 24,
+    unitTheme: "emerald",
+    sessionBadge: "UNIDAD 04 // 50 MIN • SERVICIO APACHE",
+    title: "Servidor Web Apache y Daemons",
+    subtitle: "Instalación y monitoreo de servicios con systemctl.",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "Daemon:", text: "Servicio en segundo plano que corre escuchando conexiones, administrado con systemctl." },
+        { highlight: "Ruta de Apache:", text: "Por defecto, el servidor web Apache entrega contenido desde /var/www/html." },
+        { highlight: "Verificación:", text: "Ejecuta systemctl status apache2 para revisar si está activo (pulsa 'q' para salir)." }
+      ]
+    },
+    rightContent: {
+      type: "terminal",
+      title: "apache_setup.sh",
+      lines: [
+        "# Instalar servidor web y control de versiones:",
+        "$ sudo apt install -y apache2 git",
+        "",
+        "# Verificar estado del servicio:",
+        "$ systemctl status apache2",
+        "# (Presiona 'q' para salir de la vista)"
+      ]
+    }
+  },
+  {
+    id: 25,
+    unitTheme: "emerald",
+    sessionBadge: "UNIDAD 04 // 50 MIN • PERMISOS Y GIT",
+    title: "Permisos, Redes y Despliegue",
+    subtitle: "Ajuste de permisos con chmod/chown y clonado con Git.",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "Permisos rwx:", text: "Lectura, escritura y ejecución configurables por usuario, grupo y otros." },
+        { highlight: "chown y chmod:", text: "Traspaso de propiedad a $USER:www-data y asignación de permisos seguros 775." },
+        { highlight: "IP local y Git:", text: "Consulta tu dirección con ip a, clona tu repositorio con git clone y edita index.html." }
+      ]
+    },
+    rightContent: {
+      type: "terminal",
+      title: "despliegue_web.sh",
+      lines: [
+        "# Corregir permisos en la ruta web:",
+        "$ cd /var/www/html",
+        "$ sudo chown -R $USER:www-data /var/www/html",
+        "$ sudo chmod -R 775 /var/www/html",
+        "",
+        "# Reemplazar sitio por defecto:",
+        "$ rm index.html && git clone <URL_REPO> .",
+        "$ nano index.html",
+        "",
+        "# Verificar IP local de la VM:",
+        "$ ip a"
+      ]
+    }
+  },
+
+  // --- INTERMEDIA: UNIDAD 05 ---
+  {
+    id: 26,
+    isUnitDivider: true,
+    unitTheme: "rose",
+    unitNumber: "UNIDAD 05",
+    sessionBadge: "SESIÓN 2 // 15 MIN • CIERRE & HORIZONTES",
+    title: "Síntesis del Taller y Próximos Retos",
+    subtitle: "Consolidación de las bases fundamentales de Linux, automatización y rutas recomendadas de especialización profesional.",
+    unitTopics: [
+      { number: "05.1", title: "Habilidades Conquistadas", desc: "Instalación limpia, administración CLI y servidores con systemd." },
+      { number: "05.2", title: "Entornos Avanzados", desc: "Siguientes pasos en Dual-boot, VPS por SSH y contenedores Docker." },
+      { number: "05.3", title: "Conclusión Práctica", desc: "Recursos y guía de consulta para tus proyectos universitarios." }
+    ]
+  },
+
+  // 27. Recapitulación y Cierre
+  {
+    id: 27,
+    isRecap: true,
+    unitTheme: "rose",
+    sessionBadge: "UNIDAD 05 // 15 MIN • RECAPITULACIÓN",
+    title: "Recapitulación y Próximos Pasos",
+    subtitle: "Conclusión de los objetivos alcanzados a lo largo del taller.",
+    leftContent: {
+      type: "points",
+      items: [
+        { highlight: "Lo que ya dominas:", text: "Instalar y dimensionar un sistema base Debian GNU/Linux en VM." },
+        { highlight: "Manejo del entorno:", text: "Moverte con fluidez en GNOME y dominar la terminal CLI." },
+        { highlight: "Administración:", text: "Gestionar paquetes con APT, permisos POSIX y servicios con systemd." }
+      ]
+    },
+    rightContent: {
+      type: "cards",
+      cards: [
+        { title: "Dual-boot", desc: "Particiones EFI junto a Windows en un mismo equipo físico para rendimiento nativo." },
+        { title: "VPS Cloud", desc: "Administración de servidores remotos en la nube por SSH con llaves criptográficas." },
+        { title: "Docker", desc: "Empaquetar aplicaciones web y microservicios sin conflictos de dependencias." }
+      ]
+    }
+  }
+];
+---
+
+<Layout title="StellaLabs — Taller: Introducción a Linux">
+  <Header/>
+
+  <div class="relative flex flex-col justify-between min-h-[calc(100vh-4rem)] overflow-hidden select-none bg-[#050508] text-slate-100">
+    <!-- Barra de progreso superior dinámica -->
+    <div class="w-full bg-slate-900/80 h-1 relative overflow-hidden z-30">
+      <div 
+        id="unit-progress-bar" 
+        class="h-full transition-all duration-300 ease-out bg-gradient-to-r from-cyan-500 to-indigo-500"
+        style="width: 3.7%;"
+      ></div>
+    </div>
+
+    <main id="slide-container" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 flex flex-col justify-center relative z-10 touch-pan-y">
+      {slides.map((slide, index) => {
+        const theme = themeStyles[slide.unitTheme || 'cyan'];
+        const isDiagram = slide.rightContent?.title?.endsWith('.txt') || slide.rightContent?.title?.endsWith('.map');
+
+        return (
+          <section 
+            data-slide-index={index}
+            data-theme={slide.unitTheme || 'cyan'}
+            class={`slide-item transition-all duration-300 relative ${index === 0 ? 'block' : 'hidden'}`}
+          >
+            <!-- Ambient Glow Dinámico por Unidad -->
+            <div class={`absolute -top-32 -right-32 w-80 sm:w-96 h-80 sm:h-96 ${theme.glow1} rounded-full blur-[100px] sm:blur-[130px] pointer-events-none transition-all duration-500`}></div>
+            <div class={`absolute -bottom-32 -left-32 w-80 sm:w-96 h-80 sm:h-96 ${theme.glow2} rounded-full blur-[100px] sm:blur-[130px] pointer-events-none transition-all duration-500`}></div>
+
+            {/* CASO 1: PORTADA */}
+            {slide.isCover ? (
+              <div class="max-w-3xl relative z-10">
+                {slide.sessionBadge && (
+                  <div class="mb-4">
+                    <span class={`inline-flex items-center gap-1.5 text-[11px] font-mono tracking-wider uppercase px-3 py-1 rounded-full border ${theme.badge}`}>
+                      <span class={`w-1.5 h-1.5 rounded-full ${theme.dot} animate-pulse`}></span>
+                      {slide.sessionBadge}
+                    </span>
+                  </div>
+                )}
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-4">
+                  Taller: <span class={`text-transparent bg-clip-text bg-gradient-to-r ${theme.gradient}`}>Introducción a Linux</span>
+                </h1>
+                <p class="text-slate-400 text-base sm:text-lg mb-8 leading-relaxed max-w-2xl">
+                  {slide.subtitle}
+                </p>
+
+                {slide.leftContent?.items && (
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+                    {slide.leftContent.items.map((card) => (
+                      <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-3.5 backdrop-blur-sm">
+                        <span class="text-[10px] font-mono text-slate-500 uppercase block tracking-wider mb-1">{card.title}</span>
+                        <span class="text-sm font-semibold text-slate-200">{card.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <div class="flex flex-wrap items-center gap-3">
+                  <a 
+                    href="/guias" 
+                    class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-800 bg-slate-900/80 hover:bg-slate-800 hover:text-white text-slate-300 font-medium text-sm transition-all active:scale-95 shadow-lg shadow-black/40 cursor-pointer"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    Regresar
+                  </a>
+
+                  <button 
+                    id="start-btn" 
+                    class={`inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r ${theme.btnGradient} text-white font-medium text-sm transition-all shadow-lg active:scale-95 cursor-pointer`}
+                  >
+                    Comenzar Taller
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+            /* CASO 2: DIAPOSITIVA INTERMEDIA DE CAMBIO DE UNIDAD */
+            ) : slide.isUnitDivider ? (
+              <div class="max-w-4xl mx-auto text-center py-6 sm:py-10 relative z-10">
+                <div class="mb-4">
+                  <span class={`inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase px-3.5 py-1.5 rounded-full border backdrop-blur-md ${theme.badge}`}>
+                    <span class={`w-2 h-2 rounded-full ${theme.dot} animate-pulse`}></span>
+                    {slide.sessionBadge}
+                  </span>
+                </div>
+
+                <div class="mb-3">
+                  <span class={`text-sm sm:text-base font-mono font-bold tracking-widest uppercase ${theme.textAccent}`}>
+                    {slide.unitNumber}
+                  </span>
+                </div>
+
+                <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-5 leading-tight">
+                  <span class={`text-transparent bg-clip-text bg-gradient-to-r ${theme.gradient}`}>
+                    {slide.title}
+                  </span>
+                </h2>
+
+                <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mb-10 leading-relaxed">
+                  {slide.subtitle}
+                </p>
+
+                {slide.unitTopics && (
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 text-left max-w-3xl mx-auto">
+                    {slide.unitTopics.map((topic) => (
+                      <div class="p-4 rounded-xl border border-slate-800/80 bg-slate-900/50 backdrop-blur-sm hover:border-slate-700 transition-all">
+                        <span class={`text-xs font-mono font-semibold block mb-1.5 ${theme.textAccent}`}>{topic.number}</span>
+                        <h4 class="text-sm font-semibold text-slate-200 mb-1">{topic.title}</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">{topic.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+            /* CASO 3: DIAPOSITIVA ESTÁNDAR / RECAPITULACIÓN */
+            ) : (
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center relative z-10">
+                <div class="lg:col-span-5 space-y-4">
+                  {slide.sessionBadge && (
+                    <div class="mb-2">
+                      <span class={`inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-mono tracking-wider uppercase px-3 py-1 rounded-full border ${theme.badge}`}>
+                        <span class={`w-1.5 h-1.5 rounded-full ${theme.dot} animate-pulse`}></span>
+                        {slide.sessionBadge}
+                      </span>
+                    </div>
+                  )}
+
+                  <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-2">{slide.title}</h2>
+                    {slide.subtitle && (
+                      <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">{slide.subtitle}</p>
+                    )}
+                  </div>
+
+                  {slide.leftContent?.items && (
+                    <ul class="space-y-3 pt-1">
+                      {slide.leftContent.items.map((pt) => (
+                        <li class="text-xs sm:text-sm text-slate-300 flex items-start gap-2.5 leading-relaxed">
+                          <span class={`${theme.bullet} font-bold mt-0.5 text-base leading-none`}>•</span>
+                          <span>
+                            {pt.highlight && <strong class="text-white font-semibold">{pt.highlight} </strong>}
+                            {pt.text}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {slide.isRecap && (
+                    <div class="pt-4">
+                      <a 
+                        href="/guias"
+                        class={`inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r ${theme.btnGradient} text-white font-medium text-sm transition-all shadow-lg active:scale-95 cursor-pointer`}
+                      >
+                        Finalizar
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                      </a>
+                    </div>
+                  )}
+                </div>
+
+                <div class="lg:col-span-7">
+                  {slide.rightContent?.type === 'terminal' && (
+                    <div class="rounded-xl overflow-hidden border border-slate-800/90 bg-[#0a0a12]/95 shadow-2xl shadow-black/80 backdrop-blur-md">
+                      <div class="px-3.5 py-2.5 sm:px-4 bg-slate-900/80 border-b border-slate-800/80 flex items-center justify-between">
+                        <div class="flex items-center gap-1.5">
+                          <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+                          <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+                          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+                        </div>
+                        <span class="text-[10px] sm:text-[11px] font-mono text-slate-400 truncate max-w-[200px] sm:max-w-none">{slide.rightContent.title}</span>
+                        <span class={`text-[10px] font-mono ${theme.tag}`}>bash</span>
+                      </div>
+                      {/* Sin espacios entre <pre> y <code> para evitar desplazamiento en la primera línea. Comandos con wrapping en móvil para no forzar overflow */}
+                      <pre class={`p-3.5 sm:p-5 font-mono text-slate-200 leading-relaxed ${
+                        isDiagram 
+                          ? 'text-[10px] xs:text-[11px] sm:text-xs overflow-x-auto whitespace-pre' 
+                          : 'text-[11px] sm:text-xs whitespace-pre-wrap break-words sm:whitespace-pre sm:break-normal overflow-x-auto'
+                      }`}><code>{slide.rightContent.lines?.join('\n')}</code></pre>
+                    </div>
+                  )}
+
+                  {slide.rightContent?.type === 'checklist' && (
+                    <div class="rounded-xl p-4 sm:p-5 border border-slate-800/80 bg-slate-900/40 backdrop-blur-md">
+                      <span class={`text-xs font-mono uppercase tracking-wider block mb-4 ${theme.textAccent}`}>
+                        {slide.rightContent.title}
+                      </span>
+                      <div class="space-y-3">
+                        {slide.rightContent.items?.map((item) => (
+                          <label class="flex items-center gap-3 p-3 rounded-lg bg-slate-950/60 border border-slate-800/60 text-xs sm:text-sm text-slate-200">
+                            <input 
+                              type="checkbox" 
+                              checked={item.checked} 
+                              class={`rounded border-slate-700 ${theme.checkbox} focus:ring-0 bg-slate-900 w-4 h-4 cursor-pointer`} 
+                            />
+                            <span>{item.label}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {slide.rightContent?.type === 'cards' && (
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {slide.rightContent.cards?.map((card) => (
+                        <div class="p-4 rounded-xl border border-slate-800/70 bg-slate-900/50 hover:border-slate-700/80 transition-all">
+                          <h3 class={`text-sm font-semibold mb-1.5 ${theme.textAccent}`}>{card.title}</h3>
+                          <p class="text-xs text-slate-400 leading-relaxed">{card.desc}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </section>
+        );
+      })}
+    </main>
+
+    <!-- Footer de Navegación -->
+    <footer class="w-full px-4 sm:px-8 py-4 flex items-center justify-between border-t border-slate-800/60 z-20 backdrop-blur-md bg-[#07070d]/70 text-xs font-mono">
+      <button 
+        id="prev-btn" 
+        class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-800 text-slate-400 hover:text-white transition-all active:scale-95 cursor-pointer"
+      >
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span id="prev-btn-text">Regresar</span>
+      </button>
+
+      <div class="flex items-center gap-2 text-slate-500 font-medium">
+        <span id="current-slide" class="text-slate-200">1</span>
+        <span> / </span>
+        <span>{slides.length}</span>
+      </div>
+
+      <button 
+        id="next-btn" 
+        class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-800 text-slate-400 hover:text-white transition-all active:scale-95 cursor-pointer"
+      >
+        <span id="next-btn-text">Siguiente</span>
+        <svg id="next-btn-icon" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </footer>
+  </div>
+
+  <script is:inline define:vars={{ totalSlides: slides.length, slideThemes: slides.map(s => s.unitTheme || 'cyan') }}>
+    let currentSlide = 0;
+    const slidesEl = document.querySelectorAll('.slide-item');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const prevBtnText = document.getElementById('prev-btn-text');
+    const nextBtnText = document.getElementById('next-btn-text');
+    const nextBtnIcon = document.getElementById('next-btn-icon');
+    const currentSlideEl = document.getElementById('current-slide');
+    const startBtn = document.getElementById('start-btn');
+    const progressBar = document.getElementById('unit-progress-bar');
+
+    const gradientMap = {
+      cyan: 'from-cyan-500 to-indigo-500',
+      purple: 'from-purple-500 to-indigo-500',
+      amber: 'from-amber-500 to-orange-500',
+      emerald: 'from-emerald-500 to-teal-500',
+      rose: 'from-rose-500 to-pink-500'
+    };
+
+    function updateSlide(index) {
+      if (index < 0 || index >= totalSlides) return;
+      currentSlide = index;
+
+      slidesEl.forEach((el, i) => {
+        if (i === currentSlide) {
+          el.classList.remove('hidden');
+          el.classList.add('block');
+        } else {
+          el.classList.add('hidden');
+          el.classList.remove('block');
+        }
+      });
+
+      if (currentSlideEl) currentSlideEl.textContent = String(currentSlide + 1);
+
+      // Actualizar barra de progreso con color dinámico de la unidad
+      if (progressBar) {
+        const pct = ((currentSlide + 1) / totalSlides) * 100;
+        progressBar.style.width = pct + '%';
+        const currentTheme = slideThemes[currentSlide] || 'cyan';
+        progressBar.className = `h-full transition-all duration-300 ease-out bg-gradient-to-r ${gradientMap[currentTheme] || gradientMap.cyan}`;
+      }
+
+      // Estado botón Anterior / Regresar
+      if (currentSlide === 0) {
+        if (prevBtnText) prevBtnText.textContent = "Regresar";
+      } else {
+        if (prevBtnText) prevBtnText.textContent = "Anterior";
+      }
+
+      // Estado botón Siguiente / Finalizar
+      if (currentSlide === totalSlides - 1) {
+        if (nextBtnText) nextBtnText.textContent = "Finalizar";
+        if (nextBtn) {
+          nextBtn.classList.add('bg-gradient-to-r', 'from-rose-600', 'to-indigo-600', 'text-white', 'border-transparent');
+          nextBtn.classList.remove('text-slate-400', 'border-slate-800');
+        }
+        if (nextBtnIcon) {
+          nextBtnIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>';
+        }
+      } else {
+        if (nextBtnText) nextBtnText.textContent = "Siguiente";
+        if (nextBtn) {
+          nextBtn.classList.remove('bg-gradient-to-r', 'from-rose-600', 'to-indigo-600', 'text-white', 'border-transparent');
+          nextBtn.classList.add('text-slate-400', 'border-slate-800');
+        }
+        if (nextBtnIcon) {
+          nextBtnIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>';
+        }
+      }
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        if (currentSlide === 0) {
+          window.location.href = '/guias';
+        } else {
+          updateSlide(currentSlide - 1);
+        }
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        if (currentSlide === totalSlides - 1) {
+          window.location.href = '/guias';
+        } else {
+          updateSlide(currentSlide + 1);
+        }
+      });
+    }
+
+    if (startBtn) {
+      startBtn.addEventListener('click', () => updateSlide(1));
+    }
+
+    // Navegación con teclado
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+        e.preventDefault();
+        if (currentSlide < totalSlides - 1) updateSlide(currentSlide + 1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        if (currentSlide > 0) updateSlide(currentSlide - 1);
+      }
+    });
+
+    // Control táctil para móviles (Swipe horizontal)
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+
+    const mainContainer = document.getElementById('slide-container');
+
+    if (mainContainer) {
+      mainContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].clientX;
+        touchStartY = e.changedTouches[0].clientY;
+      }, { passive: true });
+
+      mainContainer.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].clientX;
+        touchEndY = e.changedTouches[0].clientY;
+        handleSwipeGesture();
+      }, { passive: true });
+    }
+
+    function handleSwipeGesture() {
+      const deltaX = touchEndX - touchStartX;
+      const deltaY = touchEndY - touchStartY;
+      const minDistance = 45; // Distancia mínima en px
+
+      if (Math.abs(deltaX) > Math.abs(deltaY) * 1.2 && Math.abs(deltaX) > minDistance) {
+        if (deltaX < 0) {
+          // Deslizar hacia la izquierda -> Avanzar
+          if (currentSlide < totalSlides - 1) {
+            updateSlide(currentSlide + 1);
+          }
+        } else {
+          // Deslizar hacia la derecha -> Retroceder
+          if (currentSlide > 0) {
+            updateSlide(currentSlide - 1);
+          }
+        }
+      }
+    }
+
+    updateSlide(0);
+  </script>
+</Layout>

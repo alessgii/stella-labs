@@ -1,0 +1,236 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<Layout title="Guías y Mini Cursos | StellaLabs">
+  <Header />
+
+  <main class="relative min-h-screen overflow-hidden px-6 py-16 md:px-10 lg:py-24">
+    <!-- Luces ambientales y textura de fondo -->
+    <div
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(#38bdf810_1px,transparent_1px)] [background-size:28px_28px]"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="pointer-events-none absolute -top-24 right-1/4 h-[420px] w-[420px] rounded-full bg-astra-400/10 blur-[130px]"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="pointer-events-none absolute bottom-1/3 -left-32 h-[380px] w-[380px] rounded-full bg-cosmic-500/10 blur-[140px]"
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative z-10 mx-auto max-w-7xl">
+      <!-- ENCABEZADO DE LA SECCIÓN -->
+      <header class="mx-auto mb-16 max-w-3xl text-center">
+        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-astra-400/20 bg-astra-400/10 px-3.5 py-1 text-xs font-mono text-astra-400">
+          <span class="h-1.5 w-1.5 rounded-full bg-astra-400 animate-pulse"></span>
+          KNOWLEDGE BASE // GUÍAS PRÁCTICAS
+        </div>
+
+        <h1 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+          Rutas de aprendizaje <span class="bg-gradient-to-r from-astra-400 via-sky-300 to-cosmic-400 bg-clip-text text-transparent">directas al grano</span>
+        </h1>
+
+        <p class="mt-5 text-sm leading-relaxed text-gray-300 sm:text-base md:text-lg">
+          Esta sección nace para eliminar la fricción técnica: material de apoyo para talleres presenciales, laboratorios prácticos y notas de estudio creadas por y para estudiantes. Sin teoría de relleno, enfocadas en la terminal y listas para producción.
+        </p>
+
+        <!-- Puntos clave del formato -->
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-6 font-mono text-xs text-gray-400">
+          <div class="flex items-center gap-2">
+            <span class="text-astra-400">✓</span>
+            <span>100% prácticas</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-cosmic-400">✓</span>
+            <span>Comandos listos para copiar</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-400">✓</span>
+            <span>Sin intermediarios ni costo</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- GRID DE GUÍAS Y CURSOS -->
+      <section class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        
+        <!-- CARD 1: LINUX (ACTIVA) -->
+        <article class="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-space-900/60 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-astra-400/50 hover:shadow-[0_10px_40px_-10px_rgba(56,189,248,0.15)] sm:p-8">
+          <div>
+            <!-- Header de tarjeta -->
+            <div class="flex items-center justify-between border-b border-white/5 pb-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-astra-400/30 bg-astra-400/10 text-astra-400">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 font-mono text-[10px] font-bold text-emerald-400">
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span> DISPONIBLE
+              </span>
+            </div>
+
+            <!-- Contenido textual -->
+            <h2 class="mt-6 text-xl font-bold text-white transition-colors group-hover:text-astra-400">
+              Introducción a Linux & Servidores
+            </h2>
+            <p class="mt-3 text-xs leading-relaxed text-gray-400 sm:text-sm">
+              Fundamentos del kernel, arquitectura Unix, virtualización con VMware, instalación paso a paso de Debian (GNOME), comandos elementales de consola y puesta en marcha de un servidor web Apache con permisos correctos.
+            </p>
+
+            <!-- Metadatos de la guía -->
+            <div class="mt-6 space-y-2 border-t border-white/5 pt-4 font-mono text-xs text-gray-400">
+              <div class="flex items-center justify-between">
+                <span class="text-gray-500">Duración:</span>
+                <span class="text-white">4 horas (2 sesiones)</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-500">Distribución:</span>
+                <span class="text-astra-400">Debian GNU/Linux</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-500">Nivel:</span>
+                <span class="text-white">Principiante / Intermedio</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botón de Acción -->
+          <div class="mt-8">
+            <a
+              href="/guias/linux"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-astra-400 px-4 py-3 text-xs font-bold uppercase tracking-wider text-space-950 transition-all hover:bg-sky-300 active:scale-95"
+            >
+              Comenzar guía
+              <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- CARD 2: GIT & GITHUB (PRÓXIMAMENTE) -->
+        <article class="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/5 bg-space-900/40 p-6 backdrop-blur-xl transition-all duration-300 hover:border-white/20 sm:p-8">
+          <div>
+            <div class="flex items-center justify-between border-b border-white/5 pb-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-gray-400">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+                </svg>
+              </div>
+              <span class="inline-flex items-center rounded-full border border-amber-500/20 bg-amber-500/10 px-2.5 py-0.5 font-mono text-[10px] font-bold text-amber-300">
+                PRÓXIMAMENTE
+              </span>
+            </div>
+
+            <h2 class="mt-6 text-xl font-bold text-white">
+              Git, GitHub & Flujos de Trabajo
+            </h2>
+            <p class="mt-3 text-xs leading-relaxed text-gray-400 sm:text-sm">
+              Control de versiones esencial para materias y proyectos reales: commits limpios, creación y fusión de ramas sin miedo, resolución de conflictos cotidianos y colaboración mediante Pull Requests.
+            </p>
+
+            <div class="mt-6 space-y-2 border-t border-white/5 pt-4 font-mono text-xs text-gray-400">
+              <div class="flex items-center justify-between">
+                <span class="text-gray-500">Módulos:</span>
+                <span class="text-white">CLI + Colaboración</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-500">Herramientas:</span>
+                <span class="text-gray-300">Git, GitHub, SSH</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-500">Estado:</span>
+                <span class="text-amber-400">En redacción</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <button
+              disabled
+              class="inline-flex w-full cursor-not-allowed items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-xs font-semibold text-gray-500"
+            >
+              En preparación
+            </button>
+          </div>
+        </article>
+
+        <!-- CARD 3: DESARROLLO WEB (PRÓXIMAMENTE) -->
+        <article class="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/5 bg-space-900/40 p-6 backdrop-blur-xl transition-all duration-300 hover:border-white/20 sm:p-8">
+          <div>
+            <div class="flex items-center justify-between border-b border-white/5 pb-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-gray-400">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </div>
+              <span class="inline-flex items-center rounded-full border border-cosmic-400/20 bg-cosmic-500/10 px-2.5 py-0.5 font-mono text-[10px] font-bold text-cosmic-400">
+                PRÓXIMAMENTE
+              </span>
+            </div>
+
+            <h2 class="mt-6 text-xl font-bold text-white">
+              Desarrollo Web & Despliegue
+            </h2>
+            <p class="mt-3 text-xs leading-relaxed text-gray-400 sm:text-sm">
+              Bases del frontend y backend moderno: maquetación semántica, consumo de APIs mediante fetch, conexión con MariaDB y publicación de sitios en Cloudflare Pages y servidores propios.
+            </p>
+
+            <div class="mt-6 space-y-2 border-t border-white/5 pt-4 font-mono text-xs text-gray-400">
+              <div class="flex items-center justify-between">
+                <span class="text-gray-500">Enfoque:</span>
+                <span class="text-white">Fullstack básico</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-500">Stack:</span>
+                <span class="text-gray-300">HTML, Tailwind, PHP/JS</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-500">Estado:</span>
+                <span class="text-cosmic-400">Planificando</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <button
+              disabled
+              class="inline-flex w-full cursor-not-allowed items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-xs font-semibold text-gray-500"
+            >
+              En preparación
+            </button>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- BANNER DE PROPÓSITO / COLABORACIÓN -->
+      <section class="mt-16 rounded-3xl border border-white/10 bg-gradient-to-b from-space-900/80 to-space-950 p-8 backdrop-blur-xl sm:p-12">
+        <div class="mx-auto max-w-3xl text-center">
+          <span class="font-mono text-xs uppercase tracking-wider text-astra-400">Cultura Open Source</span>
+          <h2 class="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+            ¿Dominas un tema y quieres compartir una guía?
+          </h2>
+          <p class="mt-4 text-xs leading-relaxed text-gray-400 sm:text-sm">
+            Las guías de StellaLabs están abiertas a contribuciones de la comunidad. Si creaste material de estudio para una materia difícil, un script de automatización o una guía de instalación, puedes sumarla al catálogo.
+          </p>
+          <div class="mt-8 flex justify-center">
+            <a
+              href="/contacto"
+              class="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-xs font-semibold text-white transition-colors hover:border-astra-400 hover:bg-white/10"
+            >
+              Proponer un tema o taller
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
