@@ -3,10 +3,10 @@ import Badge from "./Badge.astro";
 ---
 
 <header
-  class="sticky top-0 z-50 w-full border-b border-white/10 bg-bg/75 backdrop-blur-md"
+  class="sticky top-0 z-50 w-full border-b border-white/10 bg-space-950/80 backdrop-blur-md"
 >
   <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4 md:px-10">
-    <!-- Izquierda: isotipo + logo + badge -->
+    <!-- Izquierda: Isotipo + Marca + Badge -->
     <div class="flex items-center gap-3">
       <a href="/" class="group flex items-center gap-2.5 transition-opacity hover:opacity-90">
         <svg
@@ -38,13 +38,13 @@ import Badge from "./Badge.astro";
         </svg>
 
         <span class="text-base font-semibold tracking-tight text-white">
-          Stella<span class="text-accent">Labs</span>
+          Stella<span class="text-astra-400">Labs</span>
         </span>
       </a>
       <Badge />
     </div>
 
-    <!-- Menú de navegación (Desktop) -->
+    <!-- Menú de navegación Desktop -->
     <nav class="hidden items-center gap-6 text-sm text-gray-400 md:flex">
       <div class="group relative">
         <button
@@ -65,11 +65,11 @@ import Badge from "./Badge.astro";
           </svg>
         </button>
 
-        <!-- Submenú Desktop -->
+        <!-- Dropdown Desktop -->
         <div
           class="invisible absolute left-0 top-full pt-3 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100"
         >
-          <div class="w-56 rounded-xl border border-white/10 bg-bg/95 p-1.5 shadow-2xl backdrop-blur-lg">
+          <div class="w-56 rounded-xl border border-white/10 bg-space-900/95 p-1.5 shadow-2xl backdrop-blur-xl">
             <a
               href="/eventos"
               class="block rounded-lg px-3 py-2 text-sm text-gray-300 transition-colors hover:bg-white/10 hover:text-white"
@@ -105,7 +105,7 @@ import Badge from "./Badge.astro";
       <a href="/contacto" class="transition-colors hover:text-white">Contacto</a>
     </nav>
 
-    <!-- Botón Hamburguesa (Móvil) -->
+    <!-- Botón Hamburguesa Móvil -->
     <button
       id="mobile-menu-btn"
       type="button"
@@ -113,7 +113,6 @@ import Badge from "./Badge.astro";
       aria-expanded="false"
       class="inline-flex items-center justify-center rounded-lg border border-white/10 p-2 text-gray-400 transition-colors hover:bg-white/5 hover:text-white md:hidden"
     >
-      <!-- Icono Menú (Hamburguesa) -->
       <svg
         id="icon-menu-open"
         class="h-5 w-5"
@@ -124,7 +123,6 @@ import Badge from "./Badge.astro";
       >
         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
-      <!-- Icono Cerrar (X) -->
       <svg
         id="icon-menu-close"
         class="hidden h-5 w-5"
@@ -138,15 +136,14 @@ import Badge from "./Badge.astro";
     </button>
   </div>
 
-  <!-- Menú Desplegable Móvil -->
+  <!-- Menú Móvil Desplegable -->
   <div
     id="mobile-menu"
-    class="hidden border-b border-white/10 bg-bg/95 px-6 py-5 backdrop-blur-xl md:hidden"
+    class="hidden border-b border-white/10 bg-space-950/95 px-6 py-5 backdrop-blur-xl md:hidden"
   >
     <div class="flex flex-col space-y-4">
-      <!-- Sección Herramientas -->
       <div>
-        <p class="font-mono text-xs uppercase tracking-wider text-gray-500">Herramientas & Laboratorio</p>
+        <p class="font-mono text-xs uppercase tracking-wider text-gray-400">Herramientas & Laboratorio</p>
         <div class="mt-2 space-y-1 pl-2">
           <a
             href="/eventos"
@@ -163,13 +160,13 @@ import Badge from "./Badge.astro";
               <span class="h-1.5 w-1.5 rounded-full bg-cosmic-400"></span>
               <span>Torneos de videojuegos</span>
             </div>
-            <span class="rounded bg-cosmic-500/20 px-1.5 py-0.5 text-[10px] font-mono text-cosmic-400">Nuevo</span>
+            <span class="rounded bg-cosmic-500/20 px-1.5 py-0.5 text-[10px] font-mono text-cosmic-400">Liga</span>
           </a>
           <a
             href="/juegos"
             class="flex items-center gap-2 rounded-lg py-2 text-sm text-gray-300 transition-colors hover:text-white"
           >
-            <span class="h-1.5 w-1.5 rounded-full bg-sky-400"></span>
+            <span class="h-1.5 w-1.5 rounded-full bg-astra-300"></span>
             Mini juegos
           </a>
           <a
@@ -177,10 +174,10 @@ import Badge from "./Badge.astro";
             class="flex items-center justify-between rounded-lg py-2 text-sm text-gray-300 transition-colors hover:text-white"
           >
             <div class="flex items-center gap-2">
-              <span class="h-1.5 w-1.5 rounded-full bg-cosmic-400"></span>
+              <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
               <span>Guías</span>
             </div>
-            <span class="rounded bg-cosmic-500/20 px-1.5 py-0.5 text-[10px] font-mono text-cosmic-400">Nuevo</span>
+            <span class="rounded bg-emerald-500/20 px-1.5 py-0.5 text-[10px] font-mono text-emerald-400">Docs</span>
           </a>
         </div>
       </div>
@@ -217,7 +214,6 @@ import Badge from "./Badge.astro";
     closeIcon?.classList.toggle("hidden");
   });
 
-  // Cerrar menú al hacer click en cualquier link
   menu?.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       menu.classList.add("hidden");

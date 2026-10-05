@@ -2,14 +2,13 @@
 const year = new Date().getFullYear();
 ---
 
-<footer class="relative z-10 w-full border-t border-white/10 bg-space-950/80 px-6 py-12 backdrop-blur-md md:px-10 lg:py-16">
+<footer class="relative z-10 w-full border-t border-white/10 bg-space-950/90 px-6 py-12 backdrop-blur-md md:px-10 lg:py-16">
   <div class="mx-auto max-w-7xl">
-    <!-- Fila superior: Marca y navegación -->
+    <!-- Fila superior -->
     <div class="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-8">
-      <!-- Columna de Marca (Isotipo + Lema) -->
+      <!-- Columna de Marca -->
       <div class="space-y-4 md:col-span-6 lg:col-span-5">
         <a href="/" class="group inline-flex items-center gap-2.5 transition-opacity hover:opacity-90">
-          <!-- Isotipo SVG StellaLabs -->
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 100 100"
@@ -39,21 +38,20 @@ const year = new Date().getFullYear();
           </svg>
 
           <span class="text-lg font-semibold tracking-tight text-white">
-            Stella<span class="text-accent">Labs</span>
+            Stella<span class="text-astra-400">Labs</span>
           </span>
         </a>
 
-        <!-- Frase distintiva junto a la marca -->
         <p class="font-mono text-sm text-astra-400">
           Por y para estudiantes<span class="text-white">.</span>
         </p>
 
         <p class="max-w-sm text-xs leading-relaxed text-gray-400">
-          Laboratorio experimental de software, utilidades y torneos desarrollado para impulsar la comunidad estudiantil.
+          Laboratorio experimental de software, utilidades y torneos desarrollado para impulsar la comunidad estudiantil de Teleinformática.
         </p>
       </div>
 
-      <!-- Columna: Herramientas del Laboratorio -->
+      <!-- Herramientas -->
       <div class="space-y-3 md:col-span-3 lg:col-span-4">
         <p class="font-mono text-xs uppercase tracking-wider text-gray-300">Herramientas</p>
         <ul class="space-y-2 text-sm text-gray-400">
@@ -81,7 +79,7 @@ const year = new Date().getFullYear();
         </ul>
       </div>
 
-      <!-- Columna: Enlaces Generales -->
+      <!-- Navegación -->
       <div class="space-y-3 md:col-span-3 lg:col-span-3">
         <p class="font-mono text-xs uppercase tracking-wider text-gray-300">Navegación</p>
         <ul class="space-y-2 text-sm text-gray-400">
@@ -119,13 +117,13 @@ const year = new Date().getFullYear();
       </div>
     </div>
 
-    <!-- Barra inferior: Copyright -->
+    <!-- Barra inferior -->
     <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-xs text-gray-500 sm:flex-row">
       <p>
         StellaLabs — © {year}. Ingeniería en Teleinformática, CUCSur.
       </p>
       <div class="flex items-center gap-2 font-mono text-[11px] text-gray-400">
-        <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+        <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
         Sistemas operativos
       </div>
     </div>
