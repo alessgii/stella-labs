@@ -1,25 +1,81 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
 
 @import "tailwindcss";
 
-/* 3. Configuración del tema */
 @theme {
-  --font-sans: "Space Grotesk", sans-serif;
+  /* ==========================================================================
+     1. TIPOGRAFÍA
+     Space Grotesk para titulares/UI (sustituto recomendado de aeonikPro)
+     JetBrains Mono para etiquetas dotDigital (eyebrows y terminales)
+     ========================================================================== */
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 
+  /* ==========================================================================
+     2. PALETA DE COLORES STELLALABS (Conservando la base original de global.css)
+     ========================================================================== */
   --color-dark: #07050f;
   --color-accent: #4895f6;
   --color-secondary: #a855f7;
 
+  /* Gama Space (Midnight Canvas y superficies de cristal oscuro) */
   --color-space-700: #231b45;
   --color-space-800: #16112e;
   --color-space-900: #0d0a1c;
   --color-space-950: #07050f;
 
+  /* Gama Astra (Blueprint Blue / Acentos cian) */
   --color-astra-400: #38bdf8;
   --color-astra-500: #0ea5e9;
 
+  /* Gama Cosmic (Void Violet / Acentos morados de realce) */
   --color-cosmic-400: #c084fc;
   --color-cosmic-500: #a855f7;
   --color-cosmic-600: #9333ea;
   --color-cosmic-900: #3b0764;
+
+  /* Superficies y Bordes translúcidos estilo DESIGN.md */
+  --color-glass-edge: rgba(186, 215, 247, 0.08);
+  --color-glass-edge-hover: rgba(186, 215, 247, 0.18);
+  --color-glass-surface: rgba(255, 255, 255, 0.02);
+  --color-glass-surface-hover: rgba(255, 255, 255, 0.05);
+
+  /* ==========================================================================
+     3. BORDER RADIUS (Regla estricta del DESIGN.md)
+     - Botones / Píldoras: 999px
+     - Tarjetas / Modales: 16px
+     - Badges / Inputs: 6px
+     - Contenedor de iconos: 9999px
+     ========================================================================== */
+  --radius-badge: 6px;
+  --radius-input: 6px;
+  --radius-card: 16px;
+  --radius-modal: 16px;
+  --radius-pill: 999px;
+  --radius-icon: 9999px;
+
+  /* ==========================================================================
+     4. SOMBRAS & ELEVACIONES DE CRISTAL (Frosted Glass Elevation)
+     ========================================================================== */
+  --shadow-glass-card: inset 0 1px 1px rgba(255, 255, 255, 0.08), inset 0 24px 48px rgba(56, 189, 248, 0.03), 0 20px 40px rgba(0, 0, 0, 0.5);
+  --shadow-glass-modal: inset 0 1px 1px rgba(255, 255, 255, 0.15), inset 0 24px 48px rgba(56, 189, 248, 0.05), 0 24px 48px rgba(0, 0, 0, 0.7);
+  --shadow-hairline: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* ==========================================================================
+   5. CAPA BASE & UTILIDADES GLOBALES
+   ========================================================================== */
+@layer base {
+  body {
+    background-color: var(--color-space-950);
+    color: #d1e4fa;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  /* Suavizado de bordes y selección */
+  ::selection {
+    background-color: rgba(56, 189, 248, 0.25);
+    color: #ffffff;
+  }
 }
