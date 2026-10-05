@@ -1,0 +1,188 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Iniciar Sesión | StellaLabs">
+  <Header />
+
+  <main class="relative flex min-h-[calc(100vh-5rem)] items-center justify-center px-4 py-16 md:px-10">
+    <!-- Luces ambientales de fondo (Astra Cyan + Cosmic Purple) -->
+    <div
+      class="pointer-events-none absolute -left-20 top-1/4 h-[380px] w-[380px] rounded-full bg-astra-500/10 blur-[130px]"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="pointer-events-none absolute -right-20 bottom-1/4 h-[380px] w-[380px] rounded-full bg-cosmic-500/10 blur-[130px]"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Tarjeta de cristal para Login -->
+    <div
+      class="relative z-10 w-full max-w-md rounded-[var(--radius-card,16px)] border border-[var(--color-glass-edge)] bg-[rgba(13,10,28,0.75)] p-6 shadow-[var(--shadow-glass-card)] backdrop-blur-2xl sm:p-8"
+    >
+      <!-- Cabecera del formulario -->
+      <div class="mb-7 text-center">
+        <div
+          class="mb-3.5 inline-flex items-center gap-2 rounded-full border border-astra-400/20 bg-astra-400/10 px-3.5 py-1 font-mono text-[11px] tracking-wider text-astra-300 backdrop-blur-md"
+        >
+          <span class="h-1.5 w-1.5 rounded-full bg-astra-400 shadow-[0_0_8px_#38bdf8]"></span>
+          ACCESO AL LABORATORIO
+        </div>
+        <h1 class="font-sans text-2xl font-medium tracking-tight text-white sm:text-3xl">
+          Iniciar Sesión
+        </h1>
+        <p class="mt-2 text-xs text-[#9da7ba] sm:text-sm">
+          Ingresa tus credenciales para administrar tus talleres y torneos.
+        </p>
+      </div>
+
+      <form id="login-form" class="space-y-4">
+        <!-- Campo Correo -->
+        <div>
+          <label for="email" class="block font-mono text-xs text-[#9da7ba] mb-1.5">
+            Correo electrónico
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="alumno@alumnos.udg.mx"
+            class="w-full rounded-[var(--radius-input,8px)] border border-[var(--color-glass-edge)] bg-[rgba(7,5,15,0.6)] px-3.5 py-2.5 font-sans text-sm text-white placeholder-[#9da7ba]/40 backdrop-blur-sm transition-all focus:border-astra-400 focus:outline-none focus:ring-1 focus:ring-astra-400/40"
+          />
+        </div>
+
+        <!-- Campo Contraseña -->
+        <div>
+          <label for="password" class="block font-mono text-xs text-[#9da7ba] mb-1.5">
+            Contraseña
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            placeholder="••••••••"
+            class="w-full rounded-[var(--radius-input,8px)] border border-[var(--color-glass-edge)] bg-[rgba(7,5,15,0.6)] px-3.5 py-2.5 font-sans text-sm text-white placeholder-[#9da7ba]/40 backdrop-blur-sm transition-all focus:border-astra-400 focus:outline-none focus:ring-1 focus:ring-astra-400/40"
+          />
+        </div>
+
+        <!-- Botón de acción con estilo píldora dual -->
+        <button
+          type="submit"
+          id="btn-login"
+          class="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-astra-500 to-cosmic-600 py-2.5 font-sans text-sm font-medium tracking-wide text-white shadow-[0_0_25px_-5px_rgba(56,189,248,0.35)] transition-all duration-200 hover:from-astra-400 hover:to-cosmic-500 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          <span id="btn-login-spinner" class="hidden h-3.5 w-3.5 animate-spin rounded-full border-2 border-white border-t-transparent"></span>
+          <span id="btn-login-text">Entrar</span>
+        </button>
+
+        <!-- Pie de tarjeta -->
+        <p class="pt-2 text-center font-sans text-xs text-[#9da7ba]">
+          ¿Aún no tienes cuenta?
+          <a href="/registro" class="text-astra-400 underline underline-offset-4 transition-colors hover:text-white">
+            Regístrate aquí
+          </a>
+        </p>
+      </form>
+    </div>
+  </main>
+
+  <!-- MODAL GLASS PARA ERRORES DE LOGIN -->
+  <div
+    id="login-error-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div id="login-modal-backdrop" class="fixed inset-0 bg-[var(--color-space-950)]/80 backdrop-blur-md"></div>
+    <div
+      class="relative z-10 w-full max-w-sm rounded-[var(--radius-modal,20px)] border border-rose-500/25 bg-[rgba(13,10,28,0.92)] p-6 shadow-[var(--shadow-glass-card)] backdrop-blur-2xl transition-all"
+    >
+      <div class="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-full border border-rose-500/30 bg-rose-500/10 text-rose-400">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+      </div>
+      <h3 class="text-center font-sans text-base font-medium text-white">Error de autenticación</h3>
+      <p id="login-error-msg" class="mt-2 text-center font-sans text-xs leading-relaxed text-[#9da7ba]">
+        Credenciales incorrectas. Verifica tu correo y contraseña.
+      </p>
+      <div class="mt-6">
+        <button
+          id="btn-close-login-modal"
+          type="button"
+          class="w-full rounded-full border border-[var(--color-glass-edge)] bg-white/[0.05] py-2 font-sans text-xs font-medium text-white transition-all hover:bg-white/[0.10] hover:border-[var(--color-glass-edge-hover)]"
+        >
+          Entendido
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+</Layout>
+
+<script>
+  import { supabase } from "../lib/supabase";
+
+  const form = document.getElementById("login-form") as HTMLFormElement;
+  const btn = document.getElementById("btn-login") as HTMLButtonElement;
+  const btnText = document.getElementById("btn-login-text") as HTMLSpanElement;
+  const btnSpinner = document.getElementById("btn-login-spinner") as HTMLSpanElement;
+
+  const modal = document.getElementById("login-error-modal") as HTMLDivElement;
+  const modalBackdrop = document.getElementById("login-modal-backdrop") as HTMLDivElement;
+  const modalMsg = document.getElementById("login-error-msg") as HTMLParagraphElement;
+  const btnCloseModal = document.getElementById("btn-close-login-modal") as HTMLButtonElement;
+
+  const openErrorModal = (msg: string) => {
+    modalMsg.textContent = msg;
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+  };
+
+  const closeErrorModal = () => {
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+  };
+
+  btnCloseModal?.addEventListener("click", closeErrorModal);
+  modalBackdrop?.addEventListener("click", closeErrorModal);
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    btnSpinner.classList.remove("hidden");
+    btnText.innerText = "Iniciando sesión...";
+
+    const formData = new FormData(form);
+    const email = String(formData.get("email")).trim();
+    const password = String(formData.get("password"));
+
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) throw error;
+
+      // Estado sutil sin modal: simplemente confirma en el botón y redirige
+      btnSpinner.classList.add("hidden");
+      btnText.innerText = "✓ Acceso concedido";
+
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 500);
+    } catch (err: any) {
+      btn.disabled = false;
+      btnSpinner.classList.add("hidden");
+      btnText.innerText = "Entrar";
+
+      openErrorModal(err.message || "No se pudo iniciar sesión. Verifica tus datos.");
+    }
+  });
+</script>
