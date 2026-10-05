@@ -2,7 +2,7 @@
 const year = new Date().getFullYear();
 ---
 
-<footer class="relative z-10 w-full border-t border-white/10 bg-space-950/90 px-6 py-12 backdrop-blur-md md:px-10 lg:py-16">
+<footer class="relative z-10 w-full border-t border-[var(--color-glass-edge)] bg-[var(--color-space-950)]/95 px-6 py-12 backdrop-blur-md md:px-10 lg:py-16">
   <div class="mx-auto max-w-7xl">
     <!-- Fila superior -->
     <div class="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-8">
@@ -37,24 +37,24 @@ const year = new Date().getFullYear();
             ></path>
           </svg>
 
-          <span class="text-lg font-semibold tracking-tight text-white">
+          <span class="font-sans text-lg font-semibold tracking-tight text-white">
             Stella<span class="text-astra-400">Labs</span>
           </span>
         </a>
 
-        <p class="font-mono text-sm text-astra-400">
+        <p class="font-mono text-xs font-medium tracking-wider text-astra-400">
           Por y para estudiantes<span class="text-white">.</span>
         </p>
 
-        <p class="max-w-sm text-xs leading-relaxed text-gray-400">
+        <p class="max-w-sm font-sans text-xs leading-relaxed text-[#9da7ba]">
           Laboratorio experimental de software, utilidades y torneos desarrollado para impulsar la comunidad estudiantil de Teleinformática.
         </p>
       </div>
 
       <!-- Herramientas -->
       <div class="space-y-3 md:col-span-3 lg:col-span-4">
-        <p class="font-mono text-xs uppercase tracking-wider text-gray-300">Herramientas</p>
-        <ul class="space-y-2 text-sm text-gray-400">
+        <p class="font-mono text-xs uppercase tracking-[0.10em] text-[#d1e4fa]">Herramientas</p>
+        <ul class="space-y-2 font-sans text-sm text-[#9da7ba]">
           <li>
             <a href="/eventos" class="transition-colors hover:text-white">
               Registro de eventos
@@ -63,7 +63,7 @@ const year = new Date().getFullYear();
           <li>
             <a href="/torneos" class="inline-flex items-center gap-2 transition-colors hover:text-white">
               <span>Torneos de videojuegos</span>
-              <span class="rounded bg-cosmic-500/20 px-1.5 py-0.5 font-mono text-[10px] text-cosmic-400">Liga</span>
+              <span class="rounded-[var(--radius-badge,6px)] border border-cosmic-500/25 bg-cosmic-500/15 px-1.5 py-0.5 font-mono text-[10px] tracking-wider text-cosmic-300">Liga</span>
             </a>
           </li>
           <li>
@@ -81,8 +81,8 @@ const year = new Date().getFullYear();
 
       <!-- Navegación -->
       <div class="space-y-3 md:col-span-3 lg:col-span-3">
-        <p class="font-mono text-xs uppercase tracking-wider text-gray-300">Navegación</p>
-        <ul class="space-y-2 text-sm text-gray-400">
+        <p class="font-mono text-xs uppercase tracking-[0.10em] text-[#d1e4fa]">Navegación</p>
+        <ul class="space-y-2 font-sans text-sm text-[#9da7ba]">
           <li>
             <a href="/" class="transition-colors hover:text-white">
               Inicio
@@ -103,7 +103,7 @@ const year = new Date().getFullYear();
               href="https://teleinformatica.stellalabs.tech"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-1 text-xs text-gray-500 transition-colors hover:text-gray-300"
+              class="inline-flex items-center gap-1.5 text-xs text-[#9da7ba] transition-colors hover:text-astra-300"
             >
               Portal de la carrera
               <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -118,12 +118,12 @@ const year = new Date().getFullYear();
     </div>
 
     <!-- Barra inferior -->
-    <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-xs text-gray-500 sm:flex-row">
+    <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[var(--color-glass-edge)] pt-8 font-sans text-xs text-[#9da7ba] sm:flex-row">
       <p>
         StellaLabs — © {year}. Ingeniería en Teleinformática, CUCSur.
       </p>
-      <div class="flex items-center gap-2 font-mono text-[11px] text-gray-400">
-        <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+      <div class="flex items-center gap-2 font-mono text-[11px] tracking-wider text-[#9da7ba]">
+        <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)] animate-pulse"></span>
         Sistemas operativos
       </div>
     </div>

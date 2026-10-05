@@ -15,7 +15,7 @@ import Footer from "../components/Footer.astro";
   <main class="relative flex min-h-[calc(100vh-5rem)] items-center justify-center overflow-hidden px-6 py-16 md:px-10">
     <!-- Malla de puntos de fondo -->
     <div
-      class="pointer-events-none absolute inset-0 bg-[radial-gradient(#38bdf812_1px,transparent_1px)] [background-size:32px_32px]"
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(56,189,248,0.06)_1px,transparent_1px)] [background-size:32px_32px]"
       aria-hidden="true"
     ></div>
 
@@ -28,16 +28,16 @@ import Footer from "../components/Footer.astro";
     <div class="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
       <!-- Columna izquierda: Propuesta de valor -->
       <div class="flex flex-col items-center text-center lg:col-span-7 lg:items-start lg:text-left">
-        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-astra-400/25 bg-astra-400/10 px-3.5 py-1 text-xs font-mono font-medium text-astra-400">
+        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-astra-400/20 bg-astra-400/10 px-3.5 py-1 font-mono text-xs font-medium tracking-[0.10em] text-astra-300">
           <span class="h-1.5 w-1.5 rounded-full bg-astra-400 animate-pulse"></span>
-          Ingeniería en Teleinformática · CUCSur
+          Ing. en Teleinformática · CUCSur
         </div>
 
-        <h1 class="max-w-2xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl lg:leading-[1.12]">
+        <h1 class="max-w-2xl font-sans text-4xl font-medium tracking-tight text-white sm:text-5xl lg:text-6xl lg:leading-[1.12]">
           El laboratorio de <span class="bg-gradient-to-r from-astra-400 via-sky-300 to-cosmic-400 bg-clip-text text-transparent">software y utilidades</span> hecho por y para estudiantes.
         </h1>
 
-        <p class="mt-6 max-w-xl text-base leading-relaxed text-gray-300 md:text-lg">
+        <p class="mt-6 max-w-xl font-sans text-base leading-relaxed text-[#9da7ba] md:text-lg">
           Un espacio donde convertimos ideas, proyectos de clase y necesidades del campus en herramientas reales, abiertas y listas para producción.
         </p>
 
@@ -50,7 +50,7 @@ import Footer from "../components/Footer.astro";
           href="https://teleinformatica.stellalabs.tech"
           target="_blank"
           rel="noopener noreferrer"
-          class="mt-12 inline-flex items-center gap-1.5 text-sm text-gray-400 underline underline-offset-4 transition-colors hover:text-white"
+          class="mt-12 inline-flex items-center gap-1.5 font-mono text-xs text-[#9da7ba] underline underline-offset-4 transition-colors hover:text-astra-300"
         >
           Visita el portal oficial de la carrera
           <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -63,16 +63,16 @@ import Footer from "../components/Footer.astro";
 
       <!-- Columna derecha: Terminal Workspace pulida con controles de ventana -->
       <div class="hidden relative md:flex w-full justify-center lg:col-span-5 lg:justify-end">
-        <div class="w-full max-w-lg rounded-2xl border border-white/10 bg-space-900/80 p-5 shadow-[0_20px_50px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-300 hover:border-astra-400/30">
-          <!-- Window Header con semáforo de consola -->
-          <div class="mb-4 flex items-center justify-between border-b border-white/5 pb-3">
+        <div class="w-full max-w-lg rounded-[var(--radius-card,16px)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-5 shadow-[var(--shadow-glass-card)] backdrop-blur-xl transition-all duration-300 hover:border-[var(--color-glass-edge-hover)]">
+          <!-- Window Header con semáforo de consola discreto -->
+          <div class="mb-4 flex items-center justify-between border-b border-[var(--color-glass-edge)] pb-3">
             <div class="flex items-center gap-2">
               <span class="h-2.5 w-2.5 rounded-full bg-rose-500/80"></span>
               <span class="h-2.5 w-2.5 rounded-full bg-amber-500/80"></span>
               <span class="h-2.5 w-2.5 rounded-full bg-emerald-500/80"></span>
             </div>
-            <span class="font-mono text-xs text-gray-400">stellalabs-workspace.config</span>
-            <span class="font-mono text-[10px] text-astra-400/80">sh</span>
+            <span class="font-mono text-xs tracking-wider text-[#9da7ba]">stellalabs-workspace.config</span>
+            <span class="font-mono text-[10px] tracking-widest uppercase text-astra-400/80">sh</span>
           </div>
 
           <div class="w-full">
@@ -86,7 +86,7 @@ import Footer from "../components/Footer.astro";
   <!-- =======================================================================
        2. PROPÓSITO & MANIFIESTO (Integración fluida de Acerca de + Pilares)
        ======================================================================= -->
-  <section id="proposito" class="relative w-full overflow-hidden border-t border-white/10 px-6 py-20 md:px-10 lg:py-28">
+  <section id="proposito" class="relative w-full overflow-hidden border-t border-[var(--color-glass-edge)] px-6 py-20 md:px-10 lg:py-28">
     <div
       class="pointer-events-none absolute left-1/2 top-1/2 h-[380px] w-[550px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cosmic-500/10 blur-[150px]"
       aria-hidden="true"
@@ -95,40 +95,40 @@ import Footer from "../components/Footer.astro";
     <div class="relative z-10 mx-auto max-w-7xl">
       <!-- Manifiesto central -->
       <div class="mx-auto max-w-3xl text-center">
-        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-astra-400/25 bg-astra-400/10 px-3.5 py-1 text-xs font-mono text-astra-400">
+        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-astra-400/20 bg-astra-400/10 px-3.5 py-1 font-mono text-xs tracking-[0.10em] text-astra-300">
           <span class="h-1.5 w-1.5 rounded-full bg-astra-400 animate-pulse"></span>
           INICIATIVA INDEPENDIENTE
         </div>
-        <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
+        <h2 class="font-sans text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-5xl">
           ¿Por qué existe <span class="bg-gradient-to-r from-astra-400 via-sky-300 to-cosmic-400 bg-clip-text text-transparent">StellaLabs?</span>
         </h2>
-        <p class="mt-5 text-base leading-relaxed text-gray-300 sm:text-lg">
+        <p class="mt-5 font-sans text-base leading-relaxed text-[#9da7ba] sm:text-lg">
           Muchos de los mejores proyectos universitarios se quedan olvidados en carpetas comprimidas al terminar el semestre. StellaLabs es el banco de pruebas experimental para transformar esas ideas en código útil, compartido y mantenido por la comunidad.
         </p>
       </div>
 
       <!-- Tarjetas de los 3 Pilares -->
       <div class="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
-        <div class="rounded-2xl border border-white/10 bg-space-900/50 p-7 backdrop-blur-xl transition-all duration-300 hover:border-astra-400/30 hover:bg-space-900/80">
-          <span class="font-mono text-2xl font-bold text-astra-400">01</span>
-          <h3 class="mt-4 text-lg font-bold text-white">Salida a producción real</h3>
-          <p class="mt-2 text-sm leading-relaxed text-gray-400">
+        <div class="rounded-[var(--radius-card,16px)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-7 shadow-[var(--shadow-glass-card)] backdrop-blur-md transition-all duration-300 hover:border-[var(--color-glass-edge-hover)] hover:shadow-[var(--shadow-glow-astra)]">
+          <span class="font-mono text-2xl font-medium text-astra-400">01</span>
+          <h3 class="mt-4 font-sans text-lg font-medium text-white">Salida a producción real</h3>
+          <p class="mt-2 font-sans text-sm leading-relaxed text-[#9da7ba]">
             Aprender a desplegar, orquestar y documentar software que estudiantes y profesores del entorno usan activamente en el día a día.
           </p>
         </div>
 
-        <div class="rounded-2xl border border-white/10 bg-space-900/50 p-7 backdrop-blur-xl transition-all duration-300 hover:border-cosmic-400/30 hover:bg-space-900/80">
-          <span class="font-mono text-2xl font-bold text-cosmic-400">02</span>
-          <h3 class="mt-4 text-lg font-bold text-white">Sin trabas ni burocracia</h3>
-          <p class="mt-2 text-sm leading-relaxed text-gray-400">
+        <div class="rounded-[var(--radius-card,16px)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-7 shadow-[var(--shadow-glass-card)] backdrop-blur-md transition-all duration-300 hover:border-cosmic-400/40 hover:shadow-[var(--shadow-glow-cosmic)]">
+          <span class="font-mono text-2xl font-medium text-cosmic-400">02</span>
+          <h3 class="mt-4 font-sans text-lg font-medium text-white">Sin trabas ni burocracia</h3>
+          <p class="mt-2 font-sans text-sm leading-relaxed text-[#9da7ba]">
             Un laboratorio ágil donde cualquier idea viable para resolver dinámicas de la carrera puede pasar de prototipo a despliegue sin esperas.
           </p>
         </div>
 
-        <div class="rounded-2xl border border-white/10 bg-space-900/50 p-7 backdrop-blur-xl transition-all duration-300 hover:border-astra-400/30 hover:bg-space-900/80">
-          <span class="font-mono text-2xl font-bold text-astra-300">03</span>
-          <h3 class="mt-4 text-lg font-bold text-white">Comunidad colaborativa</h3>
-          <p class="mt-2 text-sm leading-relaxed text-gray-400">
+        <div class="rounded-[var(--radius-card,16px)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-7 shadow-[var(--shadow-glass-card)] backdrop-blur-md transition-all duration-300 hover:border-[var(--color-glass-edge-hover)] hover:shadow-[var(--shadow-glow-astra)]">
+          <span class="font-mono text-2xl font-medium text-astra-300">03</span>
+          <h3 class="mt-4 font-sans text-lg font-medium text-white">Comunidad colaborativa</h3>
+          <p class="mt-2 font-sans text-sm leading-relaxed text-[#9da7ba]">
             El código se mantiene abierto para que las siguientes generaciones de estudiantes lo auditen, optimicen y continúen enriqueciendo.
           </p>
         </div>
@@ -138,7 +138,7 @@ import Footer from "../components/Footer.astro";
       <div class="mt-10 flex justify-center">
         <a
           href="/acerca-de"
-          class="group inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-astra-400 hover:text-white transition-colors"
+          class="group inline-flex items-center gap-2 font-mono text-xs font-medium uppercase tracking-[0.10em] text-astra-400 transition-colors hover:text-white"
         >
           <span>Conocer a fondo la historia y el equipo</span>
           <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -150,32 +150,32 @@ import Footer from "../components/Footer.astro";
   <!-- =======================================================================
        3. BENTO GRID DE HERRAMIENTAS (100% Interactivo y navegable)
        ======================================================================= -->
-  <section id="herramientas" class="relative w-full border-t border-white/10 px-6 py-20 md:px-10 lg:py-24">
+  <section id="herramientas" class="relative w-full border-t border-[var(--color-glass-edge)] px-6 py-20 md:px-10 lg:py-24">
     <div class="mx-auto max-w-7xl">
       <div class="mb-14 text-center md:text-left">
-        <span class="font-mono text-xs uppercase tracking-wider text-astra-400">Módulos en desarrollo</span>
-        <h2 class="mt-2 text-3xl font-extrabold text-white sm:text-4xl">Lo que estamos construyendo</h2>
-        <p class="mt-3 max-w-xl text-base text-gray-400">Herramientas concretas diseñadas para resolver dinámicas del campus y experimentar con arquitecturas modernas.</p>
+        <span class="font-mono text-xs uppercase tracking-[0.10em] text-astra-400">Módulos en desarrollo</span>
+        <h2 class="mt-2 font-sans text-3xl font-medium text-white sm:text-4xl">Lo que estamos construyendo</h2>
+        <p class="mt-3 max-w-xl font-sans text-base text-[#9da7ba]">Herramientas concretas diseñadas para resolver dinámicas del campus y experimentar con arquitecturas modernas.</p>
       </div>
 
       <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
         <!-- Bento 1: Eventos -->
         <a
           href="/eventos"
-          class="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-space-900/50 p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-astra-400/40 hover:bg-space-900/80 hover:shadow-[0_12px_35px_-10px_rgba(56,189,248,0.2)]"
+          class="group relative flex flex-col justify-between overflow-hidden rounded-[var(--radius-card,16px)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-8 shadow-[var(--shadow-glass-card)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-glass-edge-hover)] hover:shadow-[var(--shadow-glow-astra)]"
         >
           <div>
-            <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-astra-400/25 bg-astra-400/10 text-astra-400 transition-colors group-hover:border-astra-400/50">
+            <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-[var(--radius-input,8px)] border border-astra-400/25 bg-astra-400/10 text-astra-400 transition-colors group-hover:border-astra-400/50">
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-white transition-colors group-hover:text-astra-400">Registro de Eventos</h3>
-            <p class="mt-3 text-sm leading-relaxed text-gray-400">
+            <h3 class="font-sans text-xl font-medium text-white transition-colors group-hover:text-astra-400">Registro de Eventos</h3>
+            <p class="mt-3 font-sans text-sm leading-relaxed text-[#9da7ba]">
               Plataforma dedicada a conferencias, talleres y convocatorias del campus sin depender de formularios dispersos.
             </p>
           </div>
-          <div class="mt-8 flex items-center gap-2 font-mono text-xs font-medium text-astra-400">
+          <div class="mt-8 flex items-center gap-2 font-mono text-xs font-medium tracking-wider text-astra-400">
             <span>Acceso habilitado</span>
             <span class="transition-transform group-hover:translate-x-1">→</span>
           </div>
@@ -184,20 +184,20 @@ import Footer from "../components/Footer.astro";
         <!-- Bento 2: Sandbox & Juegos -->
         <a
           href="/juegos"
-          class="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-space-900/50 p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-cosmic-400/40 hover:bg-space-900/80 hover:shadow-[0_12px_35px_-10px_rgba(192,132,252,0.2)]"
+          class="group relative flex flex-col justify-between overflow-hidden rounded-[var(--radius-card,16px)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-8 shadow-[var(--shadow-glass-card)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-cosmic-400/50 hover:shadow-[var(--shadow-glow-cosmic)]"
         >
           <div>
-            <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-cosmic-400/25 bg-cosmic-400/10 text-cosmic-400 transition-colors group-hover:border-cosmic-400/50">
+            <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-[var(--radius-input,8px)] border border-cosmic-400/25 bg-cosmic-400/10 text-cosmic-400 transition-colors group-hover:border-cosmic-400/50">
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-white transition-colors group-hover:text-cosmic-400">Mini Juegos & Sandbox</h3>
-            <p class="mt-3 text-sm leading-relaxed text-gray-400">
+            <h3 class="font-sans text-xl font-medium text-white transition-colors group-hover:text-cosmic-400">Mini Juegos & Sandbox</h3>
+            <p class="mt-3 font-sans text-sm leading-relaxed text-[#9da7ba]">
               Banco interactivo para poner a prueba algoritmos de lógica, inteligencia de tableros y dinámicas programadas por alumnos.
             </p>
           </div>
-          <div class="mt-8 flex items-center gap-2 font-mono text-xs font-medium text-cosmic-400">
+          <div class="mt-8 flex items-center gap-2 font-mono text-xs font-medium tracking-wider text-cosmic-400">
             <span>Módulos experimentales</span>
             <span class="transition-transform group-hover:translate-x-1">→</span>
           </div>
@@ -206,20 +206,20 @@ import Footer from "../components/Footer.astro";
         <!-- Bento 3: APIs y Utilidades -->
         <a
           href="/herramientas"
-          class="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-space-900/50 p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-astra-300/40 hover:bg-space-900/80 hover:shadow-[0_12px_35px_-10px_rgba(125,211,252,0.2)]"
+          class="group relative flex flex-col justify-between overflow-hidden rounded-[var(--radius-card,16px)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-8 shadow-[var(--shadow-glass-card)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-glass-edge-hover)] hover:shadow-[var(--shadow-glow-astra)]"
         >
           <div>
-            <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-astra-300/25 bg-astra-300/10 text-astra-300 transition-colors group-hover:border-astra-300/50">
+            <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-[var(--radius-input,8px)] border border-astra-300/25 bg-astra-300/10 text-astra-300 transition-colors group-hover:border-astra-300/50">
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-white transition-colors group-hover:text-astra-300">APIs & Microservicios</h3>
-            <p class="mt-3 text-sm leading-relaxed text-gray-400">
+            <h3 class="font-sans text-xl font-medium text-white transition-colors group-hover:text-astra-300">APIs & Microservicios</h3>
+            <p class="mt-3 font-sans text-sm leading-relaxed text-[#9da7ba]">
               Endpoints, parsers de horarios y utilidades ligeras abiertas como base para nuevos proyectos de la facultad.
             </p>
           </div>
-          <div class="mt-8 flex items-center gap-2 font-mono text-xs font-medium text-astra-300">
+          <div class="mt-8 flex items-center gap-2 font-mono text-xs font-medium tracking-wider text-astra-300">
             <span>En fase de diseño</span>
             <span class="transition-transform group-hover:translate-x-1">→</span>
           </div>
@@ -231,7 +231,7 @@ import Footer from "../components/Footer.astro";
   <!-- =======================================================================
        4. GUÍAS TÉCNICAS Y KNOWLEDGE BASE
        ======================================================================= -->
-  <section id="guias" class="relative w-full overflow-hidden border-t border-white/10 px-6 py-20 md:px-10 lg:py-24">
+  <section id="guias" class="relative w-full overflow-hidden border-t border-[var(--color-glass-edge)] px-6 py-20 md:px-10 lg:py-24">
     <div
       class="pointer-events-none absolute right-1/4 top-0 h-[380px] w-[500px] rounded-full bg-astra-400/10 blur-[140px]"
       aria-hidden="true"
@@ -240,21 +240,21 @@ import Footer from "../components/Footer.astro";
     <div class="relative z-10 mx-auto max-w-7xl">
       <div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end mb-12 sm:mb-16">
         <div class="max-w-2xl">
-          <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-astra-400/25 bg-astra-400/10 px-3.5 py-1 text-xs font-mono text-astra-400">
+          <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-astra-400/20 bg-astra-400/10 px-3.5 py-1 font-mono text-xs tracking-[0.10em] text-astra-300">
             <span class="h-1.5 w-1.5 rounded-full bg-astra-400 animate-pulse"></span>
             KNOWLEDGE BASE
           </div>
-          <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
+          <h2 class="font-sans text-3xl font-medium tracking-tight text-white sm:text-4xl lg:text-5xl">
             Guías técnicas y <span class="bg-gradient-to-r from-astra-400 via-sky-300 to-cosmic-400 bg-clip-text text-transparent">mini cursos</span>
           </h2>
-          <p class="mt-4 text-sm leading-relaxed text-gray-400 sm:text-base">
+          <p class="mt-4 font-sans text-sm leading-relaxed text-[#9da7ba] sm:text-base">
             Material de apoyo directo para talleres presenciales, laboratorios y materias técnicas.
           </p>
         </div>
 
         <a
           href="/guias"
-          class="inline-flex shrink-0 items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 py-2.5 text-xs font-semibold text-white transition-all hover:border-astra-400 hover:bg-white/10"
+          class="inline-flex shrink-0 items-center gap-2 rounded-full border border-[var(--color-glass-edge)] bg-white/[0.04] px-5 py-2.5 font-mono text-xs font-medium tracking-wider text-[#d1e4fa] transition-all duration-200 hover:border-[var(--color-glass-edge-hover)] hover:bg-white/[0.08] hover:text-white"
         >
           <span>Ver todas las guías</span>
           <span class="text-astra-400 transition-transform group-hover:translate-x-1">→</span>
@@ -263,37 +263,37 @@ import Footer from "../components/Footer.astro";
 
       <div class="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
         <!-- GUÍA 1: LINUX (ACTIVA) -->
-        <div class="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-space-900/60 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-astra-400/50 hover:shadow-[0_10px_35px_-10px_rgba(56,189,248,0.2)] sm:p-7">
+        <div class="group relative flex flex-col justify-between rounded-[var(--radius-card,16px)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-6 shadow-[var(--shadow-glass-card)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-glass-edge-hover)] hover:shadow-[var(--shadow-glow-astra)] sm:p-7">
           <div>
-            <div class="flex items-center justify-between border-b border-white/5 pb-4">
-              <div class="flex h-10 w-10 items-center justify-center rounded-lg border border-astra-400/30 bg-astra-400/10 text-astra-400">
+            <div class="flex items-center justify-between border-b border-[var(--color-glass-edge)] pb-4">
+              <div class="flex h-10 w-10 items-center justify-center rounded-[var(--radius-input,8px)] border border-astra-400/30 bg-astra-400/10 text-astra-400">
                 <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               </div>
-              <span class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 font-mono text-[10px] font-bold text-emerald-400">
+              <span class="rounded-[var(--radius-badge,6px)] border border-emerald-500/25 bg-emerald-500/15 px-2 py-0.5 font-mono text-[10px] font-medium tracking-wider text-emerald-400 uppercase">
                 DISPONIBLE
               </span>
             </div>
 
-            <h3 class="mt-5 text-lg font-bold text-white transition-colors group-hover:text-astra-400">
+            <h3 class="mt-5 font-sans text-lg font-medium text-white transition-colors group-hover:text-astra-400">
               Introducción a Linux & Servidores
             </h3>
-            <p class="mt-2 text-xs leading-relaxed text-gray-400 sm:text-sm">
+            <p class="mt-2 font-sans text-xs leading-relaxed text-[#9da7ba] sm:text-sm">
               Virtualización en VMware, instalación guiada de Debian GNOME, comandos CLI fundamentales y despliegue de un servidor Apache.
             </p>
 
-            <div class="mt-4 flex items-center gap-3 font-mono text-[11px] text-gray-400">
+            <div class="mt-4 flex items-center gap-3 font-mono text-[11px] tracking-wider text-[#9da7ba]">
               <span class="text-astra-400">4 Horas</span>
               <span>•</span>
               <span>Taller Presencial</span>
             </div>
           </div>
 
-          <div class="mt-6 pt-4 border-t border-white/5">
+          <div class="mt-6 border-t border-[var(--color-glass-edge)] pt-4">
             <a
               href="/guias/linux"
-              class="inline-flex w-full items-center justify-center gap-1.5 rounded-xl bg-astra-400 px-4 py-2.5 text-xs font-bold text-space-950 transition-all hover:bg-astra-300"
+              class="inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-astra-500 px-4 py-2.5 font-mono text-xs font-medium tracking-wider text-space-950 transition-all duration-200 hover:bg-astra-400 hover:shadow-[var(--shadow-glow-astra)]"
             >
               Abrir guía del taller
               <span>→</span>
@@ -302,37 +302,37 @@ import Footer from "../components/Footer.astro";
         </div>
 
         <!-- GUÍA 2: GIT (PRÓXIMAMENTE) -->
-        <div class="relative flex flex-col justify-between rounded-2xl border border-white/5 bg-space-900/30 p-6 backdrop-blur-xl sm:p-7">
+        <div class="relative flex flex-col justify-between rounded-[var(--radius-card,16px)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-6 shadow-[var(--shadow-glass-card)] backdrop-blur-md sm:p-7">
           <div>
-            <div class="flex items-center justify-between border-b border-white/5 pb-4">
-              <div class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-400">
+            <div class="flex items-center justify-between border-b border-[var(--color-glass-edge)] pb-4">
+              <div class="flex h-10 w-10 items-center justify-center rounded-[var(--radius-input,8px)] border border-[var(--color-glass-edge)] bg-white/5 text-[#9da7ba]">
                 <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
                 </svg>
               </div>
-              <span class="rounded-full border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 font-mono text-[10px] font-bold text-amber-300">
+              <span class="rounded-[var(--radius-badge,6px)] border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 font-mono text-[10px] font-medium tracking-wider text-amber-300 uppercase">
                 PRÓXIMAMENTE
               </span>
             </div>
 
-            <h3 class="mt-5 text-lg font-bold text-white">
+            <h3 class="mt-5 font-sans text-lg font-medium text-white">
               Git, GitHub & Flujos de Trabajo
             </h3>
-            <p class="mt-2 text-xs leading-relaxed text-gray-400 sm:text-sm">
+            <p class="mt-2 font-sans text-xs leading-relaxed text-[#9da7ba] sm:text-sm">
               Control de versiones para proyectos de equipo: ramas seguras, resolución de conflictos y flujo de Pull Requests.
             </p>
 
-            <div class="mt-4 flex items-center gap-3 font-mono text-[11px] text-gray-500">
+            <div class="mt-4 flex items-center gap-3 font-mono text-[11px] tracking-wider text-[#9da7ba]">
               <span>Terminal + Web</span>
               <span>•</span>
               <span class="text-amber-400/80">En redacción</span>
             </div>
           </div>
 
-          <div class="mt-6 pt-4 border-t border-white/5">
+          <div class="mt-6 border-t border-[var(--color-glass-edge)] pt-4">
             <button
               disabled
-              class="w-full cursor-not-allowed rounded-xl border border-white/10 bg-white/5 py-2.5 text-center text-xs font-medium text-gray-500"
+              class="w-full cursor-not-allowed rounded-full border border-[var(--color-glass-edge)] bg-white/[0.03] py-2.5 text-center font-mono text-xs font-medium tracking-wider text-slate-500"
             >
               En preparación
             </button>
@@ -340,37 +340,37 @@ import Footer from "../components/Footer.astro";
         </div>
 
         <!-- GUÍA 3: DESARROLLO WEB (PRÓXIMAMENTE) -->
-        <div class="relative flex flex-col justify-between rounded-2xl border border-white/5 bg-space-900/30 p-6 backdrop-blur-xl sm:p-7">
+        <div class="relative flex flex-col justify-between rounded-[var(--radius-card,16px)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-6 shadow-[var(--shadow-glass-card)] backdrop-blur-md sm:p-7">
           <div>
-            <div class="flex items-center justify-between border-b border-white/5 pb-4">
-              <div class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-400">
+            <div class="flex items-center justify-between border-b border-[var(--color-glass-edge)] pb-4">
+              <div class="flex h-10 w-10 items-center justify-center rounded-[var(--radius-input,8px)] border border-[var(--color-glass-edge)] bg-white/5 text-[#9da7ba]">
                 <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
               </div>
-              <span class="rounded-full border border-cosmic-400/20 bg-cosmic-500/10 px-2 py-0.5 font-mono text-[10px] font-bold text-cosmic-400">
+              <span class="rounded-[var(--radius-badge,6px)] border border-cosmic-400/20 bg-cosmic-500/10 px-2 py-0.5 font-mono text-[10px] font-medium tracking-wider text-cosmic-300 uppercase">
                 PRÓXIMAMENTE
               </span>
             </div>
 
-            <h3 class="mt-5 text-lg font-bold text-white">
+            <h3 class="mt-5 font-sans text-lg font-medium text-white">
               Desarrollo Web & Despliegue
             </h3>
-            <p class="mt-2 text-xs leading-relaxed text-gray-400 sm:text-sm">
+            <p class="mt-2 font-sans text-xs leading-relaxed text-[#9da7ba] sm:text-sm">
               Fundamentos de frontend moderno, servicios API backend y despliegue continuo en entornos reales.
             </p>
 
-            <div class="mt-4 flex items-center gap-3 font-mono text-[11px] text-gray-500">
+            <div class="mt-4 flex items-center gap-3 font-mono text-[11px] tracking-wider text-[#9da7ba]">
               <span>Fullstack base</span>
               <span>•</span>
               <span class="text-cosmic-400/80">Planificando</span>
             </div>
           </div>
 
-          <div class="mt-6 pt-4 border-t border-white/5">
+          <div class="mt-6 border-t border-[var(--color-glass-edge)] pt-4">
             <button
               disabled
-              class="w-full cursor-not-allowed rounded-xl border border-white/10 bg-white/5 py-2.5 text-center text-xs font-medium text-gray-500"
+              class="w-full cursor-not-allowed rounded-full border border-[var(--color-glass-edge)] bg-white/[0.03] py-2.5 text-center font-mono text-xs font-medium tracking-wider text-slate-500"
             >
               En preparación
             </button>
@@ -383,7 +383,7 @@ import Footer from "../components/Footer.astro";
   <!-- =======================================================================
        5. LIGA EXPERIMENTAL DE TORNEOS (Alineada y estilizada)
        ======================================================================= -->
-  <section id="torneos" class="relative w-full overflow-hidden border-t border-white/10 px-6 py-20 md:px-10 lg:py-24">
+  <section id="torneos" class="relative w-full overflow-hidden border-t border-[var(--color-glass-edge)] px-6 py-20 md:px-10 lg:py-24">
     <div
       class="pointer-events-none absolute left-1/2 top-0 h-[400px] w-full max-w-[600px] -translate-x-1/2 rounded-full bg-cosmic-500/10 blur-[140px]"
       aria-hidden="true"
@@ -392,14 +392,14 @@ import Footer from "../components/Footer.astro";
     <div class="relative z-10 mx-auto max-w-7xl">
       <!-- Encabezado de Torneos -->
       <div class="mb-14 text-center">
-        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-cosmic-500/30 bg-cosmic-500/10 px-3.5 py-1 text-xs font-mono text-cosmic-400">
+        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-cosmic-500/30 bg-cosmic-500/10 px-3.5 py-1 font-mono text-xs tracking-[0.10em] text-cosmic-400">
           <span class="h-1.5 w-1.5 rounded-full bg-cosmic-400 animate-pulse"></span>
           LIGA EXPERIMENTAL
         </div>
-        <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
+        <h2 class="font-sans text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-5xl">
           Participa en <span class="bg-gradient-to-r from-astra-400 to-cosmic-400 bg-clip-text text-transparent">torneos de videojuegos</span>
         </h2>
-        <p class="mx-auto mt-4 max-w-2xl text-base text-gray-400 sm:text-lg">
+        <p class="mx-auto mt-4 max-w-2xl font-sans text-base text-[#9da7ba] sm:text-lg">
           Compite con la comunidad del campus, pon a prueba tus reflejos y asegura tu lugar en la próxima edición presencial.
         </p>
       </div>
@@ -407,7 +407,7 @@ import Footer from "../components/Footer.astro";
       <!-- Grid de Torneos -->
       <div class="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
         <!-- TORNEO 1: Smash -->
-        <div class="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-space-900/60 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-astra-400/50 hover:shadow-[0_10px_40px_-10px_rgba(56,189,248,0.2)]">
+        <div class="group relative flex flex-col overflow-hidden rounded-[var(--radius-card,16px)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] shadow-[var(--shadow-glass-card)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-glass-edge-hover)] hover:shadow-[var(--shadow-glow-astra)]">
           <div class="relative h-48 w-full overflow-hidden bg-space-800">
             <div class="absolute inset-0 z-10 bg-gradient-to-t from-space-900 via-space-900/40 to-transparent"></div>
             <img
@@ -415,28 +415,28 @@ import Footer from "../components/Footer.astro";
               alt="Super Smash Bros Ultimate"
               class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div class="absolute right-3 top-3 z-20 rounded-md bg-space-950/80 px-2 py-1 font-mono text-[10px] font-bold text-amber-300 backdrop-blur-md border border-amber-500/20">
+            <div class="absolute right-3 top-3 z-20 rounded-[var(--radius-badge,6px)] border border-amber-500/25 bg-space-950/85 px-2 py-1 font-mono text-[10px] font-medium tracking-wider text-amber-300 backdrop-blur-md">
               PRÓXIMAMENTE
             </div>
           </div>
 
           <div class="flex flex-grow flex-col p-6">
-            <h3 class="text-xl font-bold text-white transition-colors group-hover:text-astra-400">
+            <h3 class="font-sans text-xl font-medium text-white transition-colors group-hover:text-astra-400">
               Super Smash Bros. Ultimate
             </h3>
-            <p class="mt-2 flex-grow text-sm leading-relaxed text-gray-400">
+            <p class="mt-2 flex-grow font-sans text-sm leading-relaxed text-[#9da7ba]">
               Demuestra tu nivel competitivo. Torneo 1v1 sin objetos, escenario Destino Final, habilidad técnica pura.
             </p>
 
-            <div class="mb-6 mt-4 space-y-2 border-t border-white/5 pt-4">
-              <div class="flex items-center gap-2 text-xs text-gray-400 font-mono">
-                <svg class="h-3.5 w-3.5 text-astra-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div class="mb-6 mt-4 space-y-2 border-t border-[var(--color-glass-edge)] pt-4 font-mono text-xs tracking-wider text-[#9da7ba]">
+              <div class="flex items-center gap-2">
+                <svg class="h-3.5 w-3.5 shrink-0 text-astra-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
                 <span>Fecha por definir</span>
               </div>
-              <div class="flex items-center gap-2 text-xs text-gray-400 font-mono">
-                <svg class="h-3.5 w-3.5 text-cosmic-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div class="flex items-center gap-2">
+                <svg class="h-3.5 w-3.5 shrink-0 text-cosmic-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 </svg>
@@ -446,10 +446,10 @@ import Footer from "../components/Footer.astro";
 
             <a
               href="/registro-smash"
-              class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition-all hover:border-astra-400 hover:bg-astra-400 hover:text-space-950"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[var(--color-glass-edge)] bg-white/[0.05] px-4 py-2.5 font-mono text-xs font-medium tracking-wider text-white transition-all duration-200 hover:border-astra-400 hover:bg-astra-500 hover:text-space-950 hover:shadow-[var(--shadow-glow-astra)]"
             >
               Registrarme
-              <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
               </svg>
             </a>
@@ -457,7 +457,7 @@ import Footer from "../components/Footer.astro";
         </div>
 
         <!-- TORNEO 2: Mario Kart 8 -->
-        <div class="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-space-900/60 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-astra-400/50 hover:shadow-[0_10px_40px_-10px_rgba(56,189,248,0.2)]">
+        <div class="group relative flex flex-col overflow-hidden rounded-[var(--radius-card,16px)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] shadow-[var(--shadow-glass-card)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-glass-edge-hover)] hover:shadow-[var(--shadow-glow-astra)]">
           <div class="relative h-48 w-full overflow-hidden bg-space-800">
             <div class="absolute inset-0 z-10 bg-gradient-to-t from-space-900 via-space-900/40 to-transparent"></div>
             <img
@@ -465,28 +465,28 @@ import Footer from "../components/Footer.astro";
               alt="Mario Kart 8 Deluxe"
               class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div class="absolute right-3 top-3 z-20 rounded-md bg-space-950/80 px-2 py-1 font-mono text-[10px] font-bold text-amber-300 backdrop-blur-md border border-amber-500/20">
+            <div class="absolute right-3 top-3 z-20 rounded-[var(--radius-badge,6px)] border border-amber-500/25 bg-space-950/85 px-2 py-1 font-mono text-[10px] font-medium tracking-wider text-amber-300 backdrop-blur-md">
               PRÓXIMAMENTE
             </div>
           </div>
 
           <div class="flex flex-grow flex-col p-6">
-            <h3 class="text-xl font-bold text-white transition-colors group-hover:text-astra-400">
+            <h3 class="font-sans text-xl font-medium text-white transition-colors group-hover:text-astra-400">
               Mario Kart 8 Deluxe
             </h3>
-            <p class="mt-2 flex-grow text-sm leading-relaxed text-gray-400">
+            <p class="mt-2 flex-grow font-sans text-sm leading-relaxed text-[#9da7ba]">
               Acelera, derrapa y sobrevive a los caparazones. Torneo de copas en 150cc para definir al piloto más regular.
             </p>
 
-            <div class="mb-6 mt-4 space-y-2 border-t border-white/5 pt-4">
-              <div class="flex items-center gap-2 text-xs text-gray-400 font-mono">
-                <svg class="h-3.5 w-3.5 text-astra-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div class="mb-6 mt-4 space-y-2 border-t border-[var(--color-glass-edge)] pt-4 font-mono text-xs tracking-wider text-[#9da7ba]">
+              <div class="flex items-center gap-2">
+                <svg class="h-3.5 w-3.5 shrink-0 text-astra-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
                 <span>Fecha por definir</span>
               </div>
-              <div class="flex items-center gap-2 text-xs text-gray-400 font-mono">
-                <svg class="h-3.5 w-3.5 text-cosmic-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div class="flex items-center gap-2">
+                <svg class="h-3.5 w-3.5 shrink-0 text-cosmic-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 </svg>
@@ -496,10 +496,10 @@ import Footer from "../components/Footer.astro";
 
             <a
               href="/registro-mariokart"
-              class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition-all hover:border-astra-400 hover:bg-astra-400 hover:text-space-950"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[var(--color-glass-edge)] bg-white/[0.05] px-4 py-2.5 font-mono text-xs font-medium tracking-wider text-white transition-all duration-200 hover:border-astra-400 hover:bg-astra-500 hover:text-space-950 hover:shadow-[var(--shadow-glow-astra)]"
             >
               Registrarme
-              <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
               </svg>
             </a>
@@ -507,7 +507,7 @@ import Footer from "../components/Footer.astro";
         </div>
 
         <!-- TORNEO 3: Clash Royale -->
-        <div class="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-space-900/60 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-cosmic-400/50 hover:shadow-[0_10px_40px_-10px_rgba(168,85,247,0.2)]">
+        <div class="group relative flex flex-col overflow-hidden rounded-[var(--radius-card,16px)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] shadow-[var(--shadow-glass-card)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-cosmic-400/50 hover:shadow-[var(--shadow-glow-cosmic)]">
           <div class="relative h-48 w-full overflow-hidden bg-space-800">
             <div class="absolute inset-0 z-10 bg-gradient-to-t from-space-900 via-space-900/40 to-transparent"></div>
             <img
@@ -515,28 +515,28 @@ import Footer from "../components/Footer.astro";
               alt="Clash Royale"
               class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div class="absolute right-3 top-3 z-20 rounded-md bg-space-950/80 px-2 py-1 font-mono text-[10px] font-bold text-amber-300 backdrop-blur-md border border-amber-500/20">
+            <div class="absolute right-3 top-3 z-20 rounded-[var(--radius-badge,6px)] border border-amber-500/25 bg-space-950/85 px-2 py-1 font-mono text-[10px] font-medium tracking-wider text-amber-300 backdrop-blur-md">
               PRÓXIMAMENTE
             </div>
           </div>
 
           <div class="flex flex-grow flex-col p-6">
-            <h3 class="text-xl font-bold text-white transition-colors group-hover:text-cosmic-400">
+            <h3 class="font-sans text-xl font-medium text-white transition-colors group-hover:text-cosmic-400">
               Clash Royale
             </h3>
-            <p class="mt-2 flex-grow text-sm leading-relaxed text-gray-400">
+            <p class="mt-2 flex-grow font-sans text-sm leading-relaxed text-[#9da7ba]">
               Prepara tu mazo y cuida tus torres. Torneo de eliminación directa al mejor de 3 partidas con formato de arena limpia.
             </p>
 
-            <div class="mb-6 mt-4 space-y-2 border-t border-white/5 pt-4">
-              <div class="flex items-center gap-2 text-xs text-gray-400 font-mono">
-                <svg class="h-3.5 w-3.5 text-astra-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div class="mb-6 mt-4 space-y-2 border-t border-[var(--color-glass-edge)] pt-4 font-mono text-xs tracking-wider text-[#9da7ba]">
+              <div class="flex items-center gap-2">
+                <svg class="h-3.5 w-3.5 shrink-0 text-astra-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
                 <span>Fecha por definir</span>
               </div>
-              <div class="flex items-center gap-2 text-xs text-gray-400 font-mono">
-                <svg class="h-3.5 w-3.5 text-cosmic-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div class="flex items-center gap-2">
+                <svg class="h-3.5 w-3.5 shrink-0 text-cosmic-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 </svg>
@@ -546,10 +546,10 @@ import Footer from "../components/Footer.astro";
 
             <a
               href="/registro-clash"
-              class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition-all hover:border-cosmic-400 hover:bg-cosmic-500 hover:text-white"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[var(--color-glass-edge)] bg-white/[0.05] px-4 py-2.5 font-mono text-xs font-medium tracking-wider text-white transition-all duration-200 hover:border-cosmic-400 hover:bg-cosmic-500 hover:text-white hover:shadow-[var(--shadow-glow-cosmic)]"
             >
               Registrarme
-              <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
               </svg>
             </a>
@@ -561,7 +561,7 @@ import Footer from "../components/Footer.astro";
       <div class="mt-12 flex justify-center">
         <a
           href="/torneos"
-          class="group inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-xs font-mono font-semibold uppercase tracking-wider text-white transition-all hover:border-cosmic-400/50 hover:bg-cosmic-500/10 hover:text-cosmic-300"
+          class="group inline-flex items-center gap-2 rounded-full border border-[var(--color-glass-edge)] bg-white/[0.04] px-6 py-3 font-mono text-xs font-medium uppercase tracking-[0.10em] text-white transition-all duration-200 hover:border-cosmic-400/50 hover:bg-cosmic-500/10 hover:text-cosmic-300 hover:shadow-[var(--shadow-glow-cosmic)]"
         >
           <span>Ver calendario de torneos</span>
           <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -573,15 +573,15 @@ import Footer from "../components/Footer.astro";
   <!-- =======================================================================
        6. CTA DE COLABORACIÓN
        ======================================================================= -->
-  <section class="relative w-full border-t border-white/10 px-6 py-20 md:px-10 lg:py-24">
-    <div class="mx-auto max-w-4xl rounded-3xl border border-astra-400/20 bg-gradient-to-b from-space-900/90 to-space-950/95 p-8 text-center backdrop-blur-xl sm:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.7)]">
-      <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-astra-400/20 bg-astra-400/10 px-3 py-1 text-[11px] font-mono text-astra-400">
+  <section class="relative w-full border-t border-[var(--color-glass-edge)] px-6 py-20 md:px-10 lg:py-24">
+    <div class="mx-auto max-w-4xl rounded-[var(--radius-modal,20px)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-8 text-center shadow-[var(--shadow-glass-card)] backdrop-blur-xl sm:p-14">
+      <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-astra-400/20 bg-astra-400/10 px-3 py-1 font-mono text-[11px] tracking-[0.10em] uppercase text-astra-300">
         OPEN SOURCE & CAMPUS
       </div>
-      <h2 class="text-2xl font-extrabold text-white sm:text-3xl lg:text-4xl">
+      <h2 class="font-sans text-2xl font-medium text-white sm:text-3xl lg:text-4xl">
         ¿Tienes una idea o proyecto de materia en mente?
       </h2>
-      <p class="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-gray-300 sm:text-base">
+      <p class="mx-auto mt-4 max-w-xl font-sans text-sm leading-relaxed text-[#9da7ba] sm:text-base">
         StellaLabs es un espacio abierto. Si construiste una calculadora, un simulador o una utilidad que pueda servir a la comunidad, hay un lugar para alojarla y documentarla aquí.
       </p>
       <div class="mt-8 flex justify-center">
