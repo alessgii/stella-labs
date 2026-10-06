@@ -362,14 +362,14 @@ import Footer from "../components/Footer.astro";
       showGlassModal({
         type: "exito",
         title: "¡Cuenta creada con éxito!",
-        description: "Tu credencial ha sido dada de alta en StellaLabs.",
+        description: "Recibirás un correo para verificar tu cuenta.",
       });
 
       form.reset();
 
       setTimeout(() => {
         window.location.href = "/login";
-      }, 1500);
+      }, 3000);
     } catch (err: any) {
       btn.disabled = false;
       btnSpinner.classList.add("hidden");
