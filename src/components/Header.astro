@@ -45,9 +45,8 @@ import Badge from "./Badge.astro";
       <Badge />
     </div>
 
-    <!-- 2. CENTRO-->
+    <!-- 2. CENTRO -->
     <nav class="hidden items-center gap-7 font-sans text-sm text-[#9da7ba] md:flex">
-      <!-- Dropdown Herramientas -->
       <div class="group relative">
         <button
           type="button"
@@ -101,25 +100,26 @@ import Badge from "./Badge.astro";
             >
               Guías
             </a>
+             <a
+              href="/labs"
+              class="flex items-center justify-between rounded-[var(--radius-input,8px)] px-3 py-2 text-sm text-[#9da7ba] transition-all hover:bg-white/5 hover:text-white"
+            >
+              <span>Labs</span>
+            </a>
           </div>
         </div>
       </div>
 
       <span class="h-3 w-px bg-white/10" aria-hidden="true"></span>
-      <a href="/acerca-de" class="py-1 transition-colors hover:text-white">
-        Acerca de
-      </a>
+      <a href="/acerca-de" class="py-1 transition-colors hover:text-white">Acerca de</a>
       <span class="h-3 w-px bg-white/10" aria-hidden="true"></span>
-      <a href="/contacto" class="py-1 transition-colors hover:text-white">
-        Contacto
-      </a>
+      <a href="/contacto" class="py-1 transition-colors hover:text-white">Contacto</a>
     </nav>
 
-    <!-- 3. EXTREMO DERECHO: Auth Slot & Hamburguesa Móvil -->
+    <!-- 3. EXTREMO DERECHO: Auth Slot & Móvil -->
     <div class="flex items-center gap-3">
-      <!-- SLOT DE AUTENTICACIÓN (DESKTOP) CON ZERO-FLICKER -->
+      <!-- SLOT DE AUTENTICACIÓN (DESKTOP) -->
       <div id="auth-slot-desktop" class="relative hidden items-center md:flex min-w-[120px] justify-end">
-        <!-- Script inline síncrono: oculta el botón ANTES de pintar en pantalla si hay sesión -->
         <script is:inline>
           (function() {
             try {
@@ -154,19 +154,42 @@ import Badge from "./Badge.astro";
               id="avatar-img-desktop"
               src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' fill='%2316112e'/%3E%3C/svg%3E"
               alt="Avatar de usuario"
-              class="h-7 w-7 rounded-full bg-[var(--color-space-800)] object-cover"
+              class="h-7 w-7 rounded-full bg-space-800 object-cover"
             />
           </button>
 
           <!-- Menú desplegable usuario -->
           <div
             id="user-dropdown"
-            class="invisible absolute right-0 top-full mt-2 w-52 rounded-(--radius-card,16px) border border-[var(--color-glass-edge)] bg-[rgba(13,10,28,0.96)] p-1.5 opacity-0 shadow-[var(--shadow-glass-card)] backdrop-blur-2xl transition-all duration-150"
+            class="invisible absolute right-0 top-full mt-2 w-56 rounded-(--radius-card,16px) border border-[var(--color-glass-edge)] bg-[rgba(13,10,28,0.96)] p-1.5 opacity-0 shadow-[var(--shadow-glass-card)] backdrop-blur-2xl transition-all duration-150"
           >
-            <div class="border-b border-glass-edge px-3 py-2">
+            <!-- Cabecera de usuario con Rol -->
+            <div class="border-b border-glass-edge px-3 py-2.5">
               <p id="user-display-name" class="truncate font-sans text-xs font-semibold text-white"></p>
-              <p id="user-display-code" class="truncate font-mono text-[10px] text-[#9da7ba]"></p>
+              <div class="mt-1 flex items-center justify-between gap-1.5">
+                <span id="user-display-code" class="truncate font-mono text-[10px] text-[#9da7ba]"></span>
+                <span
+                  id="user-display-role"
+                  class="rounded-full border border-cosmic-400/30 bg-cosmic-500/15 px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-cosmic-300"
+                ></span>
+              </div>
             </div>
+
+            <!-- Botón del Panel de Admin (solo admins) -->
+            <div id="admin-menu-item-desktop" class="hidden border-b border-glass-edge py-1">
+              <a
+                href="/admin/talleres"
+                class="flex items-center gap-2 rounded-[var(--radius-input,8px)] px-3 py-2 font-sans text-xs font-medium text-astra-400 transition-colors hover:bg-astra-500/10 hover:text-astra-300"
+              >
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Panel de Control
+              </a>
+            </div>
+
+            <!-- Botón Logout -->
             <button
               id="btn-logout-desktop"
               type="button"
@@ -196,13 +219,12 @@ import Badge from "./Badge.astro";
   </div>
 </header>
 
-<!-- MENÚ MÓVIL FULLSCREEN SLIDE-OVER DESDE LA DERECHA -->
+<!-- MENÚ MÓVIL FULLSCREEN SLIDE-OVER -->
 <div
   id="mobile-drawer"
   class="fixed inset-0 z-50 flex h-dvh w-screen translate-x-full flex-col justify-between bg-[rgba(7,5,15,0.98)] p-6 backdrop-blur-2xl transition-transform duration-300 ease-in-out md:hidden"
   aria-hidden="true"
 >
-  <!-- Cabecera del Drawer -->
   <div>
     <div class="flex items-center justify-between border-b border-[var(--color-glass-edge)] pb-5">
       <div class="flex items-center gap-2.5">
@@ -243,7 +265,13 @@ import Badge from "./Badge.astro";
           />
           <div>
             <p id="user-display-name-mobile" class="font-sans text-sm font-semibold text-white"></p>
-            <p id="user-display-code-mobile" class="font-mono text-xs text-[#9da7ba]"></p>
+            <div class="flex items-center gap-2 mt-0.5">
+              <span id="user-display-code-mobile" class="font-mono text-xs text-[#9da7ba]"></span>
+              <span
+                id="user-display-role-mobile"
+                class="rounded-full border border-cosmic-400/30 bg-cosmic-500/15 px-1.5 py-0.2 font-mono text-[9px] uppercase tracking-wider text-cosmic-300"
+              ></span>
+            </div>
           </div>
         </div>
         <button
@@ -251,82 +279,64 @@ import Badge from "./Badge.astro";
           type="button"
           class="rounded-[var(--radius-badge,6px)] border border-rose-500/20 bg-rose-500/10 px-3 py-1.5 font-sans text-xs font-medium text-rose-400 transition-colors hover:bg-rose-500/20"
         >
-          Cerrar sesión
+          Salir
         </button>
       </div>
     </div>
 
     <!-- Enlaces Móviles -->
     <div class="pt-6 space-y-6">
+      <div id="admin-link-container-mobile" class="hidden border-b border-[var(--color-glass-edge)] pb-4">
+        <a
+          href="/admin/talleres"
+          class="flex items-center gap-2 rounded-lg bg-astra-500/10 border border-astra-400/30 px-3 py-2 text-sm font-medium text-astra-300"
+        >
+          <span class="h-2 w-2 rounded-full bg-astra-400 animate-pulse"></span>
+          Ir al Panel de Administración
+        </a>
+      </div>
+
       <div>
         <p class="font-mono text-xs uppercase tracking-[0.10em] text-[#9da7ba]">Herramientas & Laboratorio</p>
         <div class="mt-3 space-y-2 pl-2">
-          <a
-            href="/eventos"
-            class="flex items-center gap-2.5 rounded-lg py-1.5 text-base text-[#d1e4fa] transition-colors hover:text-white"
-          >
-            <span class="h-1.5 w-1.5 rounded-full bg-astra-400"></span>
-            Registro de eventos
+          <a href="/eventos" class="flex items-center gap-2.5 rounded-lg py-1.5 text-base text-[#d1e4fa] hover:text-white">
+            <span class="h-1.5 w-1.5 rounded-full bg-astra-400"></span> Registro de eventos
           </a>
-          <a
-            href="/torneos"
-            class="flex items-center justify-between rounded-lg py-1.5 text-base text-[#d1e4fa] transition-colors hover:text-white"
-          >
+          <a href="/torneos" class="flex items-center justify-between rounded-lg py-1.5 text-base text-[#d1e4fa] hover:text-white">
             <div class="flex items-center gap-2.5">
               <span class="h-1.5 w-1.5 rounded-full bg-cosmic-400"></span>
               <span>Torneos de videojuegos</span>
             </div>
-            <span
-              class="rounded-[var(--radius-badge,6px)] border border-cosmic-500/25 bg-cosmic-500/15 px-1.5 py-0.5 font-mono text-[10px] tracking-wider text-cosmic-300"
-              >Liga</span
-            >
+            <span class="rounded-[var(--radius-badge,6px)] border border-cosmic-500/25 bg-cosmic-500/15 px-1.5 py-0.5 font-mono text-[10px] text-cosmic-300">Liga</span>
           </a>
-          <a
-            href="/juegos"
-            class="flex items-center gap-2.5 rounded-lg py-1.5 text-base text-[#d1e4fa] transition-colors hover:text-white"
-          >
-            <span class="h-1.5 w-1.5 rounded-full bg-astra-300"></span>
-            Mini juegos
+          <a href="/juegos" class="flex items-center gap-2.5 rounded-lg py-1.5 text-base text-[#d1e4fa] hover:text-white">
+            <span class="h-1.5 w-1.5 rounded-full bg-astra-300"></span> Mini juegos
           </a>
-          <a
-            href="/guias"
-            class="flex items-center justify-between rounded-lg py-1.5 text-base text-[#d1e4fa] transition-colors hover:text-white"
-          >
+          <a href="/guias" class="flex items-center justify-between rounded-lg py-1.5 text-base text-[#d1e4fa] hover:text-white">
             <div class="flex items-center gap-2.5">
               <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
               <span>Guías</span>
             </div>
-            <span
-              class="rounded-[var(--radius-badge,6px)] border border-emerald-500/25 bg-emerald-500/15 px-1.5 py-0.5 font-mono text-[10px] tracking-wider text-emerald-400"
-              >Docs</span
-            >
+            <span class="rounded-[var(--radius-badge,6px)] border border-emerald-500/25 bg-emerald-500/15 px-1.5 py-0.5 font-mono text-[10px] text-emerald-400">Docs</span>
           </a>
         </div>
       </div>
 
       <div class="border-t border-[var(--color-glass-edge)] pt-5 space-y-2 font-sans">
-        <a href="/acerca-de" class="block py-1.5 text-base font-medium text-[#d1e4fa] transition-colors hover:text-white">
-          Acerca de
-        </a>
-        <a href="/contacto" class="block py-1.5 text-base font-medium text-[#d1e4fa] transition-colors hover:text-white">
-          Contacto
-        </a>
+        <a href="/acerca-de" class="block py-1.5 text-base font-medium text-[#d1e4fa] hover:text-white">Acerca de</a>
+        <a href="/contacto" class="block py-1.5 text-base font-medium text-[#d1e4fa] hover:text-white">Contacto</a>
       </div>
     </div>
   </div>
 
-  <!-- Pie del Drawer -->
   <div class="border-t border-[var(--color-glass-edge)] pt-4 text-center">
-    <p class="font-mono text-[11px] text-[#9da7ba]/70">
-      Teleinformática • CU Costa Sur
-    </p>
+    <p class="font-mono text-[11px] text-[#9da7ba]/70">Teleinformática • CU Costa Sur</p>
   </div>
 </div>
 
 <script>
   import { supabase } from "../lib/supabase";
 
-  // --- CONTROL DEL MENÚ MÓVIL ---
   const mobileBtn = document.getElementById("mobile-menu-btn");
   const mobileDrawer = document.getElementById("mobile-drawer");
   const mobileClose = document.getElementById("mobile-drawer-close");
@@ -345,27 +355,15 @@ import Badge from "./Badge.astro";
 
   mobileBtn?.addEventListener("click", openDrawer);
   mobileClose?.addEventListener("click", closeDrawer);
-
-  // Cierre garantizado en navegación de cualquier enlace móvil
-  mobileDrawer?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeDrawer);
-  });
+  mobileDrawer?.querySelectorAll("a").forEach(link => link.addEventListener("click", closeDrawer));
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !mobileDrawer?.classList.contains("translate-x-full")) {
-      closeDrawer();
-    }
+    if (e.key === "Escape" && !mobileDrawer?.classList.contains("translate-x-full")) closeDrawer();
   });
 
-  document.addEventListener("astro:before-swap", closeDrawer);
-  window.addEventListener("pageshow", closeDrawer);
+  const getAvatarUrl = (seed: string) =>
+    `https://api.dicebear.com/9.x/lorelei/svg?seed=${encodeURIComponent(seed)}&backgroundColor=07050f,16112e`;
 
-  // Avatar Lorelei
-  const getAvatarUrl = (seed: string) => {
-    return `https://api.dicebear.com/9.x/lorelei/svg?seed=${encodeURIComponent(seed)}&backgroundColor=07050f,16112e`;
-  };
-
-  // Referencias Auth
   const btnLoginDesktop = document.getElementById("btn-login-desktop");
   const userMenuDesktop = document.getElementById("user-menu-desktop");
   const avatarBtnDesktop = document.getElementById("avatar-btn-desktop");
@@ -373,6 +371,8 @@ import Badge from "./Badge.astro";
   const userDropdown = document.getElementById("user-dropdown");
   const userDisplayName = document.getElementById("user-display-name");
   const userDisplayCode = document.getElementById("user-display-code");
+  const userDisplayRole = document.getElementById("user-display-role");
+  const adminMenuItemDesktop = document.getElementById("admin-menu-item-desktop");
   const btnLogoutDesktop = document.getElementById("btn-logout-desktop");
 
   const btnLoginMobile = document.getElementById("btn-login-mobile");
@@ -380,9 +380,10 @@ import Badge from "./Badge.astro";
   const avatarImgMobile = document.getElementById("avatar-img-mobile") as HTMLImageElement;
   const userDisplayNameMobile = document.getElementById("user-display-name-mobile");
   const userDisplayCodeMobile = document.getElementById("user-display-code-mobile");
+  const userDisplayRoleMobile = document.getElementById("user-display-role-mobile");
+  const adminLinkContainerMobile = document.getElementById("admin-link-container-mobile");
   const btnLogoutMobile = document.getElementById("btn-logout-mobile");
 
-  // Dropdown Desktop
   avatarBtnDesktop?.addEventListener("click", (e) => {
     e.stopPropagation();
     const isVisible = !userDropdown?.classList.contains("invisible");
@@ -393,78 +394,76 @@ import Badge from "./Badge.astro";
     }
   });
 
-  document.addEventListener("click", () => {
-    userDropdown?.classList.add("invisible", "opacity-0");
-  });
+  document.addEventListener("click", () => userDropdown?.classList.add("invisible", "opacity-0"));
 
-  // Render de estados de autenticación
-  const showUserAuth = (user: any) => {
-    const meta = user.user_metadata || {};
-    const username = meta.username || user.email?.split("@")[0] || "User";
-    const studentCode = meta.student_code || "";
+  const showUserAuth = async (user: any) => {
+    // 1. Obtener datos directamente de la tabla profiles para tener el rol real
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("role, student_code, username")
+      .eq("id", user.id)
+      .single();
+
+    const username = profile?.username || user.user_metadata?.username || user.email?.split("@")[0] || "User";
+    const studentCode = profile?.student_code || user.user_metadata?.student_code || "";
+    const role = profile?.role || "student";
     const avatarUrl = getAvatarUrl(username);
+    const isAdmin = role === "admin";
 
     // Desktop
-    if (btnLoginDesktop) {
-      btnLoginDesktop.classList.add("hidden");
-      btnLoginDesktop.classList.remove("inline-flex");
-      btnLoginDesktop.style.display = "none";
-    }
+    if (btnLoginDesktop) btnLoginDesktop.style.display = "none";
     if (userMenuDesktop) {
       userMenuDesktop.classList.remove("hidden");
-      userMenuDesktop.classList.add("flex");
       userMenuDesktop.style.display = "flex";
     }
     if (avatarImgDesktop) avatarImgDesktop.src = avatarUrl;
     if (userDisplayName) userDisplayName.textContent = `@${username}`;
     if (userDisplayCode) userDisplayCode.textContent = studentCode;
+    if (userDisplayRole) {
+      userDisplayRole.textContent = role;
+      if (isAdmin) {
+        userDisplayRole.className =
+          "rounded-full border border-astra-400/40 bg-astra-500/20 px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider text-astra-300";
+      }
+    }
+    if (adminMenuItemDesktop) {
+      adminMenuItemDesktop.classList.toggle("hidden", !isAdmin);
+    }
 
     // Móvil
-    if (btnLoginMobile) {
-      btnLoginMobile.classList.add("hidden");
-      btnLoginMobile.classList.remove("flex");
-      btnLoginMobile.style.display = "none";
-    }
+    if (btnLoginMobile) btnLoginMobile.style.display = "none";
     if (userInfoMobile) {
       userInfoMobile.classList.remove("hidden");
-      userInfoMobile.classList.add("flex");
       userInfoMobile.style.display = "flex";
     }
     if (avatarImgMobile) avatarImgMobile.src = avatarUrl;
     if (userDisplayNameMobile) userDisplayNameMobile.textContent = `@${username}`;
     if (userDisplayCodeMobile) userDisplayCodeMobile.textContent = studentCode;
+    if (userDisplayRoleMobile) {
+      userDisplayRoleMobile.textContent = role;
+      if (isAdmin) {
+        userDisplayRoleMobile.className =
+          "rounded-full border border-astra-400/40 bg-astra-500/20 px-1.5 py-0.2 font-mono text-[9px] font-semibold uppercase tracking-wider text-astra-300";
+      }
+    }
+    if (adminLinkContainerMobile) {
+      adminLinkContainerMobile.classList.toggle("hidden", !isAdmin);
+    }
   };
 
   const showGuestAuth = () => {
-    // Desktop
-    if (btnLoginDesktop) {
-      btnLoginDesktop.classList.remove("hidden");
-      btnLoginDesktop.classList.add("inline-flex");
-      btnLoginDesktop.style.display = "";
-    }
-    if (userMenuDesktop) {
-      userMenuDesktop.classList.add("hidden");
-      userMenuDesktop.classList.remove("flex");
-      userMenuDesktop.style.display = "none";
-    }
-
-    // Móvil
-    if (btnLoginMobile) {
-      btnLoginMobile.classList.remove("hidden");
-      btnLoginMobile.classList.add("flex");
-      btnLoginMobile.style.display = "";
-    }
-    if (userInfoMobile) {
-      userInfoMobile.classList.add("hidden");
-      userInfoMobile.classList.remove("flex");
-      userInfoMobile.style.display = "none";
-    }
+    if (btnLoginDesktop) btnLoginDesktop.style.display = "";
+    if (userMenuDesktop) userMenuDesktop.style.display = "none";
+    if (btnLoginMobile) btnLoginMobile.style.display = "";
+    if (userInfoMobile) userInfoMobile.style.display = "none";
+    if (adminMenuItemDesktop) adminMenuItemDesktop.classList.add("hidden");
+    if (adminLinkContainerMobile) adminLinkContainerMobile.classList.add("hidden");
   };
 
   const syncAuthState = async () => {
     const { data: { session } } = await supabase.auth.getSession();
     if (session?.user) {
-      showUserAuth(session.user);
+      await showUserAuth(session.user);
     } else {
       showGuestAuth();
     }
@@ -479,15 +478,14 @@ import Badge from "./Badge.astro";
   btnLogoutDesktop?.addEventListener("click", handleLogout);
   btnLogoutMobile?.addEventListener("click", handleLogout);
 
-  supabase.auth.onAuthStateChange((_event, session) => {
+  supabase.auth.onAuthStateChange(async (_event, session) => {
     if (session?.user) {
-      showUserAuth(session.user);
+      await showUserAuth(session.user);
     } else {
       showGuestAuth();
     }
   });
 
-  // Ejecución inicial y en transiciones de página
   syncAuthState();
   document.addEventListener("astro:page-load", syncAuthState);
 </script>

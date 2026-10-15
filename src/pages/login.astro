@@ -8,7 +8,6 @@ import Footer from "../components/Footer.astro";
   <Header />
 
   <main class="relative flex min-h-[calc(100vh-5rem)] items-center justify-center px-4 py-16 md:px-10 overflow-x-hidden">
-    <!-- Luces ambientales de fondo (Astra Cyan + Cosmic Purple) -->
     <div
       class="pointer-events-none absolute -left-20 top-1/4 h-[380px] w-[380px] rounded-full bg-astra-500/10 blur-[130px]"
       aria-hidden="true"
@@ -18,7 +17,6 @@ import Footer from "../components/Footer.astro";
       aria-hidden="true"
     ></div>
 
-    <!-- Tarjeta de cristal para Login -->
     <div
       class="relative z-10 w-full max-w-md rounded-[var(--radius-card,16px)] border border-[var(--color-glass-edge)] bg-[rgba(13,10,28,0.75)] p-6 shadow-[var(--shadow-glass-card)] backdrop-blur-2xl sm:p-8"
     >
@@ -170,7 +168,6 @@ import Footer from "../components/Footer.astro";
 
       if (error) throw error;
 
-      // Estado sutil sin modal: simplemente confirma en el botón y redirige
       btnSpinner.classList.add("hidden");
       btnText.innerText = "✓ Acceso concedido";
 
