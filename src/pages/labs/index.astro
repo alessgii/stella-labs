@@ -1,0 +1,239 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<Layout title="Laboratorios y Talleres | StellaLabs">
+  <Header />
+
+  <main class="relative min-h-screen pb-20 pt-28">
+    <!-- Fondos y Glows -->
+    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(56,189,248,0.04)_1px,transparent_1px)] [background-size:32px_32px]" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute -top-40 left-1/4 h-[400px] w-[400px] rounded-full bg-[var(--color-astra-500)]/10 blur-[120px]" aria-hidden="true"></div>
+
+    <div class="relative mx-auto max-w-7xl px-6 md:px-10">
+      
+      <!-- =======================================================================
+           1. HERO DE TALLERES
+           ======================================================================= -->
+      <div class="mb-16 text-center md:text-left">
+        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--color-astra-400)]/20 bg-[var(--color-astra-400)]/10 px-3.5 py-1 font-mono text-xs font-medium tracking-[0.10em] text-[var(--color-astra-300)] uppercase">
+          <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-astra-400)] animate-pulse"></span>
+          KNOWLEDGE BASE & LABS
+        </div>
+        <h1 class="font-sans text-4xl font-medium tracking-tight text-white sm:text-5xl">
+          Únete a nuestros <span class="bg-gradient-to-r from-[var(--color-astra-400)] to-[var(--color-cosmic-400)] bg-clip-text text-transparent">cursos y talleres</span>
+        </h1>
+        <p class="mt-4 max-w-2xl font-sans text-base leading-relaxed text-[#9da7ba] md:text-lg">
+          Aprende nuevas habilidades técnicas impartidas por los miembros de StellaLabs. Espacios diseñados para experimentar, programar y construir en el CUCSur.
+        </p>
+      </div>
+
+      <!-- =======================================================================
+           2. GRID DE TALLERES
+           ======================================================================= -->
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        
+        <!-- TALLER 1: MINISUMOS -->
+        <div class="group flex flex-col justify-between rounded-[var(--radius-card)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-7 shadow-[var(--shadow-glass-card)] backdrop-blur-md transition-all hover:border-[var(--color-glass-edge-hover)] hover:shadow-[var(--shadow-glow-astra)]">
+          <div>
+            <div class="mb-4 flex items-center justify-between border-b border-[var(--color-glass-edge)] pb-4">
+              <div class="flex h-10 w-10 items-center justify-center rounded-[var(--radius-input)] border border-[var(--color-astra-400)]/30 bg-[var(--color-astra-400)]/10 text-[var(--color-astra-400)]">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" /></svg>
+              </div>
+              <span class="rounded-[var(--radius-badge)] border border-emerald-500/25 bg-emerald-500/15 px-2 py-0.5 font-mono text-[10px] font-medium tracking-wider text-emerald-400 uppercase">Activo</span>
+            </div>
+            <h3 class="font-sans text-xl font-medium text-white transition-colors group-hover:text-[var(--color-astra-400)]">Taller de Minisumos</h3>
+            <p class="mt-2 font-sans text-sm text-[#9da7ba]">Aprende a crear un robot de minisumo desde cero. Lógica, electrónica básica y ensamble.</p>
+            <ul class="mt-4 space-y-1 font-mono text-xs text-[#9da7ba]">
+              <li><span class="text-white">Días:</span> Lunes</li>
+              <li><span class="text-white">Hora:</span> 13:00</li>
+              <li><span class="text-white">Aula:</span> B1</li>
+            </ul>
+          </div>
+          <button data-modal="modal-minisumo" class="mt-6 w-full rounded-full border border-[var(--color-glass-edge)] bg-white/[0.04] py-2.5 font-mono text-xs font-medium uppercase tracking-wider text-white transition-all hover:bg-[var(--color-astra-500)] hover:border-[var(--color-astra-400)] hover:text-black">
+            Ver detalles
+          </button>
+        </div>
+
+        <!-- TALLER 2: LINUX SYSADMIN -->
+        <div class="group flex flex-col justify-between rounded-[var(--radius-card)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-7 shadow-[var(--shadow-glass-card)] backdrop-blur-md transition-all hover:border-[var(--color-glass-edge-hover)]">
+          <div>
+            <div class="mb-4 flex items-center justify-between border-b border-[var(--color-glass-edge)] pb-4">
+              <div class="flex h-10 w-10 items-center justify-center rounded-[var(--radius-input)] border border-white/10 bg-white/5 text-[#9da7ba]">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+              </div>
+              <span class="rounded-[var(--radius-badge)] border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 font-mono text-[10px] font-medium tracking-wider text-amber-300 uppercase">Próximamente</span>
+            </div>
+            <h3 class="font-sans text-xl font-medium text-white transition-colors group-hover:text-amber-300">Linux & Sysadmin</h3>
+            <p class="mt-2 font-sans text-sm text-[#9da7ba]">Desde cero hasta aprender lo básico enfocado a la administración de sistemas (Sysadmin).</p>
+            <ul class="mt-4 space-y-1 font-mono text-xs text-[#9da7ba]">
+              <li><span class="text-white">Días:</span> Por definir</li>
+              <li><span class="text-white">Hora:</span> Por definir</li>
+              <li><span class="text-white">Aula:</span> B1</li>
+            </ul>
+          </div>
+          <button data-modal="modal-linux" class="mt-6 w-full rounded-full border border-[var(--color-glass-edge)] bg-white/[0.04] py-2.5 font-mono text-xs font-medium uppercase tracking-wider text-white transition-all hover:bg-white/10">
+            Ver detalles
+          </button>
+        </div>
+
+        <!-- TALLER 3: IA -->
+        <div class="group flex flex-col justify-between rounded-[var(--radius-card)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-7 shadow-[var(--shadow-glass-card)] backdrop-blur-md transition-all hover:border-[var(--color-cosmic-400)]/40 hover:shadow-[var(--shadow-glow-cosmic)]">
+          <div>
+            <div class="mb-4 flex items-center justify-between border-b border-[var(--color-glass-edge)] pb-4">
+              <div class="flex h-10 w-10 items-center justify-center rounded-[var(--radius-input)] border border-[var(--color-cosmic-400)]/30 bg-[var(--color-cosmic-400)]/10 text-[var(--color-cosmic-400)]">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+              </div>
+              <span class="rounded-[var(--radius-badge)] border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 font-mono text-[10px] font-medium tracking-wider text-amber-300 uppercase">Próximamente</span>
+            </div>
+            <h3 class="font-sans text-xl font-medium text-white transition-colors group-hover:text-[var(--color-cosmic-400)]">Herramientas con IA</h3>
+            <p class="mt-2 font-sans text-sm text-[#9da7ba]">Aprende a crear tus propias herramientas utilizando Inteligencia Artificial. Abierto a todas las carreras.</p>
+            <ul class="mt-4 space-y-1 font-mono text-xs text-[#9da7ba]">
+              <li><span class="text-white">Días:</span> Por definir</li>
+              <li><span class="text-white">Hora:</span> Por definir</li>
+              <li><span class="text-white">Aula:</span> Por definir</li>
+            </ul>
+          </div>
+          <button data-modal="modal-ia" class="mt-6 w-full rounded-full border border-[var(--color-glass-edge)] bg-white/[0.04] py-2.5 font-mono text-xs font-medium uppercase tracking-wider text-white transition-all hover:bg-white/10">
+            Ver detalles
+          </button>
+        </div>
+
+      </div>
+
+      <!-- =======================================================================
+           3. CALL TO ACTION - PROPUESTAS
+           ======================================================================= -->
+      <div class="mt-24 rounded-[var(--radius-modal)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-8 text-center shadow-[var(--shadow-glass-card)] backdrop-blur-xl sm:p-14 relative overflow-hidden">
+        <div class="pointer-events-none absolute -bottom-20 -right-20 h-40 w-40 rounded-full bg-[var(--color-astra-500)]/20 blur-[80px]" aria-hidden="true"></div>
+        <div class="relative z-10">
+          <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--color-astra-400)]/20 bg-[var(--color-astra-400)]/10 px-3 py-1 font-mono text-[11px] tracking-[0.10em] uppercase text-[var(--color-astra-300)]">
+            ESPACIO ABIERTO
+          </div>
+          <h2 class="font-sans text-2xl font-medium text-white sm:text-3xl">¿Quieres proponer un curso o taller?</h2>
+          <p class="mx-auto mt-4 max-w-xl font-sans text-sm leading-relaxed text-[#9da7ba] sm:text-base">
+            Si dominas un tema, herramienta o tecnología y quieres compartirlo con la comunidad del CUCSur, StellaLabs te ayuda a organizar el espacio.
+          </p>
+          <div class="mt-8 flex justify-center">
+            <a href="/contacto" class="inline-flex items-center gap-2 rounded-full border border-transparent bg-[var(--color-astra-500)] px-6 py-3 font-mono text-xs font-medium uppercase tracking-wider text-black transition-all hover:bg-[var(--color-astra-400)] hover:shadow-[var(--shadow-glow-astra)]">
+              Enviar propuesta
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- =======================================================================
+       MODALES
+       ======================================================================= -->
+  
+  <!-- Modal Minisumos -->
+  <dialog id="modal-minisumo" class="bg-transparent p-0 m-auto backdrop:bg-black/60 backdrop:backdrop-blur-sm open:animate-in open:fade-in open:zoom-in-95">
+    <div class="relative w-full max-w-md rounded-[var(--radius-modal)] border border-[var(--color-glass-edge)] bg-[var(--color-space-950)] p-6 shadow-[var(--shadow-glow-astra)] text-left m-4">
+      <h3 class="text-2xl font-medium text-white font-sans">Taller de Minisumos</h3>
+      <div class="mt-4 space-y-3 font-sans text-sm text-[#9da7ba]">
+        <p>Aprenderás desde cero a armar, soldar y programar un robot de minisumo para competencias. Exploraremos conceptos de electrónica básica, lectura de sensores y control de motores.</p>
+        <div class="rounded-[var(--radius-input)] bg-white/5 p-4 border border-[var(--color-glass-edge)]">
+          <ul class="font-mono text-xs space-y-2">
+            <li><span class="text-[var(--color-astra-400)]">Requisitos:</span> Ninguno.</li>
+            <li><span class="text-[var(--color-astra-400)]">Días:</span> Lunes</li>
+            <li><span class="text-[var(--color-astra-400)]">Horario:</span> 13:00 hrs</li>
+            <li><span class="text-[var(--color-astra-400)]">Lugar:</span> Aula B1, CUCSur</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-6 flex justify-end gap-3">
+        <button class="close-modal rounded-full px-4 py-2 font-mono text-xs text-[#9da7ba] hover:text-white transition-colors">Cerrar</button>
+        <button disabled class="cursor-not-allowed rounded-full bg-white/10 px-5 py-2 font-mono text-xs font-medium uppercase tracking-wider text-white/50 border border-white/5">Registrarse</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Modal Linux -->
+  <dialog id="modal-linux" class="bg-transparent p-0 m-auto backdrop:bg-black/60 backdrop:backdrop-blur-sm open:animate-in open:fade-in open:zoom-in-95">
+    <div class="relative w-full max-w-md rounded-[var(--radius-modal)] border border-[var(--color-glass-edge)] bg-[var(--color-space-950)] p-6 shadow-xl text-left m-4">
+      <h3 class="text-2xl font-medium text-white font-sans">Linux & Sysadmin</h3>
+      <div class="mt-4 space-y-3 font-sans text-sm text-[#9da7ba]">
+        <p>Introducción al mundo de Linux. Perderemos el miedo a la terminal y aprenderemos los comandos vitales para administrar servidores y desplegar aplicaciones web de forma segura.</p>
+        <div class="rounded-[var(--radius-input)] bg-white/5 p-4 border border-[var(--color-glass-edge)]">
+          <ul class="font-mono text-xs space-y-2">
+            <li><span class="text-amber-400">Requisitos:</span> Ninguno.</li>
+            <li><span class="text-amber-400">Días:</span> Por definir</li>
+            <li><span class="text-amber-400">Horario:</span> Por definir</li>
+            <li><span class="text-amber-400">Lugar:</span> Aula B1, CUCSur</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-6 flex justify-end gap-3">
+        <button class="close-modal rounded-full px-4 py-2 font-mono text-xs text-[#9da7ba] hover:text-white transition-colors">Cerrar</button>
+        <button disabled class="cursor-not-allowed rounded-full bg-white/10 px-5 py-2 font-mono text-xs font-medium uppercase tracking-wider text-white/50 border border-white/5">Próximamente</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Modal IA -->
+  <dialog id="modal-ia" class="bg-transparent p-0 m-auto backdrop:bg-black/60 backdrop:backdrop-blur-sm open:animate-in open:fade-in open:zoom-in-95">
+    <div class="relative w-full max-w-md rounded-[var(--radius-modal)] border border-[var(--color-glass-edge)] bg-[var(--color-space-950)] p-6 shadow-[var(--shadow-glow-cosmic)] text-left m-4">
+      <h3 class="text-2xl font-medium text-white font-sans">Creación de herramientas con IA</h3>
+      <div class="mt-4 space-y-3 font-sans text-sm text-[#9da7ba]">
+        <p>Un curso transversal abierto a todas las carreras del CUCSur. Aprenderás a integrar APIs de Inteligencia Artificial para automatizar tareas y crear utilidades propias sin ser un experto programador.</p>
+        <div class="rounded-[var(--radius-input)] bg-white/5 p-4 border border-[var(--color-glass-edge)]">
+          <ul class="font-mono text-xs space-y-2">
+            <li><span class="text-[var(--color-cosmic-400)]">Requisitos:</span> Ninguno (Abierto a todas las carreras).</li>
+            <li><span class="text-[var(--color-cosmic-400)]">Días:</span> Por definir</li>
+            <li><span class="text-[var(--color-cosmic-400)]">Horario:</span> Por definir</li>
+            <li><span class="text-[var(--color-cosmic-400)]">Lugar:</span> Por definir</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-6 flex justify-end gap-3">
+        <button class="close-modal rounded-full px-4 py-2 font-mono text-xs text-[#9da7ba] hover:text-white transition-colors">Cerrar</button>
+        <button disabled class="cursor-not-allowed rounded-full bg-white/10 px-5 py-2 font-mono text-xs font-medium uppercase tracking-wider text-white/50 border border-white/5">Próximamente</button>
+      </div>
+    </div>
+  </dialog>
+
+  <Footer />
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const openButtons = document.querySelectorAll('[data-modal]');
+    const closeButtons = document.querySelectorAll('.close-modal');
+
+    // Abrir modales
+    openButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const modalId = btn.getAttribute('data-modal');
+        const dialog = document.getElementById(modalId) as HTMLDialogElement;
+        if (dialog) dialog.showModal();
+      });
+    });
+
+    // Cerrar modales con el botón
+    closeButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const dialog = (e.target as HTMLElement).closest('dialog');
+        if (dialog) dialog.close();
+      });
+    });
+
+    // Cerrar al hacer click fuera del cuadro del modal
+    document.querySelectorAll('dialog').forEach(dialog => {
+      dialog.addEventListener('click', (e) => {
+        const dialogDimensions = dialog.getBoundingClientRect()
+        if (
+          e.clientX < dialogDimensions.left ||
+          e.clientX > dialogDimensions.right ||
+          e.clientY < dialogDimensions.top ||
+          e.clientY > dialogDimensions.bottom
+        ) {
+          dialog.close();
+        }
+      });
+    });
+  });
+</script>
