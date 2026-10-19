@@ -36,10 +36,13 @@ export async function getWorkshops() {
  * b) Disponibilidad de cupo
  * c) Ausencia de registro previo por el mismo usuario
  */
-export async function registerToWorkshop(workshopId, userId) {
+// Agregamos el parámetro opcional 'customClient'
+export async function registerToWorkshop(workshopId, userId, customClient = null) {
+  // Usamos el cliente autenticado que nos mandan desde el endpoint, o el global si no hay
+  const client = customClient || supabase;
+
   try {
-    // a) Verificar si el usuario ya está registrado previamente
-    const { data: existingReg, error: checkRegError } = await supabase
+    const { data: existingReg, error: checkRegError } = await client
       .from('workshops_registrations')
       .select('id')
       .eq('workshop_id', workshopId)
@@ -47,53 +50,29 @@ export async function registerToWorkshop(workshopId, userId) {
       .maybeSingle();
 
     if (checkRegError) throw checkRegError;
+    if (existingReg) return { data: null, error: 'Ya estás registrado en este taller.' };
 
-    if (existingReg) {
-      return { data: null, error: 'Ya estás registrado en este taller.' };
-    }
-
-    // b) Obtener datos del taller y el conteo de inscritos actuales
-    const { data: workshop, error: workshopError } = await supabase
+    const { data: workshop, error: workshopError } = await client
       .from('workshops')
-      .select(`
-        *,
-        workshops_registrations (count)
-      `)
+      .select(`*, workshops_registrations (count)`)
       .eq('id', workshopId)
       .single();
 
-    if (workshopError || !workshop) {
-      throw workshopError || new Error('El taller especificado no existe.');
-    }
+    if (workshopError || !workshop) throw workshopError || new Error('El taller especificado no existe.');
 
-    // c) Validar período de registro (fechas)
     const now = new Date();
     const startsAt = new Date(workshop.register_starts_at);
     const endsAt = new Date(workshop.register_ends_at);
 
-    if (now < startsAt) {
-      return { data: null, error: 'El período de registro aún no ha iniciado.' };
-    }
+    if (now < startsAt) return { data: null, error: 'El período de registro aún no ha iniciado.' };
+    if (now > endsAt) return { data: null, error: 'El período de registro ya ha finalizado.' };
 
-    if (now > endsAt) {
-      return { data: null, error: 'El período de registro para este taller ya ha finalizado.' };
-    }
-
-    // d) Validar disponibilidad de cupo
     const currentRegistered = workshop.workshops_registrations?.[0]?.count || 0;
-    if (currentRegistered >= workshop.max_capacity) {
-      return { data: null, error: 'Cupo agotado. No hay lugares disponibles para este taller.' };
-    }
+    if (currentRegistered >= workshop.max_capacity) return { data: null, error: 'Cupo agotado. No hay lugares disponibles.' };
 
-    // e) Realizar la inscripción en workshops_registrations
-    const { data: registration, error: insertError } = await supabase
+    const { data: registration, error: insertError } = await client
       .from('workshops_registrations')
-      .insert([
-        {
-          workshop_id: workshopId,
-          user_id: userId,
-        },
-      ])
+      .insert([{ workshop_id: workshopId, user_id: userId }])
       .select()
       .single();
 
@@ -101,10 +80,9 @@ export async function registerToWorkshop(workshopId, userId) {
 
     return { data: registration, error: null };
   } catch (error) {
-    return { data: null, error: error.message || error };
+    return { data: null, error }; // El endpoint ahora se encargará de extraer el message
   }
 }
-
 /**
  * Devuelve las métricas principales para el dashboard administrativo:
  * - Total de usuarios (profiles)

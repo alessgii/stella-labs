@@ -1,5 +1,7 @@
 import { supabase } from '../../../lib/supabase';
 
+export const prerender = false;
+
 export const POST = async ({ request }) => {
   try {
     const { data: { user }, error: authError } = await supabase.auth.getUser();
