@@ -1,0 +1,658 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<Layout title="Dashboard de Administración | StellaLabs">
+  <Header />
+
+  <main class="relative min-h-screen pb-20 pt-28">
+    <!-- Fondos y Glows -->
+    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(56,189,248,0.04)_1px,transparent_1px)] [background-size:32px_32px]" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute -top-40 right-1/4 h-[400px] w-[400px] rounded-full bg-[var(--color-astra-500)]/10 blur-[120px]" aria-hidden="true"></div>
+
+    <!-- Toast Notification -->
+    <div id="admin-toast" class="fixed bottom-5 right-5 z-50 hidden max-w-sm rounded-xl border border-[var(--color-glass-edge)] bg-[var(--color-space-950)]/95 p-4 shadow-2xl backdrop-blur-md transition-all duration-300">
+      <div class="flex items-start gap-3">
+        <div id="toast-icon" class="mt-0.5 text-lg"></div>
+        <div>
+          <h4 id="toast-title" class="font-sans text-sm font-semibold text-white"></h4>
+          <p id="toast-message" class="mt-1 font-sans text-xs text-[#9da7ba]"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-6 md:px-10">
+      
+      <!-- ENCABEZADO Y PERFIL DEL ADMINISTRADOR -->
+      <div class="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-center">
+        <div>
+          <div class="mb-2 inline-flex items-center gap-2 rounded-full border border-[var(--color-astra-400)]/20 bg-[var(--color-astra-400)]/10 px-3.5 py-1 font-mono text-xs font-medium tracking-wider text-[var(--color-astra-300)] uppercase">
+            <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-astra-400)] animate-pulse"></span>
+            SYS_ADMIN // DASHBOARD
+          </div>
+          <h1 class="font-sans text-3xl font-medium tracking-tight text-white sm:text-4xl">
+            Administración de <span class="bg-gradient-to-r from-[var(--color-astra-400)] to-[var(--color-cosmic-400)] bg-clip-text text-transparent">StellaLabs</span>
+          </h1>
+        </div>
+
+        <div class="flex items-center gap-3 rounded-2xl border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] px-4 py-2.5 backdrop-blur-md">
+          <div id="user-avatar" class="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--color-astra-500)]/20 font-mono text-xs font-bold text-[var(--color-astra-400)]">
+            --
+          </div>
+          <div class="text-left">
+            <p id="user-name" class="font-sans text-xs font-medium text-white">Cargando...</p>
+            <p id="user-role" class="font-mono text-[10px] uppercase text-[var(--color-astra-300)]">---</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- =======================================================================
+           1. TOP METRICS CARDS
+           ======================================================================= -->
+      <div class="mb-12 grid grid-cols-1 gap-5 sm:grid-cols-3">
+        <!-- Card 1: Total Usuarios -->
+        <div class="rounded-[var(--radius-card)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-6 shadow-[var(--shadow-glass-card)] backdrop-blur-md">
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-xs font-medium uppercase tracking-wider text-[#9da7ba]">Usuarios Registrados</span>
+            <div class="flex h-9 w-9 items-center justify-center rounded-xl border border-sky-500/20 bg-sky-500/10 text-sky-400">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+            </div>
+          </div>
+          <p id="metric-total-users" class="mt-4 font-sans text-3xl font-bold tracking-tight text-white">--</p>
+          <p class="mt-1 font-mono text-[11px] text-[#9da7ba]">Cuentas activas en `profiles`</p>
+        </div>
+
+        <!-- Card 2: Talleres Activos -->
+        <div class="rounded-[var(--radius-card)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-6 shadow-[var(--shadow-glass-card)] backdrop-blur-md">
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-xs font-medium uppercase tracking-wider text-[#9da7ba]">Talleres Activos</span>
+            <div class="flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--color-astra-400)]/20 bg-[var(--color-astra-400)]/10 text-[var(--color-astra-400)]">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+            </div>
+          </div>
+          <p id="metric-active-workshops" class="mt-4 font-sans text-3xl font-bold tracking-tight text-white">--</p>
+          <p class="mt-1 font-mono text-[11px] text-[#9da7ba]">En registro, curso o próximos</p>
+        </div>
+
+        <!-- Card 3: Inscripciones Totales -->
+        <div class="rounded-[var(--radius-card)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-6 shadow-[var(--shadow-glass-card)] backdrop-blur-md">
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-xs font-medium uppercase tracking-wider text-[#9da7ba]">Inscripciones Totales</span>
+            <div class="flex h-9 w-9 items-center justify-center rounded-xl border border-emerald-500/20 bg-emerald-500/10 text-emerald-400">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
+          </div>
+          <p id="metric-total-registrations" class="mt-4 font-sans text-3xl font-bold tracking-tight text-white">--</p>
+          <p class="mt-1 font-mono text-[11px] text-[#9da7ba]">Reservas de cupo registradas</p>
+        </div>
+      </div>
+
+      <!-- =======================================================================
+           2. GESTIÓN DE CURSOS / TALLERES (TABLA Y CREACIÓN)
+           ======================================================================= -->
+      <div class="mb-14 rounded-[var(--radius-card)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-6 shadow-[var(--shadow-glass-card)] backdrop-blur-md">
+        <div class="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+          <div>
+            <h2 class="font-sans text-xl font-medium text-white">Gestión de Talleres</h2>
+            <p class="font-sans text-xs text-[#9da7ba]">Lista completa de talleres y monitoreo de capacidad.</p>
+          </div>
+          <button 
+            type="button"
+            id="btn-open-create-modal"
+            class="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--color-astra-500)] px-5 py-2.5 font-mono text-xs font-medium uppercase tracking-wider text-black transition-all hover:bg-[var(--color-astra-400)] hover:shadow-[var(--shadow-glow-astra)]"
+          >
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+            Crear nuevo taller
+          </button>
+        </div>
+
+        <!-- Tabla de Talleres -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left font-sans text-xs text-[#9da7ba]">
+            <thead class="border-b border-[var(--color-glass-edge)] bg-white/[0.02] font-mono uppercase text-[#9da7ba]">
+              <tr>
+                <th class="p-3.5">Taller / Slug</th>
+                <th class="p-3.5">Instructor</th>
+                <th class="p-3.5">Estado</th>
+                <th class="p-3.5">Horario y Aula</th>
+                <th class="p-3.5">Cupo</th>
+                <th class="p-3.5 text-right">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="workshops-table-body" class="divide-y divide-[var(--color-glass-edge)]">
+              <tr>
+                <td colspan="6" class="p-6 text-center text-[#9da7ba]">Cargando información del sistema...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- =======================================================================
+       MODAL: CREAR NUEVO TALLER
+       ======================================================================= -->
+  <div
+    id="modal-create-workshop"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div id="modal-create-backdrop" class="fixed inset-0 bg-space-950/80 backdrop-blur-md"></div>
+    <div class="relative z-10 w-full max-w-lg rounded-[var(--radius-modal)] border border-[var(--color-glass-edge)] bg-[var(--color-space-950)] p-6 shadow-[var(--shadow-glow-astra)] text-left m-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-[var(--color-glass-edge)] pb-4 mb-4">
+        <div>
+          <h3 class="text-xl font-medium text-white font-sans">Crear Nuevo Taller</h3>
+          <p class="font-sans text-xs text-[#9da7ba] mt-0.5">Completa los campos para abrir la convocatoria.</p>
+        </div>
+        <button type="button" id="btn-close-create-modal" class="text-[#9da7ba] hover:text-white">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+
+      <form id="form-create-workshop" class="space-y-4 font-sans text-xs">
+        <div>
+          <label class="block font-mono text-[11px] text-white uppercase mb-1">Título del Taller *</label>
+          <input type="text" id="input-title" name="title" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none" placeholder="Ej: Taller de Robótica" />
+        </div>
+
+        <div>
+          <label class="block font-mono text-[11px] text-white uppercase mb-1">Slug URL *</label>
+          <input type="text" id="input-slug" name="slug" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white font-mono focus:border-[var(--color-astra-400)] focus:outline-none" placeholder="taller-robotica" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-mono text-[11px] text-white uppercase mb-1">Modalidad</label>
+            <select name="modality" class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-[var(--color-space-950)] p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none">
+              <option value="presencial">Presencial</option>
+              <option value="en_linea">En Línea</option>
+              <option value="mixto">Mixto</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-mono text-[11px] text-white uppercase mb-1">Aula / Ubicación *</label>
+            <input type="text" name="classroom" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none" placeholder="Ej: B1" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-mono text-[11px] text-white uppercase mb-1">Instructor *</label>
+            <select id="select-instructor" name="instructor_id" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-[var(--color-space-950)] p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none">
+              <option value="">Cargando instructores...</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-mono text-[11px] text-white uppercase mb-1">Cupo Máximo *</label>
+            <input type="number" min="1" value="25" name="max_capacity" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label class="block font-mono text-[11px] text-white uppercase mb-1">Día *</label>
+            <input type="text" name="day_of_week" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none" placeholder="Lunes" />
+          </div>
+          <div>
+            <label class="block font-mono text-[11px] text-white uppercase mb-1">Hora Inicio *</label>
+            <input type="time" name="start_time" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none" />
+          </div>
+          <div>
+            <label class="block font-mono text-[11px] text-white uppercase mb-1">Estado</label>
+            <select name="status" class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-[var(--color-space-950)] p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none">
+              <option value="registro_abierto">Registro Abierto</option>
+              <option value="proximamente">Próximamente</option>
+              <option value="en_curso">En Curso</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-mono text-[11px] text-white uppercase mb-1">Inicio Registro *</label>
+            <input type="datetime-local" name="register_starts_at" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none" />
+          </div>
+          <div>
+            <label class="block font-mono text-[11px] text-white uppercase mb-1">Fin Registro *</label>
+            <input type="datetime-local" name="register_ends_at" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-mono text-[11px] text-white uppercase mb-1">Descripción</label>
+          <textarea name="description" rows="3" class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none" placeholder="Objetivo y temario del taller..."></textarea>
+        </div>
+
+        <div class="mt-6 flex justify-end gap-3 pt-3 border-t border-[var(--color-glass-edge)]">
+          <button type="button" id="btn-cancel-create" class="rounded-full px-4 py-2 font-mono text-xs text-[#9da7ba] hover:text-white">Cancelar</button>
+          <button type="submit" id="btn-submit-workshop" class="rounded-full bg-[var(--color-astra-500)] px-5 py-2 font-mono text-xs font-medium uppercase text-black hover:bg-[var(--color-astra-400)] transition-all">
+            Guardar Taller
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       MODAL: CONTROL DE ASISTENCIA E INSCRITOS POR CURSO
+       ======================================================================= -->
+  <div
+    id="modal-attendees"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div id="modal-attendees-backdrop" class="fixed inset-0 bg-space-950/80 backdrop-blur-md"></div>
+    <div class="relative z-10 w-full max-w-2xl rounded-[var(--radius-modal)] border border-[var(--color-glass-edge)] bg-[var(--color-space-950)] p-6 shadow-2xl text-left m-4 max-h-[85vh] overflow-y-auto">
+      
+      <div class="flex items-center justify-between border-b border-[var(--color-glass-edge)] pb-4">
+        <div>
+          <h3 id="attendees-modal-title" class="text-lg font-medium text-white font-sans">Alumnos Inscritos</h3>
+          <p id="attendees-modal-subtitle" class="font-mono text-xs text-[var(--color-astra-400)]">Cargando...</p>
+        </div>
+        <button type="button" id="btn-close-attendees-modal" class="text-[#9da7ba] hover:text-white">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+
+      <div class="mt-5">
+        <div class="overflow-x-auto rounded-xl border border-[var(--color-glass-edge)]">
+          <table class="w-full text-left font-sans text-xs text-[#9da7ba]">
+            <thead class="border-b border-[var(--color-glass-edge)] bg-white/[0.03] font-mono uppercase text-[#9da7ba]">
+              <tr>
+                <th class="p-3">Código</th>
+                <th class="p-3">Alumno</th>
+                <th class="p-3">Alias</th>
+                <th class="p-3 text-center">Asistencia Hoy</th>
+              </tr>
+            </thead>
+            <tbody id="attendees-table-body" class="divide-y divide-[var(--color-glass-edge)]">
+              <!-- Filas dinámicas -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="mt-6 flex justify-end border-t border-[var(--color-glass-edge)] pt-4">
+        <button type="button" id="btn-done-attendees" class="rounded-full bg-white/10 px-5 py-2 font-mono text-xs font-medium text-white hover:bg-white/20 transition-all">
+          Listo / Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+</Layout>
+
+<script>
+  import { supabase } from "../../lib/supabase";
+
+  let currentAdminId: string | null = null;
+  const todayDate = new Date().toISOString().split('T')[0];
+
+  // Helper para notificaciones Toast
+  function showToast(title: string, message: string, isError = false) {
+    const toast = document.getElementById('admin-toast');
+    const toastTitle = document.getElementById('toast-title');
+    const toastMessage = document.getElementById('toast-message');
+    const toastIcon = document.getElementById('toast-icon');
+
+    if (!toast || !toastTitle || !toastMessage || !toastIcon) return;
+
+    toastTitle.textContent = title;
+    toastMessage.textContent = message;
+    toastIcon.textContent = isError ? '❌' : '✅';
+
+    toast.classList.remove('hidden');
+    setTimeout(() => toast.classList.add('hidden'), 3500);
+  }
+
+  // 1. Autenticación en el cliente con Supabase Session
+  const checkAdminAuth = async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session?.user) {
+      window.location.href = "/login";
+      return false;
+    }
+
+    const { data: profile, error } = await supabase
+      .from("profiles")
+      .select("id, first_name, last_name, role")
+      .eq("id", session.user.id)
+      .single();
+
+    if (error || !profile || !["admin", "organizer"].includes(profile.role)) {
+      alert("Acceso denegado: Se requieren permisos de administrador u organizador.");
+      window.location.href = "/labs";
+      return false;
+    }
+
+    currentAdminId = session.user.id;
+
+    // Actualizar Badge del Administrador
+    const userAvatar = document.getElementById("user-avatar");
+    const userName = document.getElementById("user-name");
+    const userRole = document.getElementById("user-role");
+
+    if (userAvatar) userAvatar.textContent = profile.first_name.substring(0, 1).toUpperCase();
+    if (userName) userName.textContent = `${profile.first_name} ${profile.last_name}`;
+    if (userRole) userRole.textContent = profile.role;
+
+    return true;
+  };
+
+  // 2. Cargar Métricas Principales (Cards)
+  const loadDashboardStats = async () => {
+    try {
+      const [profilesRes, workshopsRes, registrationsRes] = await Promise.all([
+        supabase.from("profiles").select("*", { count: "exact", head: true }),
+        supabase.from("workshops").select("*", { count: "exact", head: true }).in("status", ["registro_abierto", "en_curso", "proximamente"]),
+        supabase.from("workshops_registrations").select("*", { count: "exact", head: true })
+      ]);
+
+      const metricUsers = document.getElementById("metric-total-users");
+      const metricWorkshops = document.getElementById("metric-active-workshops");
+      const metricRegistrations = document.getElementById("metric-total-registrations");
+
+      if (metricUsers) metricUsers.textContent = (profilesRes.count || 0).toString();
+      if (metricWorkshops) metricWorkshops.textContent = (workshopsRes.count || 0).toString();
+      if (metricRegistrations) metricRegistrations.textContent = (registrationsRes.count || 0).toString();
+    } catch (err) {
+      console.error("Error al cargar estadísticas:", err);
+    }
+  };
+
+  // 3. Cargar Instructores para el Modal
+  const loadInstructors = async () => {
+    const select = document.getElementById("select-instructor") as HTMLSelectElement | null;
+    if (!select) return;
+
+    const { data: instructors } = await supabase
+      .from("profiles")
+      .select("id, first_name, last_name, role")
+      .in("role", ["admin", "organizer"]);
+
+    if (instructors && instructors.length > 0) {
+      select.innerHTML = `<option value="">Selecciona un instructor</option>` +
+        instructors.map(i => `<option value="${i.id}">${i.first_name} ${i.last_name} (${i.role})</option>`).join('');
+    } else {
+      select.innerHTML = `<option value="">Sin instructores disponibles</option>`;
+    }
+  };
+
+  // 4. Renderizar Tabla de Talleres
+  const loadWorkshops = async () => {
+    const tableBody = document.getElementById("workshops-table-body");
+    if (!tableBody) return;
+
+    const { data: workshops, error } = await supabase
+      .from("workshops")
+      .select(`
+        *,
+        instructor:profiles!instructor_id (first_name, last_name),
+        workshops_registrations (id)
+      `)
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      tableBody.innerHTML = `<tr><td colspan="6" class="p-6 text-center text-rose-400">Error al cargar talleres: ${error.message}</td></tr>`;
+      return;
+    }
+
+    if (workshops.length === 0) {
+      tableBody.innerHTML = `<tr><td colspan="6" class="p-6 text-center text-[#9da7ba]">No hay talleres registrados en la base de datos.</td></tr>`;
+      return;
+    }
+
+    tableBody.innerHTML = "";
+    workshops.forEach((w: any) => {
+      const regCount = w.workshops_registrations?.length || 0;
+      const isFull = regCount >= w.max_capacity;
+      const instructorName = w.instructor ? `${w.instructor.first_name} ${w.instructor.last_name}` : "Por definir";
+
+      const tr = document.createElement("tr");
+      tr.className = "transition-colors hover:bg-white/[0.02]";
+      tr.innerHTML = `
+        <td class="p-3.5">
+          <p class="font-medium text-white">${w.title}</p>
+          <p class="font-mono text-[10px] text-[#9da7ba]">${w.slug}</p>
+        </td>
+        <td class="p-3.5 text-white">
+          ${instructorName}
+        </td>
+        <td class="p-3.5">
+          <span class="rounded-full px-2 py-0.5 font-mono text-[10px] uppercase border ${
+            w.status === 'registro_abierto' ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400' :
+            w.status === 'proximamente' ? 'border-amber-500/30 bg-amber-500/10 text-amber-300' :
+            'border-slate-500/30 bg-slate-500/10 text-slate-400'
+          }">
+            ${w.status}
+          </span>
+        </td>
+        <td class="p-3.5 font-mono text-[11px]">
+          <p class="text-white">${w.day_of_week} - ${w.start_time?.slice(0, 5)} hrs</p>
+          <p class="text-[#9da7ba]">Aula: ${w.classroom}</p>
+        </td>
+        <td class="p-3.5 font-mono text-[11px]">
+          <span class="${isFull ? 'font-bold text-rose-400' : 'text-emerald-400'}">
+            ${regCount} / ${w.max_capacity}
+          </span>
+        </td>
+        <td class="p-3.5 text-right">
+          <button 
+            type="button"
+            data-workshop-id="${w.id}"
+            data-workshop-title="${w.title}"
+            class="btn-view-attendees inline-flex items-center gap-1.5 rounded-full border border-[var(--color-glass-edge)] bg-white/5 px-3 py-1 font-mono text-[11px] text-white transition-all hover:bg-[var(--color-astra-500)] hover:text-black"
+          >
+            <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+            Lista & Asistencia
+          </button>
+        </td>
+      `;
+      tableBody.appendChild(tr);
+    });
+
+    // Eventos para abrir el modal de asistencia
+    document.querySelectorAll(".btn-view-attendees").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const target = e.currentTarget as HTMLButtonElement;
+        const id = target.getAttribute("data-workshop-id");
+        const title = target.getAttribute("data-workshop-title");
+        if (id && title) openAttendeesModal(id, title);
+      });
+    });
+  };
+
+  // 5. Controles del Modal de Creación
+  const modalCreate = document.getElementById("modal-create-workshop");
+  const btnOpenCreate = document.getElementById("btn-open-create-modal");
+  const btnCloseCreate = document.getElementById("btn-close-create-modal");
+  const btnCancelCreate = document.getElementById("btn-cancel-create");
+  const formCreate = document.getElementById("form-create-workshop") as HTMLFormElement | null;
+  const inputTitle = document.getElementById("input-title") as HTMLInputElement | null;
+  const inputSlug = document.getElementById("input-slug") as HTMLInputElement | null;
+
+  btnOpenCreate?.addEventListener("click", () => modalCreate?.classList.remove("hidden"));
+  const closeCreateModal = () => modalCreate?.classList.add("hidden");
+  btnCloseCreate?.addEventListener("click", closeCreateModal);
+  btnCancelCreate?.addEventListener("click", closeCreateModal);
+
+  // Generador dinámico de Slug URL
+  inputTitle?.addEventListener("input", () => {
+    if (inputSlug) {
+      inputSlug.value = inputTitle.value
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, "")
+        .replace(/[\s_-]+/g, "-");
+    }
+  });
+
+  // Envío del Formulario de Creación
+  formCreate?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const btnSubmit = document.getElementById("btn-submit-workshop") as HTMLButtonElement | null;
+    if (btnSubmit) btnSubmit.disabled = true;
+
+    const fd = new FormData(formCreate);
+    const newWorkshop = {
+      title: String(fd.get("title")),
+      slug: String(fd.get("slug")),
+      description: String(fd.get("description")),
+      modality: String(fd.get("modality")),
+      classroom: String(fd.get("classroom")),
+      instructor_id: String(fd.get("instructor_id")),
+      max_capacity: Number(fd.get("max_capacity")),
+      day_of_week: String(fd.get("day_of_week")),
+      start_time: String(fd.get("start_time")),
+      duration: "2 hours",
+      register_starts_at: String(fd.get("register_starts_at")),
+      register_ends_at: String(fd.get("register_ends_at")),
+      status: String(fd.get("status")),
+      image_url: "/assets/default-workshop.webp"
+    };
+
+    const { error } = await supabase.from("workshops").insert([newWorkshop]);
+
+    if (btnSubmit) btnSubmit.disabled = false;
+
+    if (error) {
+      showToast("Error", error.message, true);
+      return;
+    }
+
+    showToast("Éxito", "El taller fue creado correctamente.");
+    formCreate.reset();
+    closeCreateModal();
+    loadDashboardStats();
+    loadWorkshops();
+  });
+
+  // 6. Modal de Alumnos Inscritos y Control de Asistencias
+  const modalAttendees = document.getElementById("modal-attendees");
+  const btnCloseAttendees = document.getElementById("btn-close-attendees-modal");
+  const btnDoneAttendees = document.getElementById("btn-done-attendees");
+  const attendeesTitle = document.getElementById("attendees-modal-title");
+  const attendeesSubtitle = document.getElementById("attendees-modal-subtitle");
+  const attendeesTableBody = document.getElementById("attendees-table-body");
+
+  const closeAttendeesModal = () => modalAttendees?.classList.add("hidden");
+  btnCloseAttendees?.addEventListener("click", closeAttendeesModal);
+  btnDoneAttendees?.addEventListener("click", closeAttendeesModal);
+
+  const openAttendeesModal = async (workshopId: string, title: string) => {
+    if (!modalAttendees || !attendeesTitle || !attendeesSubtitle || !attendeesTableBody) return;
+
+    attendeesTitle.textContent = title;
+    attendeesSubtitle.textContent = "Consultando base de datos...";
+    attendeesTableBody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-[#9da7ba]">Cargando participantes...</td></tr>`;
+    modalAttendees.classList.remove("hidden");
+
+    const { data: registrations, error } = await supabase
+      .from("workshops_registrations")
+      .select(`
+        id,
+        registered_at,
+        profiles!user_id (
+          student_code,
+          first_name,
+          last_name,
+          username
+        ),
+        workshops_attendances (
+          id,
+          session_date,
+          attended
+        )
+      `)
+      .eq("workshop_id", workshopId)
+      .order("registered_at", { ascending: true });
+
+    if (error) {
+      attendeesTableBody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-rose-400">Error: ${error.message}</td></tr>`;
+      return;
+    }
+
+    attendeesSubtitle.textContent = `Inscritos: ${registrations.length} | Fecha de hoy: ${todayDate}`;
+    attendeesTableBody.innerHTML = "";
+
+    if (registrations.length === 0) {
+      attendeesTableBody.innerHTML = `<tr><td colspan="4" class="p-6 text-center text-[#9da7ba]">No hay ningún alumno inscrito a este taller aún.</td></tr>`;
+      return;
+    }
+
+    registrations.forEach((reg: any) => {
+      const p = reg.profiles;
+      const fullName = p ? `${p.first_name} ${p.last_name}` : "Sin usuario asignado";
+      const code = p?.student_code || "N/A";
+      const alias = p?.username ? `@${p.username}` : "-";
+
+      const attendancesList = reg.workshops_attendances || [];
+      const isAttendedToday = attendancesList.some((a: any) => a.session_date === todayDate && a.attended);
+
+      const tr = document.createElement("tr");
+      tr.className = "hover:bg-white/[0.01]";
+      tr.innerHTML = `
+        <td class="p-3 font-mono text-[#9da7ba]">${code}</td>
+        <td class="p-3 font-medium text-white">${fullName}</td>
+        <td class="p-3 font-mono text-[var(--color-astra-300)]">${alias}</td>
+        <td class="p-3 text-center">
+          <input
+            type="checkbox"
+            data-registration-id="${reg.id}"
+            ${isAttendedToday ? "checked" : ""}
+            class="attendance-checkbox h-4 w-4 rounded border-[var(--color-glass-edge)] bg-white/10 text-[var(--color-astra-500)] focus:ring-0 cursor-pointer"
+          />
+        </td>
+      `;
+      attendeesTableBody.appendChild(tr);
+    });
+
+    // Checkbox Listener para guardar asistencia en tiempo real
+    document.querySelectorAll(".attendance-checkbox").forEach(box => {
+      box.addEventListener("change", async (e) => {
+        const input = e.target as HTMLInputElement;
+        const regId = input.getAttribute("data-registration-id");
+        const attendedState = input.checked;
+
+        if (!regId) return;
+
+        if (attendedState) {
+          await supabase
+            .from("workshops_attendances")
+            .upsert({
+              registration_id: regId,
+              session_date: todayDate,
+              attended: true,
+              marked_by: currentAdminId,
+              marked_at: new Date().toISOString()
+            }, { onConflict: "registration_id,session_date" });
+          showToast("Asistencia", "Marcada correctamente.");
+        } else {
+          await supabase
+            .from("workshops_attendances")
+            .delete()
+            .eq("registration_id", regId)
+            .eq("session_date", todayDate);
+          showToast("Asistencia", "Removida.");
+        }
+      });
+    });
+  };
+
+  // Inicialización de la vista
+  (async () => {
+    const isAllowed = await checkAdminAuth();
+    if (isAllowed) {
+      loadDashboardStats();
+      loadInstructors();
+      loadWorkshops();
+    }
+  })();
+</script>
