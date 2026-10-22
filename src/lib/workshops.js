@@ -36,9 +36,7 @@ export async function getWorkshops() {
  * b) Disponibilidad de cupo
  * c) Ausencia de registro previo por el mismo usuario
  */
-// Agregamos el parámetro opcional 'customClient'
 export async function registerToWorkshop(workshopId, userId, customClient = null) {
-  // Usamos el cliente autenticado que nos mandan desde el endpoint, o el global si no hay
   const client = customClient || supabase;
 
   try {

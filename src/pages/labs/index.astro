@@ -4,6 +4,8 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import { getWorkshops } from "../../lib/workshops";
 
+export const prerender = false;
+
 // 1. Obtención pública de talleres en el servidor
 const { data: workshopsResponse, error: workshopsError } = await getWorkshops();
 const workshops = workshopsResponse ?? [];

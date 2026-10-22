@@ -5,9 +5,13 @@ import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://stellalabs.tech',
   vite: {
     plugins: [tailwindcss()]
   },
-
-  adapter: cloudflare()
+  output: 'static',
+  adapter: cloudflare({
+    imageService: 'cloudflare'
+    }
+  )
 });
