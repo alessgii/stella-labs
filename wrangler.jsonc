@@ -4,11 +4,17 @@
 	"compatibility_flags": ["global_fetch_strictly_public"],
 	"name": "stella-labs",
 	"main": "@astrojs/cloudflare/entrypoints/server",
+	"kv_namespaces": [{
+		"binding": "stella-labs-session",
+		"id": "eea290648e0b491098d361364ad5e445"
+	}],
 	"assets": {
 		"directory": "./dist",
-		"binding": "ASSETS"
-	},
+		"binding": "ASSETS",
+		 }
+	,
 	"observability": {
 		"enabled": true
 	}
+	
 }
