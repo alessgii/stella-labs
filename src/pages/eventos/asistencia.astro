@@ -1,0 +1,742 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Isotipo from "../../components/Isotipo.astro";
+---
+
+<Layout title="Registro de asistencia | StellaLabs">
+  <div id="loading" class="grid min-h-screen place-items-center px-6">
+    <div class="flex flex-col items-center gap-4">
+      <div class="size-10 animate-spin rounded-full border-2 border-astra-400/20 border-t-astra-400"></div>
+      <p class="font-mono text-xs tracking-wider text-[#9da7ba]">Verificando permisos...</p>
+    </div>
+  </div>
+
+  <div id="app" class="relative min-h-screen" hidden>
+    <div
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(56,189,248,0.06)_1px,transparent_1px)] [background-size:32px_32px]"
+      aria-hidden="true"
+    >
+    </div>
+
+    <!-- Barra superior -->
+    <header class="relative z-10 border-b border-glass-edge">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4 md:px-10">
+        <div class="flex items-center gap-2.5">
+          <Isotipo class="w-7" />
+          <span class="font-sans text-base font-semibold tracking-tight text-white">
+            Stella<span class="text-astra-400">Labs</span>
+          </span>
+          <span class="ml-2 hidden rounded-badge border border-astra-400/20 bg-astra-400/10 px-2 py-0.5 font-mono text-[10px] tracking-widest text-astra-300 sm:inline">
+            REGISTRO DE ASISTENCIA
+          </span>
+        </div>
+        <p id="operator" class="truncate font-mono text-xs tracking-wider text-[#9da7ba]"></p>
+      </div>
+    </header>
+
+    <!-- =====================================================================
+         VISTA 1: SELECCIÓN DE CONFERENCIA
+         ===================================================================== -->
+    <main id="view-select" class="relative z-10 mx-auto max-w-3xl px-6 py-12 md:py-16">
+      <div class="mb-8 text-center">
+        <h1 class="font-sans text-3xl font-medium tracking-tight text-white sm:text-4xl">
+          ¿Qué conferencia <span class="bg-gradient-to-r from-astra-400 via-sky-300 to-cosmic-400 bg-clip-text text-transparent">registramos hoy?</span>
+        </h1>
+        <p class="mx-auto mt-3 max-w-md font-sans text-sm leading-relaxed text-[#9da7ba] sm:text-base">
+          Elige una conferencia de hoy y empieza a recibir credenciales. Las que ya pasaron no aparecen aquí.
+        </p>
+      </div>
+
+      <div class="rounded-modal border border-glass-edge bg-glass-surface p-4 shadow-glass-card backdrop-blur-xl sm:p-6">
+        <div id="conf-list" class="flex flex-col gap-3" role="radiogroup" aria-label="Conferencias disponibles">
+          <p class="py-10 text-center font-mono text-xs tracking-wider text-[#9da7ba]">Cargando conferencias...</p>
+        </div>
+
+        <p id="conf-empty" class="hidden py-10 text-center font-sans text-sm text-[#9da7ba]" hidden>
+          No hay conferencias para hoy ni próximas. Crea una para empezar.
+        </p>
+        <p id="conf-error" class="mt-3 rounded-input border border-rose-500/30 bg-rose-500/10 px-4 py-3 font-sans text-sm text-rose-300" hidden></p>
+
+        <div class="mt-5 flex flex-col gap-3 border-t border-glass-edge pt-5 sm:flex-row sm:items-center sm:justify-between">
+          <button
+            id="btn-create"
+            type="button"
+            class="inline-flex items-center justify-center gap-2 rounded-pill border border-cosmic-400/35 px-5 py-2.5 font-mono text-xs font-medium tracking-wider text-cosmic-400 transition hover:border-cosmic-400 hover:bg-cosmic-500/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cosmic-400"
+          >
+            <span aria-hidden="true">+</span> Crear conferencia
+          </button>
+          <button
+            id="btn-start"
+            type="button"
+            disabled
+            class="inline-flex items-center justify-center gap-2 rounded-pill bg-astra-500 px-7 py-3 font-mono text-xs font-medium tracking-wider text-space-950 shadow-glow-astra transition hover:bg-astra-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-astra-400 disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none"
+          >
+            Iniciar registro <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mt-6 flex justify-center">
+        <a
+          href="/admin"
+          class="group inline-flex items-center gap-2 font-mono text-xs tracking-wider text-[#9da7ba] transition-colors hover:text-astra-300"
+        >
+          Ir al panel de administración
+          <span class="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </main>
+
+    <!-- =====================================================================
+         VISTA 2: REGISTRO ACTIVO (kiosco)
+         ===================================================================== -->
+    <main id="view-register" class="relative z-10 mx-auto flex min-h-[calc(100vh-4.5rem)] max-w-5xl flex-col px-6 py-8 md:px-10" hidden>
+      <!-- Encabezado de la conferencia -->
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div class="min-w-0">
+          <span id="reg-window" class="inline-flex items-center gap-2 rounded-pill border px-3 py-1 font-mono text-xs tracking-wider"></span>
+          <h1 id="reg-title" class="mt-3 font-sans text-2xl font-semibold tracking-tight text-white sm:text-3xl"></h1>
+          <p id="reg-meta" class="mt-1 font-sans text-sm text-[#9da7ba]"></p>
+        </div>
+        <div class="flex shrink-0 items-center gap-6">
+          <div class="text-right">
+            <p id="reg-count" class="font-mono text-4xl font-medium text-white tabular-nums">0</p>
+            <p class="font-mono text-[11px] tracking-widest text-[#9da7ba]">ASISTENTES</p>
+          </div>
+          <button
+            id="btn-end"
+            type="button"
+            class="rounded-pill border border-rose-400/35 px-5 py-2.5 font-mono text-xs font-medium tracking-wider text-rose-300 transition hover:border-rose-400 hover:bg-rose-500/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-400"
+          >
+            Terminar registro
+          </button>
+        </div>
+      </div>
+
+      <!-- Zona de captura -->
+      <div class="flex flex-1 flex-col items-center justify-center py-10">
+        <div id="result" class="w-full max-w-xl rounded-modal border border-glass-edge bg-glass-surface p-8 text-center shadow-glass-card backdrop-blur-xl sm:p-10" aria-live="assertive">
+          <div id="result-icon" class="mx-auto mb-5 grid size-16 place-items-center rounded-full border text-3xl"></div>
+          <p id="result-title" class="font-sans text-2xl font-semibold tracking-tight text-white sm:text-3xl"></p>
+          <p id="result-name" class="mt-2 font-sans text-lg text-white"></p>
+          <p id="result-detail" class="mt-1 font-mono text-sm tracking-wider text-[#9da7ba]"></p>
+        </div>
+
+        <label for="scan-input" class="sr-only">Código de estudiante o credencial NFC</label>
+        <input
+          id="scan-input"
+          type="text"
+          inputmode="text"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+          maxlength="64"
+          placeholder="Código de estudiante"
+          class="mt-6 w-full max-w-xl rounded-input border border-glass-edge bg-space-950/60 px-4 py-3.5 text-center font-mono text-base tracking-widest text-white placeholder:text-slate-500 focus:border-astra-400/60 focus:outline-none focus:ring-2 focus:ring-astra-400/20"
+        />
+        <p class="mt-3 font-mono text-[11px] tracking-wider text-[#9da7ba]">
+          Acerca la credencial al lector o escribe el código con el teclado
+        </p>
+      </div>
+
+      <!-- Últimos registros -->
+      <section class="border-t border-glass-edge pt-5" aria-label="Últimos registros">
+        <h2 class="mb-3 font-mono text-[11px] tracking-widest text-[#9da7ba]">ÚLTIMOS REGISTROS</h2>
+        <ul id="recent" class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4"></ul>
+      </section>
+    </main>
+
+    <!-- =====================================================================
+         MODAL: CREAR CONFERENCIA
+         ===================================================================== -->
+    <dialog
+      id="create-modal"
+      class="m-auto w-[calc(100%-2rem)] max-w-lg rounded-modal border border-glass-edge bg-space-900 p-0 text-[#d1e4fa] shadow-glass-card backdrop:bg-space-950/80 backdrop:backdrop-blur-sm"
+    >
+      <form id="create-form" method="dialog" class="p-6 sm:p-8" novalidate>
+        <div class="mb-6 flex items-start justify-between gap-4">
+          <div>
+            <h2 class="font-sans text-xl font-semibold text-white">Nueva conferencia</h2>
+            <p class="mt-1 font-sans text-sm text-[#9da7ba]">Al crearla queda lista para iniciar el registro.</p>
+          </div>
+          <button id="modal-close" type="button" class="rounded-input p-1.5 text-[#9da7ba] transition hover:bg-white/5 hover:text-white" aria-label="Cerrar">✕</button>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <label for="f-name" class="mb-1.5 block font-sans text-sm font-medium text-white">Nombre de la conferencia</label>
+            <input id="f-name" name="conference_name" type="text" required maxlength="150" autocomplete="off"
+              class="w-full rounded-input border border-glass-edge bg-space-950/60 px-4 py-2.5 font-sans text-sm text-white focus:border-astra-400/60 focus:outline-none focus:ring-2 focus:ring-astra-400/20" />
+          </div>
+          <div>
+            <label for="f-speaker" class="mb-1.5 block font-sans text-sm font-medium text-white">Ponente</label>
+            <input id="f-speaker" name="speaker_name" type="text" required maxlength="150" autocomplete="off"
+              class="w-full rounded-input border border-glass-edge bg-space-950/60 px-4 py-2.5 font-sans text-sm text-white focus:border-astra-400/60 focus:outline-none focus:ring-2 focus:ring-astra-400/20" />
+          </div>
+          <div>
+            <label for="f-site" class="mb-1.5 block font-sans text-sm font-medium text-white">Sede</label>
+            <input id="f-site" name="conference_site" type="text" required maxlength="100" autocomplete="off" value="Sala Rubén Villa Señor (CCJAM)"
+              class="w-full rounded-input border border-glass-edge bg-space-950/60 px-4 py-2.5 font-sans text-sm text-white focus:border-astra-400/60 focus:outline-none focus:ring-2 focus:ring-astra-400/20" />
+          </div>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label for="f-start" class="mb-1.5 block font-sans text-sm font-medium text-white">Inicia</label>
+              <input id="f-start" name="starts" type="datetime-local" required
+                class="w-full rounded-input border border-glass-edge bg-space-950/60 px-4 py-2.5 font-sans text-sm text-white [color-scheme:dark] focus:border-astra-400/60 focus:outline-none focus:ring-2 focus:ring-astra-400/20" />
+            </div>
+            <div>
+              <label for="f-end" class="mb-1.5 block font-sans text-sm font-medium text-white">Termina</label>
+              <input id="f-end" name="ends" type="datetime-local" required
+                class="w-full rounded-input border border-glass-edge bg-space-950/60 px-4 py-2.5 font-sans text-sm text-white [color-scheme:dark] focus:border-astra-400/60 focus:outline-none focus:ring-2 focus:ring-astra-400/20" />
+            </div>
+            <div>
+              <label for="f-before" class="mb-1.5 block font-sans text-sm font-medium text-white">Abrir registro (min antes)</label>
+              <input id="f-before" name="before" type="number" min="0" max="720" value="30" required
+                class="w-full rounded-input border border-glass-edge bg-space-950/60 px-4 py-2.5 font-mono text-sm text-white focus:border-astra-400/60 focus:outline-none focus:ring-2 focus:ring-astra-400/20" />
+            </div>
+            <div>
+              <label for="f-after" class="mb-1.5 block font-sans text-sm font-medium text-white">Cerrar registro (min después)</label>
+              <input id="f-after" name="after" type="number" min="0" max="720" value="15" required
+                class="w-full rounded-input border border-glass-edge bg-space-950/60 px-4 py-2.5 font-mono text-sm text-white focus:border-astra-400/60 focus:outline-none focus:ring-2 focus:ring-astra-400/20" />
+            </div>
+          </div>
+          <p id="f-preview" class="font-mono text-[11px] tracking-wider text-[#9da7ba]"></p>
+          <p id="f-error" class="rounded-input border border-rose-500/30 bg-rose-500/10 px-4 py-2.5 font-sans text-sm text-rose-300" hidden></p>
+        </div>
+
+        <div class="mt-7 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+          <button id="modal-cancel" type="button"
+            class="rounded-pill border border-glass-edge px-5 py-2.5 font-mono text-xs font-medium tracking-wider text-[#d1e4fa] transition hover:bg-white/5">
+            Cancelar
+          </button>
+          <button id="modal-submit" type="submit"
+            class="rounded-pill bg-astra-500 px-6 py-2.5 font-mono text-xs font-medium tracking-wider text-space-950 transition hover:bg-astra-400 disabled:cursor-not-allowed disabled:opacity-50">
+            Crear conferencia
+          </button>
+        </div>
+      </form>
+    </dialog>
+  </div>
+</Layout>
+
+<script>
+  import { supabase } from "../../lib/supabase";
+
+  // ---------------------------------------------------------------------------
+  // Tipos y utilidades
+  // ---------------------------------------------------------------------------
+  type DayStatus = "upcoming" | "today" | "past";
+  type Conference = {
+    conference_id: number;
+    conference_name: string;
+    speaker_name: string;
+    conference_site: string;
+    conference_starts_at: string;
+    register_starts_at: string;
+    register_ends_at: string;
+    conference_ends_at: string;
+    day_status: DayStatus;
+  };
+  type Tone = "idle" | "success" | "warn" | "error";
+
+  const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
+  const DENIED = "/acceso-denegado";
+
+  const esc = (s: string) =>
+    s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
+
+  const fmtTime = (iso: string) =>
+    new Intl.DateTimeFormat("es-MX", { hour: "2-digit", minute: "2-digit", hour12: false }).format(new Date(iso));
+  const fmtDay = (iso: string) =>
+    new Intl.DateTimeFormat("es-MX", { weekday: "short", day: "numeric", month: "short" }).format(new Date(iso));
+
+  // ---------------------------------------------------------------------------
+  // 1. Control de acceso
+  // ---------------------------------------------------------------------------
+  const ALLOWED_ROLES = ["admin", "organizer"];
+
+  async function checkAdminAuth() {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session?.user) {
+      window.location.replace(`${DENIED}?motivo=sesion`);
+      return null;
+    }
+
+    const { data: profile, error } = await supabase
+      .from("profiles")
+      .select("id, first_name, last_name, role")
+      .eq("id", session.user.id)
+      .single();
+
+    if (error || !profile || !ALLOWED_ROLES.includes(profile.role)) {
+      window.location.replace(`${DENIED}?motivo=rol`);
+      return null;
+    }
+    return profile as { id: string; first_name: string | null; last_name: string | null; role: string };
+  }
+
+  // ---------------------------------------------------------------------------
+  // Estado
+  // ---------------------------------------------------------------------------
+  let conferences: Conference[] = [];
+  let selectedId: number | null = null;
+  let active: Conference | null = null;
+  let attendeeCount = 0;
+  let windowTimer: number | undefined;
+  let resetTimer: number | undefined;
+  let wakeLock: { release: () => Promise<void> } | null = null;
+  let audioCtx: AudioContext | null = null;
+
+  const viewSelect = $("view-select");
+  const viewRegister = $("view-register");
+  const scanInput = $<HTMLInputElement>("scan-input");
+  const modal = $<HTMLDialogElement>("create-modal");
+
+  // ---------------------------------------------------------------------------
+  // 2. Selección de conferencia
+  // ---------------------------------------------------------------------------
+  async function loadConferences(selectId?: number) {
+    $("conf-error").hidden = true;
+    const { data, error } = await supabase
+      .from("conferences_with_status")
+      .select("*")
+      .in("day_status", ["today", "upcoming"])
+      .order("conference_starts_at", { ascending: true });
+
+    if (error) {
+      $("conf-error").textContent = "No pudimos cargar las conferencias. Revisa la conexión e intenta de nuevo.";
+      $("conf-error").hidden = false;
+      return;
+    }
+    conferences = (data ?? []) as Conference[];
+
+    if (selectId !== undefined && conferences.some((c) => c.conference_id === selectId && c.day_status === "today")) {
+      selectedId = selectId;
+    } else if (selectedId !== null && !conferences.some((c) => c.conference_id === selectedId && c.day_status === "today")) {
+      selectedId = null;
+    }
+    renderConferences();
+  }
+
+  function windowLabel(c: Conference) {
+    const now = Date.now();
+    if (now < new Date(c.register_starts_at).getTime()) return { text: `Registro abre a las ${fmtTime(c.register_starts_at)}`, cls: "text-amber-300" };
+    if (now > new Date(c.register_ends_at).getTime()) return { text: "Registro cerrado", cls: "text-rose-300" };
+    return { text: `Registro abierto hasta las ${fmtTime(c.register_ends_at)}`, cls: "text-emerald-400" };
+  }
+
+  function renderConferences() {
+    const list = $("conf-list");
+    $("conf-empty").hidden = conferences.length > 0;
+
+    list.innerHTML = conferences
+      .map((c) => {
+        const isToday = c.day_status === "today";
+        const selected = c.conference_id === selectedId;
+        const w = windowLabel(c);
+        const base =
+          "w-full rounded-card border p-4 text-left transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-astra-400 ";
+        const state = !isToday
+          ? "cursor-not-allowed border-glass-edge bg-white/[0.02] opacity-50"
+          : selected
+            ? "border-astra-400/60 bg-astra-400/10 shadow-glow-astra"
+            : "border-glass-edge bg-white/[0.03] hover:border-glass-edge-hover";
+        return `
+          <button type="button" role="radio" aria-checked="${selected}" ${isToday ? "" : "disabled"}
+                  data-id="${c.conference_id}" class="conf-item ${base}${state}">
+            <div class="flex items-start justify-between gap-3">
+              <div class="min-w-0">
+                <p class="truncate font-sans text-base font-medium text-white">${esc(c.conference_name)}</p>
+                <p class="mt-0.5 truncate font-sans text-sm text-[#9da7ba]">${esc(c.speaker_name)} · ${esc(c.conference_site)}</p>
+              </div>
+              <span class="shrink-0 rounded-badge border px-2 py-0.5 font-mono text-[10px] font-medium tracking-wider uppercase ${
+                isToday ? "border-astra-400/25 bg-astra-400/10 text-astra-300" : "border-glass-edge bg-white/5 text-[#9da7ba]"
+              }">${isToday ? "Hoy" : "Próxima"}</span>
+            </div>
+            <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-xs tracking-wider text-[#9da7ba]">
+              <span>${esc(fmtDay(c.conference_starts_at))} · ${fmtTime(c.conference_starts_at)}–${fmtTime(c.conference_ends_at)}</span>
+              ${isToday ? `<span class="${w.cls}">${esc(w.text)}</span>` : ""}
+            </div>
+          </button>`;
+      })
+      .join("");
+
+    ($("btn-start") as HTMLButtonElement).disabled = selectedId === null;
+  }
+
+  $("conf-list").addEventListener("click", (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLButtonElement>(".conf-item");
+    if (!btn || btn.disabled) return;
+    selectedId = Number(btn.dataset.id);
+    renderConferences();
+  });
+
+  // ---------------------------------------------------------------------------
+  // 3. Crear conferencia (modal)
+  // ---------------------------------------------------------------------------
+  const form = $<HTMLFormElement>("create-form");
+  const fStart = $<HTMLInputElement>("f-start");
+  const fEnd = $<HTMLInputElement>("f-end");
+  const fBefore = $<HTMLInputElement>("f-before");
+  const fAfter = $<HTMLInputElement>("f-after");
+
+  const toLocalInput = (d: Date) => {
+    const p = (n: number) => String(n).padStart(2, "0");
+    return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`;
+  };
+
+  function computeWindow() {
+    const start = new Date(fStart.value);
+    const end = new Date(fEnd.value);
+    const before = Number(fBefore.value || 0);
+    const after = Number(fAfter.value || 0);
+    return {
+      start,
+      end,
+      regStart: new Date(start.getTime() - before * 60000),
+      regEnd: new Date(start.getTime() + after * 60000),
+    };
+  }
+
+  function updatePreview() {
+    const w = computeWindow();
+    $("f-preview").textContent =
+      isNaN(w.start.getTime()) || isNaN(w.regStart.getTime())
+        ? ""
+        : `Registro de ${fmtTime(w.regStart.toISOString())} a ${fmtTime(w.regEnd.toISOString())}`;
+  }
+  [fStart, fEnd, fBefore, fAfter].forEach((el) => el.addEventListener("input", updatePreview));
+
+  function openModal() {
+    form.reset();
+    const start = new Date();
+    start.setMinutes(0, 0, 0);
+    start.setHours(start.getHours() + 1);
+    fStart.value = toLocalInput(start);
+    fEnd.value = toLocalInput(new Date(start.getTime() + 60 * 60000));
+    $("f-error").hidden = true;
+    updatePreview();
+    modal.showModal();
+    $("f-name").focus();
+  }
+  const closeModal = () => modal.close();
+
+  $("btn-create").addEventListener("click", openModal);
+  $("modal-close").addEventListener("click", closeModal);
+  $("modal-cancel").addEventListener("click", closeModal);
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const err = $("f-error");
+    err.hidden = true;
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    const w = computeWindow();
+    const before = Number(fBefore.value);
+    const after = Number(fAfter.value);
+
+    if (w.end <= w.start) return showFormError("La hora de término debe ser posterior al inicio.");
+    if (before + after <= 0) return showFormError("La ventana de registro debe durar al menos un minuto.");
+    if (w.regEnd >= w.end) return showFormError("El registro debe cerrar antes de que termine la conferencia.");
+
+    const data = new FormData(form);
+    const submit = $<HTMLButtonElement>("modal-submit");
+    submit.disabled = true;
+    submit.textContent = "Creando...";
+
+    const { data: created, error } = await supabase
+      .from("conferences")
+      .insert({
+        conference_name: String(data.get("conference_name")).trim(),
+        speaker_name: String(data.get("speaker_name")).trim(),
+        conference_site: String(data.get("conference_site")).trim(),
+        conference_starts_at: w.start.toISOString(),
+        register_starts_at: w.regStart.toISOString(),
+        register_ends_at: w.regEnd.toISOString(),
+        conference_ends_at: w.end.toISOString(),
+      })
+      .select("conference_id")
+      .single();
+
+    submit.disabled = false;
+    submit.textContent = "Crear conferencia";
+
+    if (error || !created) {
+      showFormError("No se pudo crear la conferencia. Intenta de nuevo.");
+      return;
+    }
+    closeModal();
+    await loadConferences(created.conference_id);
+  });
+
+  function showFormError(msg: string) {
+    $("f-error").textContent = msg;
+    $("f-error").hidden = false;
+  }
+
+  // ---------------------------------------------------------------------------
+  // 4. Registro activo
+  // ---------------------------------------------------------------------------
+  const TONES: Record<Tone, { icon: string; box: string }> = {
+    idle: { icon: "◌", box: "border-astra-400/30 bg-astra-400/10 text-astra-400" },
+    success: { icon: "✓", box: "border-emerald-400/40 bg-emerald-400/10 text-emerald-400" },
+    warn: { icon: "!", box: "border-amber-400/40 bg-amber-400/10 text-amber-300" },
+    error: { icon: "✕", box: "border-rose-400/40 bg-rose-400/10 text-rose-300" },
+  };
+  const CARD_TONE: Record<Tone, string> = {
+    idle: "border-glass-edge",
+    success: "border-emerald-400/40",
+    warn: "border-amber-400/40",
+    error: "border-rose-400/40",
+  };
+
+  function showResult(tone: Tone, title: string, name = "", detail = "") {
+    const icon = $("result-icon");
+    icon.className = `mx-auto mb-5 grid size-16 place-items-center rounded-full border text-3xl ${TONES[tone].box} ${tone === "idle" ? "animate-pulse" : ""}`;
+    icon.textContent = TONES[tone].icon;
+    $("result").className = `w-full max-w-xl rounded-modal border bg-glass-surface p-8 text-center shadow-glass-card backdrop-blur-xl sm:p-10 ${CARD_TONE[tone]}`;
+    $("result-title").textContent = title;
+    $("result-name").textContent = name;
+    $("result-detail").textContent = detail;
+
+    window.clearTimeout(resetTimer);
+    if (tone !== "idle") resetTimer = window.setTimeout(showIdle, tone === "success" ? 2500 : 4000);
+  }
+  const showIdle = () => showResult("idle", "Esperando credencial", "", "Acerca tu credencial o escribe tu código");
+
+  function beep(tone: Tone) {
+    try {
+      if (!audioCtx) return;
+      const notes = tone === "success" ? [880, 1175] : tone === "warn" ? [520, 520] : [220];
+      notes.forEach((freq, i) => {
+        const osc = audioCtx!.createOscillator();
+        const gain = audioCtx!.createGain();
+        osc.frequency.value = freq;
+        osc.type = "sine";
+        const t0 = audioCtx!.currentTime + i * 0.12;
+        gain.gain.setValueAtTime(0.0001, t0);
+        gain.gain.exponentialRampToValueAtTime(0.15, t0 + 0.01);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.11);
+        osc.connect(gain).connect(audioCtx!.destination);
+        osc.start(t0);
+        osc.stop(t0 + 0.12);
+      });
+    } catch {
+      /* el sonido es opcional */
+    }
+  }
+
+  function updateWindowChip() {
+    if (!active) return;
+    const now = Date.now();
+    let text: string;
+    let cls: string;
+    if (now < new Date(active.register_starts_at).getTime()) {
+      text = `Registro abre a las ${fmtTime(active.register_starts_at)}`;
+      cls = "border-amber-400/30 bg-amber-400/10 text-amber-300";
+    } else if (now > new Date(active.register_ends_at).getTime()) {
+      text = "Registro cerrado, ya no se aceptan asistencias";
+      cls = "border-rose-400/30 bg-rose-400/10 text-rose-300";
+    } else {
+      text = `Registro abierto hasta las ${fmtTime(active.register_ends_at)}`;
+      cls = "border-emerald-400/30 bg-emerald-400/10 text-emerald-400";
+    }
+    const chip = $("reg-window");
+    chip.textContent = text;
+    chip.className = `inline-flex items-center gap-2 rounded-pill border px-3 py-1 font-mono text-xs tracking-wider ${cls}`;
+  }
+
+  function setCount(n: number) {
+    attendeeCount = n;
+    $("reg-count").textContent = String(n);
+  }
+
+  function addRecent(code: string, label: string, tone: Tone) {
+    const dot = tone === "success" ? "bg-emerald-400" : tone === "warn" ? "bg-amber-400" : "bg-rose-400";
+    const li = document.createElement("li");
+    li.className = "flex items-center gap-2.5 rounded-input border border-glass-edge bg-white/[0.03] px-3 py-2";
+    li.innerHTML = `
+      <span class="size-1.5 shrink-0 rounded-full ${dot}"></span>
+      <span class="min-w-0 flex-1">
+        <span class="block truncate font-mono text-xs tracking-wider text-white">${esc(code)}</span>
+        <span class="block truncate font-sans text-[11px] text-[#9da7ba]">${esc(label)}</span>
+      </span>
+      <span class="font-mono text-[11px] text-[#9da7ba]">${fmtTime(new Date().toISOString())}</span>`;
+    const ul = $("recent");
+    ul.prepend(li);
+    while (ul.children.length > 8) ul.lastElementChild?.remove();
+  }
+
+  async function startRegistration() {
+    const conf = conferences.find((c) => c.conference_id === selectedId);
+    if (!conf) return;
+    active = conf;
+
+    // El clic del botón permite activar el sonido
+    try {
+      audioCtx = audioCtx ?? new AudioContext();
+      await audioCtx.resume();
+    } catch {
+      audioCtx = null;
+    }
+    // Mantener la pantalla encendida (opcional)
+    try {
+      wakeLock = await (navigator as any).wakeLock?.request("screen");
+    } catch {
+      wakeLock = null;
+    }
+
+    $("reg-title").textContent = conf.conference_name;
+    $("reg-meta").textContent = `${conf.speaker_name} · ${conf.conference_site} · ${fmtTime(conf.conference_starts_at)}–${fmtTime(conf.conference_ends_at)}`;
+    $("recent").innerHTML = "";
+    setCount(0);
+    updateWindowChip();
+    windowTimer = window.setInterval(updateWindowChip, 15000);
+    showIdle();
+
+    viewSelect.hidden = true;
+    viewRegister.hidden = false;
+    scanInput.value = "";
+    scanInput.focus();
+
+    const { count } = await supabase
+      .from("conferences_attendance")
+      .select("attendance_id", { count: "exact", head: true })
+      .eq("conference_id", conf.conference_id);
+    if (typeof count === "number") setCount(count);
+  }
+
+  async function endRegistration() {
+    active = null;
+    queue.length = 0;
+    window.clearInterval(windowTimer);
+    window.clearTimeout(resetTimer);
+    try {
+      await wakeLock?.release();
+    } catch {
+      /* nada */
+    }
+    wakeLock = null;
+    viewRegister.hidden = true;
+    viewSelect.hidden = false;
+    await loadConferences();
+  }
+
+  $("btn-start").addEventListener("click", startRegistration);
+  $("btn-end").addEventListener("click", endRegistration);
+
+  // ---------------------------------------------------------------------------
+  // 5. Captura: input siempre enfocado + cola de lecturas
+  // ---------------------------------------------------------------------------
+  const queue: string[] = [];
+  let busy = false;
+
+  function keepFocus() {
+    if (active && !modal.open && document.activeElement !== scanInput) {
+      scanInput.focus({ preventScroll: true });
+    }
+  }
+  scanInput.addEventListener("blur", () => setTimeout(keepFocus, 0));
+  document.addEventListener("click", keepFocus);
+  document.addEventListener("visibilitychange", keepFocus);
+  window.addEventListener("focus", keepFocus);
+  window.setInterval(keepFocus, 1000);
+
+  // Teclado y lectores NFC cierran la lectura con Enter (algunos con Tab)
+  scanInput.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== "Tab") return;
+    e.preventDefault();
+    const value = scanInput.value.trim();
+    scanInput.value = "";
+    if (!value) return;
+    queue.push(value);
+    void pump();
+  });
+
+  async function pump() {
+    if (busy) return;
+    busy = true;
+    while (queue.length && active) {
+      await handleCode(queue.shift()!);
+    }
+    busy = false;
+  }
+
+  async function handleCode(code: string) {
+    if (!active) return;
+    const { data, error } = await supabase.rpc("register_attendance", {
+      p_conference_id: active.conference_id,
+      p_code: code,
+    });
+
+    if (error || !data) {
+      showResult("error", "No se guardó", "", "Hubo un problema de conexión. Pasa la credencial otra vez.");
+      beep("error");
+      return;
+    }
+
+    const r = data as { status: string; student_code?: string; full_name?: string | null; has_account?: boolean };
+    const shownCode = r.student_code ?? code;
+
+    switch (r.status) {
+      case "registered":
+        setCount(attendeeCount + 1);
+        showResult(
+          "success",
+          "Asistencia registrada",
+          r.full_name ?? "",
+          r.has_account ? shownCode : `${shownCode} · sin cuenta en la plataforma`,
+        );
+        addRecent(shownCode, r.full_name ?? "Sin cuenta", "success");
+        beep("success");
+        break;
+      case "duplicate":
+        showResult("warn", "Ya estaba registrado", r.full_name ?? "", shownCode);
+        addRecent(shownCode, "Repetido", "warn");
+        beep("warn");
+        break;
+      case "register_not_open":
+        showResult("error", "El registro aún no abre", "", active ? `Abre a las ${fmtTime(active.register_starts_at)}` : "");
+        beep("error");
+        break;
+      case "register_closed":
+        showResult("error", "Registro cerrado", "", "Ya no se aceptan asistencias para esta conferencia");
+        beep("error");
+        break;
+      case "invalid_code":
+        showResult("error", "Código no válido", "", "Revisa el código e inténtalo de nuevo");
+        beep("error");
+        break;
+      case "forbidden":
+        showResult("error", "Sesión sin permisos", "", "Redirigiendo...");
+        window.setTimeout(() => window.location.replace(`${DENIED}?motivo=sesion`), 1200);
+        break;
+      default:
+        showResult("error", "No se pudo registrar", "", "Revisa que la conferencia siga existiendo");
+        beep("error");
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Arranque
+  // ---------------------------------------------------------------------------
+  (async () => {
+    const profile = await checkAdminAuth();
+    if (!profile) return;
+
+    const name = [profile.first_name, profile.last_name].filter(Boolean).join(" ");
+    $("operator").textContent = name || "Sesión activa";
+
+    $("loading").hidden = true;
+    $("app").hidden = false;
+    await loadConferences();
+
+    // Si la sesión se cierra en otra pestaña, sacar al usuario
+    supabase.auth.onAuthStateChange((event) => {
+      if (event === "SIGNED_OUT") window.location.replace(`${DENIED}?motivo=sesion`);
+    });
+  })();
+</script>
