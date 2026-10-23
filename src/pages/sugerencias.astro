@@ -1,0 +1,252 @@
+---
+// src/pages/contacto.astro
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const roles = [
+  { value: "estudiante", label: "Estudiante" },
+  { value: "coordinador", label: "Coordinador" },
+  { value: "maestro", label: "Maestro" },
+  { value: "administrativo", label: "Administrativo", },
+  { value: "externo", label: "Externo" },
+];
+---
+
+<Layout title="Sugerencias | StellaLabs">
+  <Header />
+
+  <main class="relative flex min-h-[calc(100vh-5rem)] items-start justify-center px-6 py-16 md:px-10 md:py-24">
+    <div
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(56,189,248,0.06)_1px,transparent_1px)] [background-size:32px_32px]"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="relative z-10 w-full max-w-2xl">
+      <!-- Encabezado -->
+      <div class="mb-10 text-center">
+        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-astra-400/20 bg-astra-400/10 px-3.5 py-1 font-mono text-xs tracking-[0.10em] text-astra-300">
+          <span class="h-1.5 w-1.5 rounded-full bg-astra-400 animate-pulse"></span>
+          PROPUESTAS
+        </div>
+        <div class="inline-flex items-center gap-1.5 ml-1 rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 font-mono text-[10px] font-medium tracking-wider text-amber-300 uppercase">
+            <span class="relative flex h-1.5 w-1.5">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75"></span>
+              <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-amber-400"></span>
+            </span>
+            En desarrollo
+        </div>
+        <h1 class="font-sans text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-5xl">
+          Cuéntanos tu <span class="bg-gradient-to-r from-astra-400 via-sky-300 to-cosmic-400 bg-clip-text text-transparent">idea</span>
+        </h1>
+        <p class="mx-auto mt-4 max-w-lg font-sans text-base leading-relaxed text-[#9da7ba] sm:text-lg">
+          Esta página solo sirve para proponer proyectos o sugerir utilidades. Leemos todo lo que llega y te contestamos si necesitamos más detalles.
+        </p>
+      </div>
+
+      <!-- Formulario -->
+      <form
+        id="proposal-form"
+        class="rounded-[var(--radius-modal,20px)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-6 shadow-[var(--shadow-glass-card)] backdrop-blur-xl sm:p-10"
+        novalidate
+      >
+        <!-- Campo 1: ¿Qué eres? -->
+        <fieldset class="mb-8">
+          <legend class="mb-3 font-sans text-sm font-medium text-white">¿Qué eres?</legend>
+          <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {
+              roles.map((r, i) => (
+                <label class="group relative cursor-pointer">
+                  <input
+                    type="radio"
+                    name="role"
+                    value={r.value}
+                    required
+                    class="peer sr-only"
+                    checked={i === 0}
+                  />
+                  <span class="flex flex-col rounded-[var(--radius-input,8px)] border border-[var(--color-glass-edge)] bg-white/[0.03] px-4 py-3 transition-colors duration-200 hover:border-[var(--color-glass-edge-hover)] peer-checked:border-astra-400/60 peer-checked:bg-astra-400/10 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-astra-400">
+                    <span class="font-sans text-sm font-medium text-white">{r.label}</span>
+                  </span>
+                </label>
+              ))
+            }
+          </div>
+        </fieldset>
+
+        <!-- Campo 2: Propuesta (título corto) -->
+        <div class="mb-8">
+          <label for="title" class="mb-2 block font-sans text-sm font-medium text-white">¿Cuál es tu propuesta?</label>
+          <input
+            id="title"
+            name="title"
+            type="text"
+            required
+            minlength="5"
+            maxlength="100"
+            autocomplete="off"
+            placeholder="Ej. Un generador de horarios para la carrera"
+            class="w-full rounded-[var(--radius-input,8px)] border border-[var(--color-glass-edge)] bg-space-950/60 px-4 py-3 font-sans text-sm text-white placeholder:text-slate-500 transition-colors duration-200 focus:border-astra-400/60 focus:outline-none focus:ring-2 focus:ring-astra-400/20"
+          />
+          <p class="mt-2 font-sans text-xs text-[#9da7ba]">En una línea. Los detalles van abajo.</p>
+        </div>
+
+        <!-- Campo 3: Descripción -->
+        <div class="mb-8">
+          <div class="mb-2 flex items-baseline justify-between">
+            <label for="description" class="font-sans text-sm font-medium text-white">Háblanos un poco más sobre tu idea</label>
+            <span id="description-count" class="font-mono text-[11px] tracking-wider text-[#9da7ba]">0 / 1000</span>
+          </div>
+          <textarea
+            id="description"
+            name="description"
+            rows="6"
+            required
+            minlength="20"
+            maxlength="1000"
+            placeholder="¿Qué problema resuelve? ¿Quién la usaría? ¿Ya tienes algo avanzado?"
+            class="w-full resize-y rounded-[var(--radius-input,8px)] border border-[var(--color-glass-edge)] bg-space-950/60 px-4 py-3 font-sans text-sm leading-relaxed text-white placeholder:text-slate-500 transition-colors duration-200 focus:border-astra-400/60 focus:outline-none focus:ring-2 focus:ring-astra-400/20"
+          ></textarea>
+        </div>
+
+        <!-- Mensaje de estado (errores / éxito) -->
+        <p id="form-status" class="mb-6 hidden rounded-[var(--radius-input,8px)] border px-4 py-3 font-sans text-sm" role="status" aria-live="polite"></p>
+
+        <!-- Estado A: sin sesión (valor por defecto, más seguro) -->
+        <div id="auth-gate" class="flex flex-col items-center gap-3 rounded-[var(--radius-card,16px)] border border-dashed border-[var(--color-glass-edge)] bg-white/[0.02] px-5 py-6 text-center">
+          <p class="font-sans text-sm text-[#9da7ba]">Para enviar una propuesta necesitas iniciar sesión. Así sabemos a quién contestarle.</p>
+          <a
+            id="login-link"
+            href="/login?redirect=/contacto"
+            class="inline-flex items-center justify-center rounded-full bg-astra-500 px-6 py-3 font-mono text-xs font-medium tracking-wider text-space-950 transition-all duration-200 hover:bg-astra-400"
+          >
+            Pronto habilitaremos esta función
+          </a>
+        </div>
+
+        <!-- Estado B: con sesión -->
+        <div id="submit-area" class="hidden flex-col items-center gap-3">
+          <button
+            id="submit-btn"
+            type="submit"
+            class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-astra-500 px-6 py-3 font-mono text-xs font-medium tracking-wider text-space-950 transition-all duration-200 hover:bg-astra-400 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:px-10"
+          >
+            <span id="submit-label">Pronto habilitaremos esta función</span>
+          </button>
+          <p id="user-hint" class="font-mono text-[11px] tracking-wider text-[#9da7ba]"></p>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  // ---------------------------------------------------------------------------
+  // PLANTILLA: la lógica con Supabase está marcada con TODO.
+  // Mientras no exista la conexión, el formulario se queda en "sin sesión".
+  // ---------------------------------------------------------------------------
+  // TODO: import { supabase } from "../lib/supabase";
+
+  const form = document.getElementById("proposal-form") as HTMLFormElement;
+  const gate = document.getElementById("auth-gate") as HTMLElement;
+  const submitArea = document.getElementById("submit-area") as HTMLElement;
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+  const submitLabel = document.getElementById("submit-label") as HTMLElement;
+  const userHint = document.getElementById("user-hint") as HTMLElement;
+  const status = document.getElementById("form-status") as HTMLElement;
+  const desc = document.getElementById("description") as HTMLTextAreaElement;
+  const count = document.getElementById("description-count") as HTMLElement;
+  const loginLink = document.getElementById("login-link") as HTMLAnchorElement;
+
+  type SessionUser = { id: string; email?: string } | null;
+
+  async function getUser(): Promise<SessionUser> {
+    // TODO: const { data } = await supabase.auth.getUser();
+    //       return data.user ? { id: data.user.id, email: data.user.email } : null;
+    // Para probar la UI con sesión, devuelve temporalmente: { id: "dev", email: "dev@correo.com" }
+    return null;
+  }
+
+  function showStatus(kind: "error" | "success", text: string) {
+    status.textContent = text;
+    status.className =
+      "mb-6 rounded-[var(--radius-input,8px)] border px-4 py-3 font-sans text-sm " +
+      (kind === "error"
+        ? "border-rose-500/30 bg-rose-500/10 text-rose-300"
+        : "border-emerald-500/30 bg-emerald-500/10 text-emerald-300");
+  }
+
+  function setAuthUI(user: SessionUser) {
+    if (user) {
+      gate.classList.add("hidden");
+      submitArea.classList.remove("hidden");
+      submitArea.classList.add("flex");
+      userHint.textContent = user.email ? `Enviando como ${user.email}` : "";
+    } else {
+      gate.classList.remove("hidden");
+      submitArea.classList.add("hidden");
+      submitArea.classList.remove("flex");
+    }
+  }
+
+  // Contador de caracteres
+  desc.addEventListener("input", () => {
+    count.textContent = `${desc.value.length} / 1000`;
+  });
+
+  // Regresar al formulario después de iniciar sesión
+  loginLink.href = `/login?redirect=${encodeURIComponent(window.location.pathname)}`;
+
+  let currentUser: SessionUser = null;
+  getUser().then((u) => {
+    currentUser = u;
+    setAuthUI(u);
+  });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Doble verificación: nunca confiar solo en la UI
+    const user = await getUser();
+    if (!user) {
+      currentUser = null;
+      setAuthUI(null);
+      showStatus("error", "Tu sesión terminó. Inicia sesión otra vez para enviar.");
+      return;
+    }
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const data = new FormData(form);
+    const payload = {
+      user_id: user.id,
+      role: String(data.get("role")),
+      title: String(data.get("title")).trim(),
+      description: String(data.get("description")).trim(),
+    };
+
+    submitBtn.disabled = true;
+    submitLabel.textContent = "Enviando...";
+
+    try {
+      // TODO: const { error } = await supabase.from("project_proposals").insert(payload);
+      //       if (error) throw error;
+      console.log("Payload listo para Supabase:", payload);
+
+      form.reset();
+      count.textContent = "0 / 1000";
+      showStatus("success", "Propuesta enviada. Gracias por escribirnos.");
+    } catch (err) {
+      showStatus("error", "No pudimos enviar tu propuesta. Intenta de nuevo en unos minutos.");
+    } finally {
+      submitBtn.disabled = false;
+      submitLabel.textContent = "Enviar propuesta";
+    }
+  });
+</script>
