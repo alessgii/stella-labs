@@ -5,18 +5,22 @@ import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Crear Cuenta | StellaLabs">
-  <Header/>
+  <Header />
 
-  <main class="relative flex min-h-[calc(100vh-5rem)] items-center justify-center px-4 py-16 md:px-10 overflow-x-hidden">
+  <main
+    class="relative flex min-h-[calc(100vh-5rem)] items-center justify-center px-4 py-16 md:px-10 overflow-x-hidden"
+  >
     <!-- Luces ambientales de fondo -->
     <div
       class="pointer-events-none absolute -left-28 top-1/3 h-[420px] w-[420px] rounded-full bg-cosmic-500/10 blur-[150px]"
       aria-hidden="true"
-    ></div>
+    >
+    </div>
     <div
       class="pointer-events-none absolute -right-28 bottom-1/3 h-[420px] w-[420px] rounded-full bg-astra-500/10 blur-[150px]"
       aria-hidden="true"
-    ></div>
+    >
+    </div>
 
     <!-- Tarjeta Glassmorphism de Registro -->
     <div
@@ -27,35 +31,59 @@ import Footer from "../components/Footer.astro";
         <div
           class="mb-3 inline-flex items-center gap-2 rounded-full border border-cosmic-400/25 bg-cosmic-500/10 px-3.5 py-1 font-mono text-[11px] font-medium tracking-wider text-cosmic-300 backdrop-blur-md"
         >
-          <span class="h-1.5 w-1.5 rounded-full bg-cosmic-400 shadow-[0_0_8px_#c084fc] animate-pulse"></span>
+          <span
+            class="h-1.5 w-1.5 rounded-full bg-cosmic-400 shadow-[0_0_8px_#c084fc] animate-pulse"
+          ></span>
           LAB_ACCESS // ALTA DE USUARIO
         </div>
-        <h1 class="font-sans text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+        <h1
+          class="font-sans text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+        >
           Crea tu perfil de investigación
         </h1>
         <p class="mt-2 text-xs text-[#9da7ba] sm:text-sm">
-          Participa en talleres, hackathones y proyectos del laboratorio de teleinformática.
+          Participa en talleres, hackathones y proyectos del laboratorio de
+          teleinformática.
         </p>
       </div>
 
       <form id="registro-form" class="space-y-6">
         <!-- SECCIÓN 1: Identidad Estudiantil -->
         <div class="space-y-3.5">
-          <div class="flex items-center gap-2 border-b border-white/[0.06] pb-1.5">
-            <span class="font-mono text-[11px] font-semibold tracking-wider text-astra-400 uppercase">
+          <div
+            class="flex items-center gap-2 border-b border-white/[0.06] pb-1.5"
+          >
+            <span
+              class="font-mono text-[11px] font-semibold tracking-wider text-astra-400 uppercase"
+            >
               // 01. Identidad Estudiantil
             </span>
           </div>
 
           <!-- Código UDG -->
           <div>
-            <label for="student_code" class="block font-mono text-xs text-[#9da7ba] mb-1.5">
+            <label
+              for="student_code"
+              class="block font-mono text-xs text-[#9da7ba] mb-1.5"
+            >
               Código de estudiante UDG
             </label>
             <div class="relative">
-              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#9da7ba]/60">
-                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#9da7ba]/60"
+              >
+                <svg
+                  class="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"
+                  ></path>
                 </svg>
               </div>
               <input
@@ -74,7 +102,10 @@ import Footer from "../components/Footer.astro";
           <!-- Nombre y Apellidos (2 columnas) -->
           <div class="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
             <div>
-              <label for="first_name" class="block font-mono text-xs text-[#9da7ba] mb-1.5">
+              <label
+                for="first_name"
+                class="block font-mono text-xs text-[#9da7ba] mb-1.5"
+              >
                 Nombre(s)
               </label>
               <input
@@ -87,7 +118,10 @@ import Footer from "../components/Footer.astro";
               />
             </div>
             <div>
-              <label for="last_name" class="block font-mono text-xs text-[#9da7ba] mb-1.5">
+              <label
+                for="last_name"
+                class="block font-mono text-xs text-[#9da7ba] mb-1.5"
+              >
                 Apellido(s)
               </label>
               <input
@@ -103,12 +137,20 @@ import Footer from "../components/Footer.astro";
 
           <!-- Alias / Username -->
           <div>
-            <label for="username" class="block font-mono text-xs text-[#9da7ba] mb-1.5 flex justify-between">
+            <label
+              for="username"
+              class="block font-mono text-xs text-[#9da7ba] mb-1.5 flex justify-between"
+            >
               <span>Nombre de usuario</span>
-              <span class="text-[#9da7ba]/60 text-[10px]">Visible en torneos y perfil</span>
+              <span class="text-[#9da7ba]/60 text-[10px]"
+                >Visible en torneos y perfil</span
+              >
             </label>
             <div class="relative">
-              <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 font-mono text-sm text-astra-400">@</span>
+              <span
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 font-mono text-sm text-astra-400"
+                >@</span
+              >
               <input
                 type="text"
                 id="username"
@@ -123,21 +165,40 @@ import Footer from "../components/Footer.astro";
 
         <!-- SECCIÓN 2: Acceso y Credenciales -->
         <div class="space-y-3.5 pt-1">
-          <div class="flex items-center gap-2 border-b border-white/[0.06] pb-1.5">
-            <span class="font-mono text-[11px] font-semibold tracking-wider text-cosmic-400 uppercase">
+          <div
+            class="flex items-center gap-2 border-b border-white/[0.06] pb-1.5"
+          >
+            <span
+              class="font-mono text-[11px] font-semibold tracking-wider text-cosmic-400 uppercase"
+            >
               // 02. Credenciales y Acceso
             </span>
           </div>
 
           <!-- Correo institucional / personal -->
           <div>
-            <label for="email" class="block font-mono text-xs text-[#9da7ba] mb-1.5">
+            <label
+              for="email"
+              class="block font-mono text-xs text-[#9da7ba] mb-1.5"
+            >
               Correo electrónico
             </label>
             <div class="relative">
-              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#9da7ba]/60">
-                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#9da7ba]/60"
+              >
+                <svg
+                  class="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+                  ></path>
                 </svg>
               </div>
               <input
@@ -153,13 +214,28 @@ import Footer from "../components/Footer.astro";
 
           <!-- Contraseña con Mostrar/Ocultar -->
           <div>
-            <label for="password" class="block font-mono text-xs text-[#9da7ba] mb-1.5">
+            <label
+              for="password"
+              class="block font-mono text-xs text-[#9da7ba] mb-1.5"
+            >
               Contraseña
             </label>
             <div class="relative">
-              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#9da7ba]/60">
-                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#9da7ba]/60"
+              >
+                <svg
+                  class="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                  ></path>
                 </svg>
               </div>
               <input
@@ -178,15 +254,35 @@ import Footer from "../components/Footer.astro";
                 class="absolute inset-y-0 right-0 flex items-center pr-3 text-[#9da7ba]/70 hover:text-white transition-colors focus:outline-none"
               >
                 <!-- Icono Ojo -->
-                <svg id="eye-icon" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                <svg
+                  id="eye-icon"
+                  class="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                  ></path>
                 </svg>
               </button>
             </div>
             <!-- Feedback de longitud -->
-            <div class="mt-1.5 flex items-center gap-1.5 font-mono text-[11px] text-[#9da7ba]/70" id="password-hint">
-              <span id="pwd-check-dot" class="h-1.5 w-1.5 rounded-full bg-slate-500"></span>
+            <div
+              class="mt-1.5 flex items-center gap-1.5 font-mono text-[11px] text-[#9da7ba]/70"
+              id="password-hint"
+            >
+              <span
+                id="pwd-check-dot"
+                class="h-1.5 w-1.5 rounded-full bg-slate-500"></span>
               <span>Mínimo 6 caracteres</span>
             </div>
           </div>
@@ -198,14 +294,20 @@ import Footer from "../components/Footer.astro";
           id="btn-submit"
           class="relative mt-2 flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-astra-500 via-astra-600 to-cosmic-600 py-3 font-sans text-sm font-semibold tracking-wide text-white shadow-[0_0_25px_-5px_rgba(56,189,248,0.4)] transition-all duration-200 hover:shadow-[0_0_30px_-2px_rgba(168,85,247,0.5)] hover:brightness-110 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50"
         >
-          <span id="btn-submit-spinner" class="hidden h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></span>
+          <span
+            id="btn-submit-spinner"
+            class="hidden h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"
+          ></span>
           <span id="btn-submit-text">Completar Registro</span>
         </button>
 
         <!-- Pie del Formulario -->
         <p class="text-center font-sans text-xs text-[#9da7ba]">
           ¿Ya tienes cuenta activa?
-          <a href="/login" class="font-medium text-astra-400 hover:text-astra-300 underline underline-offset-4 transition-colors">
+          <a
+            href="/login"
+            class="font-medium text-astra-400 hover:text-astra-300 underline underline-offset-4 transition-colors"
+          >
             Inicia sesión aquí
           </a>
         </p>
@@ -220,17 +322,32 @@ import Footer from "../components/Footer.astro";
     role="dialog"
     aria-modal="true"
   >
-    <div id="registro-modal-backdrop" class="fixed inset-0 bg-space-950/85 backdrop-blur-md"></div>
+    <div
+      id="registro-modal-backdrop"
+      class="fixed inset-0 bg-space-950/85 backdrop-blur-md"
+    >
+    </div>
     <div
       class="relative z-10 w-full max-w-md rounded-[var(--radius-modal,20px)] border border-white/10 bg-[rgba(13,10,28,0.95)] p-6 sm:p-7 shadow-[var(--shadow-glass-card)] backdrop-blur-2xl"
     >
-      <div id="modal-icon-wrapper" class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border">
+      <div
+        id="modal-icon-wrapper"
+        class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border"
+      >
         <!-- Icono dinámico -->
       </div>
 
-      <h3 id="modal-title" class="text-center font-sans text-lg font-semibold text-white"></h3>
-      
-      <div id="modal-desc" class="mt-2.5 text-center font-sans text-xs leading-relaxed text-[#9da7ba]"></div>
+      <h3
+        id="modal-title"
+        class="text-center font-sans text-lg font-semibold text-white"
+      >
+      </h3>
+
+      <div
+        id="modal-desc"
+        class="mt-2.5 text-center font-sans text-xs leading-relaxed text-[#9da7ba]"
+      >
+      </div>
 
       <div id="modal-actions" class="mt-6 flex flex-col gap-2.5">
         <!-- Acciones dinámicas -->
@@ -238,27 +355,54 @@ import Footer from "../components/Footer.astro";
     </div>
   </div>
 
-  <Footer/>
+  <Footer />
 </Layout>
 
 <script>
   import { supabase } from "../lib/supabase";
 
+  const DENIED = "/";
+  async function checkAdminAuth() {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    if (session?.user) {
+      window.location.replace(DENIED);
+      return null;
+    }
+  }
+
   const form = document.getElementById("registro-form") as HTMLFormElement;
   const btn = document.getElementById("btn-submit") as HTMLButtonElement;
   const btnText = document.getElementById("btn-submit-text") as HTMLSpanElement;
-  const btnSpinner = document.getElementById("btn-submit-spinner") as HTMLSpanElement;
+  const btnSpinner = document.getElementById(
+    "btn-submit-spinner",
+  ) as HTMLSpanElement;
 
   const passwordInput = document.getElementById("password") as HTMLInputElement;
-  const togglePasswordBtn = document.getElementById("toggle-password") as HTMLButtonElement;
-  const pwdCheckDot = document.getElementById("pwd-check-dot") as HTMLSpanElement;
+  const togglePasswordBtn = document.getElementById(
+    "toggle-password",
+  ) as HTMLButtonElement;
+  const pwdCheckDot = document.getElementById(
+    "pwd-check-dot",
+  ) as HTMLSpanElement;
 
-  const modal = document.getElementById("registro-glass-modal") as HTMLDivElement;
-  const modalBackdrop = document.getElementById("registro-modal-backdrop") as HTMLDivElement;
-  const iconWrapper = document.getElementById("modal-icon-wrapper") as HTMLDivElement;
-  const modalTitle = document.getElementById("modal-title") as HTMLHeadingElement;
+  const modal = document.getElementById(
+    "registro-glass-modal",
+  ) as HTMLDivElement;
+  const modalBackdrop = document.getElementById(
+    "registro-modal-backdrop",
+  ) as HTMLDivElement;
+  const iconWrapper = document.getElementById(
+    "modal-icon-wrapper",
+  ) as HTMLDivElement;
+  const modalTitle = document.getElementById(
+    "modal-title",
+  ) as HTMLHeadingElement;
   const modalDesc = document.getElementById("modal-desc") as HTMLDivElement;
-  const modalActions = document.getElementById("modal-actions") as HTMLDivElement;
+  const modalActions = document.getElementById(
+    "modal-actions",
+  ) as HTMLDivElement;
 
   // Toggle de visibilidad de contraseña
   togglePasswordBtn?.addEventListener("click", () => {
@@ -270,7 +414,8 @@ import Footer from "../components/Footer.astro";
   // Indicador dinámico de contraseña mínima
   passwordInput?.addEventListener("input", () => {
     if (passwordInput.value.length >= 6) {
-      pwdCheckDot.className = "h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_#34d399]";
+      pwdCheckDot.className =
+        "h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_#34d399]";
     } else {
       pwdCheckDot.className = "h-1.5 w-1.5 rounded-full bg-slate-500";
     }
@@ -349,7 +494,9 @@ import Footer from "../components/Footer.astro";
     modal.classList.remove("hidden");
     modal.classList.add("flex");
 
-    document.getElementById("btn-close-modal")?.addEventListener("click", closeModal);
+    document
+      .getElementById("btn-close-modal")
+      ?.addEventListener("click", closeModal);
   };
 
   const closeModal = () => {
@@ -375,20 +522,26 @@ import Footer from "../components/Footer.astro";
 
     try {
       // 1. Verificación previa en BD
-      const { data: checks, error: rpcError } = await supabase.rpc("check_user_exists", {
-        p_username: username,
-        p_student_code: student_code,
-      });
+      const { data: checks, error: rpcError } = await supabase.rpc(
+        "check_user_exists",
+        {
+          p_username: username,
+          p_student_code: student_code,
+        },
+      );
 
       if (rpcError) {
-        throw new Error("No se pudo verificar la disponibilidad del usuario o código.");
+        throw new Error(
+          "No se pudo verificar la disponibilidad del usuario o código.",
+        );
       }
 
       if (checks?.username_exists) {
         showGlassModal({
           type: "error",
           title: "Alias no disponible",
-          description: "El nombre de usuario ingresado ya está en uso. Por favor elige otro.",
+          description:
+            "El nombre de usuario ingresado ya está en uso. Por favor elige otro.",
         });
         btn.disabled = false;
         btnSpinner.classList.add("hidden");
@@ -400,7 +553,8 @@ import Footer from "../components/Footer.astro";
         showGlassModal({
           type: "error",
           title: "Código ya registrado",
-          description: "Este código de estudiante ya cuenta con un perfil asociado en StellaLabs.",
+          description:
+            "Este código de estudiante ya cuenta con un perfil asociado en StellaLabs.",
           actionText: "Ir a Iniciar Sesión",
           actionHref: "/login",
         });
@@ -438,7 +592,8 @@ import Footer from "../components/Footer.astro";
           showGlassModal({
             type: "error",
             title: "Correo ya registrado",
-            description: "Este correo electrónico ya cuenta con una cuenta registrada en la plataforma.",
+            description:
+              "Este correo electrónico ya cuenta con una cuenta registrada en la plataforma.",
             actionText: "Iniciar Sesión",
             actionHref: "/login",
           });
@@ -450,7 +605,11 @@ import Footer from "../components/Footer.astro";
         throw error;
       }
 
-      if (data?.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
+      if (
+        data?.user &&
+        Array.isArray(data.user.identities) &&
+        data.user.identities.length === 0
+      ) {
         showGlassModal({
           type: "error",
           title: "Correo existente",
@@ -477,7 +636,6 @@ import Footer from "../components/Footer.astro";
       btn.disabled = false;
       btnSpinner.classList.add("hidden");
       btnText.innerText = "Completar Registro";
-
     } catch (err: any) {
       btn.disabled = false;
       btnSpinner.classList.add("hidden");
@@ -486,8 +644,15 @@ import Footer from "../components/Footer.astro";
       showGlassModal({
         type: "error",
         title: "Error en el registro",
-        description: err.message || "Ocurrió un problema al procesar el alta. Por favor intenta nuevamente.",
+        description:
+          err.message ||
+          "Ocurrió un problema al procesar el alta. Por favor intenta nuevamente.",
       });
     }
   });
+
+  (async () => {
+    const profile = await checkAdminAuth();
+    if (!profile) return;
+  })();
 </script>

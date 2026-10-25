@@ -12,20 +12,20 @@
   /* ==========================================================================
      2. PALETA DE COLORES STELLALABS
      ========================================================================== */
-  /* Lienzo y Superficies de Cristal */
+  /* Lienzo */
   --color-space-700: #231b45;
   --color-space-800: #16112e;
   --color-space-900: #0d0a1c;
   --color-space-950: #07050f;
   --color-bg: #07050f;
 
-  /* Acentos Técnicos / Blueprints (Astra) */
+  /* Acento principal (Astra): acciones, enlaces, estado activo */
   --color-astra-300: #7dd3fc;
   --color-astra-400: #38bdf8;
   --color-astra-500: #0ea5e9;
   --color-astra-600: #0284c7;
 
-  /* Acentos Lúdicos / Torneos & Sandbox (Cosmic) */
+  /* Acento secundario (Cosmic): solo torneos y contenido lúdico */
   --color-cosmic-300: #d8b4fe;
   --color-cosmic-400: #c084fc;
   --color-cosmic-500: #a855f7;
@@ -37,10 +37,33 @@
   --color-accent: #38bdf8;
   --color-secondary: #a855f7;
 
-  /* Superficies y Bordes translúcidos */
+  /* ---- Superficies y bordes translúcidos (se conservan para otras páginas) ---- */
   --color-glass-edge: rgba(255, 255, 255, 0.08);
   --color-glass-edge-hover: rgba(56, 189, 248, 0.25);
   --color-glass-surface: rgba(13, 10, 28, 0.6);
+
+  /* ==========================================================================
+     2b. TOKENS SEMÁNTICOS (nuevos)
+     Superficies sólidas, líneas y texto con nombre propio. Sustituyen a los
+     valores sueltos como text-[#9da7ba] y a los fondos translúcidos con blur.
+     ========================================================================== */
+  /* Superficies */
+  --color-surface: #0a0817;
+  --color-surface-raised: #100d1f;
+
+  /* Líneas: separan secciones y celdas, como en una tabla */
+  --color-line: rgba(148, 163, 200, 0.16);
+  --color-line-strong: rgba(148, 163, 200, 0.30);
+
+  /* Texto */
+  --color-fg: #e6eef9;
+  --color-fg-muted: #9da7ba;
+  --color-fg-subtle: #6f7a90;
+
+  /* Estados (insignias, validaciones) */
+  --color-success-400: #34d399;
+  --color-warning-400: #fbbf24;
+  --color-danger-400: #fb7185;
 
   /* ==========================================================================
      3. BORDER RADIUS UNIFICADO
@@ -52,17 +75,26 @@
   --radius-pill: 999px;
 
   /* ==========================================================================
-     4. SOMBRAS & ELEVACIONES FROSTED GLASS
+     4. SOMBRAS
+     Los brillos (glow) quedan solo para otras páginas. En la portada se usan
+     bordes y superficies, no resplandores.
      ========================================================================== */
   --shadow-glass-card: inset 0 1px 1px rgba(255, 255, 255, 0.08), inset 0 24px 48px rgba(56, 189, 248, 0.02), 0 20px 40px rgba(0, 0, 0, 0.5);
   --shadow-glow-astra: 0 0 35px -5px rgba(56, 189, 248, 0.25);
   --shadow-glow-cosmic: 0 0 35px -5px rgba(168, 85, 247, 0.25);
+  --shadow-panel: 0 24px 48px -12px rgba(0, 0, 0, 0.6);
 }
 
 /* ==========================================================================
    5. CAPA BASE
    ========================================================================== */
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Deja espacio para el header al saltar a #secciones */
+    scroll-padding-top: 5rem;
+  }
+
   body {
     background-color: var(--color-space-950);
     color: #d1e4fa;
@@ -70,8 +102,20 @@
     overflow-x: hidden;
   }
 
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
   ::selection {
     background-color: rgba(56, 189, 248, 0.25);
     color: #ffffff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
