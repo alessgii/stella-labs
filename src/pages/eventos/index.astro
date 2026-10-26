@@ -525,7 +525,7 @@ import Isotipo from "../../components/Isotipo.astro";
         osc.stop(t0 + 0.12);
       });
     } catch {
-      /* el sonido es opcional */
+      /* el sonido es opcional pero se lo vamos a poner dx*/
     }
   }
 
@@ -650,7 +650,7 @@ import Isotipo from "../../components/Isotipo.astro";
     if (e.key !== "Enter" && e.key !== "Tab") return;
     e.preventDefault();
     const value = scanInput.value.trim();
-    scanInput.value = "";
+    // scanInput.value = "";
     if (!value) return;
     queue.push(value);
     void pump();

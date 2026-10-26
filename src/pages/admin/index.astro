@@ -8,11 +8,10 @@ import Footer from "../../components/Footer.astro";
   <Header />
 
   <main class="relative min-h-screen pb-20 pt-28">
-    <!-- Fondos y Glows -->
     <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(56,189,248,0.04)_1px,transparent_1px)] [background-size:32px_32px]" aria-hidden="true"></div>
     <div class="pointer-events-none absolute -top-40 right-1/4 h-[400px] w-[400px] rounded-full bg-[var(--color-astra-500)]/10 blur-[120px]" aria-hidden="true"></div>
 
-    <!-- Toast Notification -->
+    <!-- TOAST NOTIFICATION -->
     <div id="admin-toast" class="fixed bottom-5 right-5 z-50 hidden max-w-sm rounded-xl border border-[var(--color-glass-edge)] bg-[var(--color-space-950)]/95 p-4 shadow-2xl backdrop-blur-md transition-all duration-300">
       <div class="flex items-start gap-3">
         <div id="toast-icon" class="mt-0.5 text-lg"></div>
@@ -23,7 +22,7 @@ import Footer from "../../components/Footer.astro";
       </div>
     </div>
 
-    <div class="relative mx-auto max-w-7xl px-6 md:px-10">
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 md:px-10">
       
       <!-- ENCABEZADO Y PERFIL DEL ADMINISTRADOR -->
       <div class="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-center">
@@ -37,12 +36,12 @@ import Footer from "../../components/Footer.astro";
           </h1>
         </div>
 
-        <div class="flex items-center gap-3 rounded-2xl border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] px-4 py-2.5 backdrop-blur-md">
-          <div id="user-avatar" class="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--color-astra-500)]/20 font-mono text-xs font-bold text-[var(--color-astra-400)]">
+        <div class="flex items-center gap-3 w-fit rounded-2xl border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] px-4 py-2.5 backdrop-blur-md">
+          <div id="user-avatar" class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--color-astra-500)]/20 font-mono text-xs font-bold text-[var(--color-astra-400)]">
             --
           </div>
           <div class="text-left">
-            <p id="user-name" class="font-sans text-xs font-medium text-white">Cargando...</p>
+            <p id="user-name" class="font-sans text-xs font-medium text-white truncate max-w-[150px] sm:max-w-none">Cargando...</p>
             <p id="user-role" class="font-mono text-[10px] uppercase text-[var(--color-astra-300)]">---</p>
           </div>
         </div>
@@ -51,7 +50,7 @@ import Footer from "../../components/Footer.astro";
       <!-- =======================================================================
            1. TOP METRICS CARDS
            ======================================================================= -->
-      <div class="mb-12 grid grid-cols-1 gap-5 sm:grid-cols-3">
+      <div class="mb-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         <!-- Card 1: Total Usuarios -->
         <div class="rounded-[var(--radius-card)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-6 shadow-[var(--shadow-glass-card)] backdrop-blur-md">
           <div class="flex items-center justify-between">
@@ -77,7 +76,7 @@ import Footer from "../../components/Footer.astro";
         </div>
 
         <!-- Card 3: Inscripciones Totales -->
-        <div class="rounded-[var(--radius-card)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-6 shadow-[var(--shadow-glass-card)] backdrop-blur-md">
+        <div class="rounded-[var(--radius-card)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-6 shadow-[var(--shadow-glass-card)] backdrop-blur-md sm:col-span-2 lg:col-span-1">
           <div class="flex items-center justify-between">
             <span class="font-mono text-xs font-medium uppercase tracking-wider text-[#9da7ba]">Inscripciones Totales</span>
             <div class="flex h-9 w-9 items-center justify-center rounded-xl border border-emerald-500/20 bg-emerald-500/10 text-emerald-400">
@@ -92,33 +91,33 @@ import Footer from "../../components/Footer.astro";
       <!-- =======================================================================
            2. GESTIÓN DE CURSOS / TALLERES (TABLA Y CREACIÓN)
            ======================================================================= -->
-      <div class="mb-14 rounded-[var(--radius-card)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-6 shadow-[var(--shadow-glass-card)] backdrop-blur-md">
+      <div class="mb-14 rounded-[var(--radius-card)] border border-[var(--color-glass-edge)] bg-[var(--color-glass-surface)] p-5 sm:p-6 shadow-[var(--shadow-glass-card)] backdrop-blur-md">
         <div class="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
           <div>
             <h2 class="font-sans text-xl font-medium text-white">Gestión de Talleres</h2>
-            <p class="font-sans text-xs text-[#9da7ba]">Lista completa de talleres y monitoreo de capacidad.</p>
+            <p class="font-sans text-xs text-[#9da7ba] mt-1">Lista completa de talleres y monitoreo de capacidad.</p>
           </div>
           <button 
             type="button"
             id="btn-open-create-modal"
-            class="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--color-astra-500)] px-5 py-2.5 font-mono text-xs font-medium uppercase tracking-wider text-black transition-all hover:bg-[var(--color-astra-400)] hover:shadow-[var(--shadow-glow-astra)]"
+            class="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[var(--color-astra-500)] px-5 py-2.5 font-mono text-xs font-medium uppercase tracking-wider text-black transition-all hover:bg-[var(--color-astra-400)] hover:shadow-[var(--shadow-glow-astra)]"
           >
             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
             Crear nuevo taller
           </button>
         </div>
 
-        <!-- Tabla de Talleres -->
-        <div class="overflow-x-auto">
-          <table class="w-full text-left font-sans text-xs text-[#9da7ba]">
+        <!-- Tabla de Talleres (Optimizada para Móvil) -->
+        <div class="-mx-5 overflow-x-auto px-5 sm:mx-0 sm:px-0">
+          <table class="w-full min-w-[850px] text-left font-sans text-xs text-[#9da7ba]">
             <thead class="border-b border-[var(--color-glass-edge)] bg-white/[0.02] font-mono uppercase text-[#9da7ba]">
               <tr>
-                <th class="p-3.5">Taller / Slug</th>
-                <th class="p-3.5">Instructor</th>
-                <th class="p-3.5">Estado</th>
-                <th class="p-3.5">Horario y Aula</th>
-                <th class="p-3.5">Cupo</th>
-                <th class="p-3.5 text-right">Acciones</th>
+                <th class="p-3.5 whitespace-nowrap">Taller / Slug</th>
+                <th class="p-3.5 whitespace-nowrap">Instructor</th>
+                <th class="p-3.5 whitespace-nowrap">Estado</th>
+                <th class="p-3.5 whitespace-nowrap">Horario y Aula</th>
+                <th class="p-3.5 whitespace-nowrap text-center">Cupo</th>
+                <th class="p-3.5 whitespace-nowrap text-right">Acciones</th>
               </tr>
             </thead>
             <tbody id="workshops-table-body" class="divide-y divide-[var(--color-glass-edge)]">
@@ -133,78 +132,80 @@ import Footer from "../../components/Footer.astro";
     </div>
   </main>
 
-  <!-- =======================================================================
-       MODAL: CREAR NUEVO TALLER
-       ======================================================================= -->
+  <!-- MODAL: CREAR NUEVO TALLER -->
+  <!-- Modificación: Agregada clase 'flex' oculta para asegurar el centrado, eliminando el m-4 e inyectando responsividad real -->
   <div
     id="modal-create-workshop"
-    class="relative mx-auto inset-0 z-50 hidden items-center justify-center p-4 "
+    class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6"
     role="dialog"
     aria-modal="true"
   >
     <div id="modal-create-backdrop" class="fixed inset-0 bg-space-950/80 backdrop-blur-md"></div>
-    <div class="relative z-10 w-full max-w-lg rounded-[var(--radius-modal)] border border-[var(--color-glass-edge)] bg-[var(--color-space-950)] p-6 shadow-[var(--shadow-glow-astra)] text-left m-4 max-h-[90vh] overflow-y-auto">
-      <div class="flex items-center justify-between border-b border-[var(--color-glass-edge)] pb-4 mb-4">
+    <div class="relative z-10 w-full max-w-xl rounded-[var(--radius-modal)] border border-[var(--color-glass-edge)] bg-[var(--color-space-950)] p-5 sm:p-7 shadow-[var(--shadow-glow-astra)] text-left max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex items-center justify-between border-b border-[var(--color-glass-edge)] pb-4 mb-5">
         <div>
           <h3 class="text-xl font-medium text-white font-sans">Crear Nuevo Taller</h3>
-          <p class="font-sans text-xs text-[#9da7ba] mt-0.5">Completa los campos para abrir la convocatoria.</p>
+          <p class="font-sans text-xs text-[#9da7ba] mt-1">Completa los campos para abrir la convocatoria.</p>
         </div>
-        <button type="button" id="btn-close-create-modal" class="text-[#9da7ba] hover:text-white">
+        <button type="button" id="btn-close-create-modal" class="text-[#9da7ba] hover:text-white transition-colors">
           <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
       </div>
 
       <form id="form-create-workshop" class="space-y-4 font-sans text-xs">
         <div>
-          <label class="block font-mono text-[11px] text-white uppercase mb-1">Título del Taller *</label>
-          <input type="text" id="input-title" name="title" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none" placeholder="Ej: Taller de Robótica" />
+          <label class="block font-mono text-[11px] text-white uppercase mb-1.5">Título del Taller *</label>
+          <input type="text" id="input-title" name="title" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none transition-colors" placeholder="Ej: Taller de Robótica" />
         </div>
 
         <div>
-          <label class="block font-mono text-[11px] text-white uppercase mb-1">Slug URL *</label>
-          <input type="text" id="input-slug" name="slug" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white font-mono focus:border-[var(--color-astra-400)] focus:outline-none" placeholder="taller-robotica" />
+          <label class="block font-mono text-[11px] text-white uppercase mb-1.5">Slug URL *</label>
+          <input type="text" id="input-slug" name="slug" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white font-mono focus:border-[var(--color-astra-400)] focus:outline-none transition-colors" placeholder="taller-robotica" />
         </div>
 
-        <div class="grid grid-cols-2 gap-3">
+        <!-- Modificación: Adaptado a sm:grid-cols-2 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="block font-mono text-[11px] text-white uppercase mb-1">Modalidad</label>
-            <select name="modality" class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-[var(--color-space-950)] p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none">
+            <label class="block font-mono text-[11px] text-white uppercase mb-1.5">Modalidad</label>
+            <select name="modality" class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-[var(--color-space-950)] p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none transition-colors">
               <option value="presencial">Presencial</option>
               <option value="en_linea">En Línea</option>
               <option value="mixto">Mixto</option>
             </select>
           </div>
           <div>
-            <label class="block font-mono text-[11px] text-white uppercase mb-1">Aula / Ubicación *</label>
-            <input type="text" name="classroom" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none" placeholder="Ej: B1" />
+            <label class="block font-mono text-[11px] text-white uppercase mb-1.5">Aula / Ubicación *</label>
+            <input type="text" name="classroom" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none transition-colors" placeholder="Ej: B1" />
           </div>
         </div>
 
-        <div class="grid grid-cols-2 gap-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="block font-mono text-[11px] text-white uppercase mb-1">Instructor *</label>
-            <select id="select-instructor" name="instructor_id" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-[var(--color-space-950)] p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none">
+            <label class="block font-mono text-[11px] text-white uppercase mb-1.5">Instructor *</label>
+            <select id="select-instructor" name="instructor_id" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-[var(--color-space-950)] p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none transition-colors">
               <option value="">Cargando instructores...</option>
             </select>
           </div>
           <div>
-            <label class="block font-mono text-[11px] text-white uppercase mb-1">Cupo Máximo *</label>
-            <input type="number" min="1" value="25" name="max_capacity" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none" />
+            <label class="block font-mono text-[11px] text-white uppercase mb-1.5">Cupo Máximo *</label>
+            <input type="number" min="1" value="25" name="max_capacity" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none transition-colors" />
           </div>
         </div>
 
-        <div class="grid grid-cols-3 gap-3">
+        <!-- Modificación: Adaptado a sm:grid-cols-3 -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div>
-            <label class="block font-mono text-[11px] text-white uppercase mb-1">Día *</label>
-            <input type="text" name="day_of_week" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none" placeholder="Lunes" />
+            <label class="block font-mono text-[11px] text-white uppercase mb-1.5">Día *</label>
+            <input type="text" name="day_of_week" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none transition-colors" placeholder="Lunes" />
           </div>
           <div>
-            <label class="block font-mono text-[11px] text-white uppercase mb-1">Hora Inicio *</label>
-            <input type="time" name="start_time" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none" />
+            <label class="block font-mono text-[11px] text-white uppercase mb-1.5">Hora Inicio *</label>
+            <input type="time" name="start_time" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none transition-colors" />
           </div>
           <div>
-            <label class="block font-mono text-[11px] text-white uppercase mb-1">Estado</label>
-            <select name="status" class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-[var(--color-space-950)] p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none">
+            <label class="block font-mono text-[11px] text-white uppercase mb-1.5">Estado</label>
+            <select name="status" class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-[var(--color-space-950)] p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none transition-colors">
               <option value="registro_abierto">Registro Abierto</option>
               <option value="proximamente">Próximamente</option>
               <option value="en_curso">En Curso</option>
@@ -212,25 +213,25 @@ import Footer from "../../components/Footer.astro";
           </div>
         </div>
 
-        <div class="grid grid-cols-2 gap-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="block font-mono text-[11px] text-white uppercase mb-1">Inicio Registro *</label>
-            <input type="datetime-local" name="register_starts_at" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none" />
+            <label class="block font-mono text-[11px] text-white uppercase mb-1.5">Inicio Registro *</label>
+            <input type="datetime-local" name="register_starts_at" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none transition-colors" />
           </div>
           <div>
-            <label class="block font-mono text-[11px] text-white uppercase mb-1">Fin Registro *</label>
-            <input type="datetime-local" name="register_ends_at" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none" />
+            <label class="block font-mono text-[11px] text-white uppercase mb-1.5">Fin Registro *</label>
+            <input type="datetime-local" name="register_ends_at" required class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none transition-colors" />
           </div>
         </div>
 
         <div>
-          <label class="block font-mono text-[11px] text-white uppercase mb-1">Descripción</label>
-          <textarea name="description" rows="3" class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none" placeholder="Objetivo y temario del taller..."></textarea>
+          <label class="block font-mono text-[11px] text-white uppercase mb-1.5">Descripción</label>
+          <textarea name="description" rows="3" class="w-full rounded-lg border border-[var(--color-glass-edge)] bg-white/5 p-2.5 text-white focus:border-[var(--color-astra-400)] focus:outline-none transition-colors" placeholder="Objetivo y temario del taller..."></textarea>
         </div>
 
-        <div class="mt-6 flex justify-end gap-3 pt-3 border-t border-[var(--color-glass-edge)]">
-          <button type="button" id="btn-cancel-create" class="rounded-full px-4 py-2 font-mono text-xs text-[#9da7ba] hover:text-white">Cancelar</button>
-          <button type="submit" id="btn-submit-workshop" class="rounded-full bg-[var(--color-astra-500)] px-5 py-2 font-mono text-xs font-medium uppercase text-black hover:bg-[var(--color-astra-400)] transition-all">
+        <div class="mt-6 flex flex-col sm:flex-row justify-end gap-3 pt-4 border-t border-[var(--color-glass-edge)]">
+          <button type="button" id="btn-cancel-create" class="order-2 sm:order-1 w-full sm:w-auto rounded-full px-5 py-2.5 font-mono text-xs text-[#9da7ba] hover:text-white transition-colors">Cancelar</button>
+          <button type="submit" id="btn-submit-workshop" class="order-1 sm:order-2 w-full sm:w-auto rounded-full bg-[var(--color-astra-500)] px-6 py-2.5 font-mono text-xs font-medium uppercase text-black hover:bg-[var(--color-astra-400)] transition-all">
             Guardar Taller
           </button>
         </div>
@@ -238,37 +239,36 @@ import Footer from "../../components/Footer.astro";
     </div>
   </div>
 
-  <!-- =======================================================================
-       MODAL: CONTROL DE ASISTENCIA E INSCRITOS POR CURSO
-       ======================================================================= -->
+  <!-- MODAL: CONTROL DE ASISTENCIA E INSCRITOS POR CURSO -->
   <div
     id="modal-attendees"
-    class="fixed inset-0 z-50 hidden items-center justify-center p-4"
+    class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6"
     role="dialog"
     aria-modal="true"
   >
     <div id="modal-attendees-backdrop" class="fixed inset-0 bg-space-950/80 backdrop-blur-md"></div>
-    <div class="relative z-10 w-full max-w-2xl rounded-[var(--radius-modal)] border border-[var(--color-glass-edge)] bg-[var(--color-space-950)] p-6 shadow-2xl text-left m-4 max-h-[85vh] overflow-y-auto">
+    <div class="relative z-10 w-full max-w-3xl rounded-[var(--radius-modal)] border border-[var(--color-glass-edge)] bg-[var(--color-space-950)] p-5 sm:p-7 shadow-2xl text-left max-h-[90vh] flex flex-col">
       
-      <div class="flex items-center justify-between border-b border-[var(--color-glass-edge)] pb-4">
+      <div class="flex items-center justify-between border-b border-[var(--color-glass-edge)] pb-4 shrink-0">
         <div>
-          <h3 id="attendees-modal-title" class="text-lg font-medium text-white font-sans">Alumnos Inscritos</h3>
-          <p id="attendees-modal-subtitle" class="font-mono text-xs text-[var(--color-astra-400)]">Cargando...</p>
+          <h3 id="attendees-modal-title" class="text-xl font-medium text-white font-sans pr-4 truncate">Alumnos Inscritos</h3>
+          <p id="attendees-modal-subtitle" class="font-mono text-xs text-[var(--color-astra-400)] mt-1">Cargando...</p>
         </div>
-        <button type="button" id="btn-close-attendees-modal" class="text-[#9da7ba] hover:text-white">
+        <button type="button" id="btn-close-attendees-modal" class="text-[#9da7ba] shrink-0 hover:text-white transition-colors">
           <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
       </div>
 
-      <div class="mt-5">
+      <div class="mt-5 overflow-y-auto flex-1">
+        <!-- Modificación: Ancho mínimo para forzar scroll e impedir que se amontone en teléfonos -->
         <div class="overflow-x-auto rounded-xl border border-[var(--color-glass-edge)]">
-          <table class="w-full text-left font-sans text-xs text-[#9da7ba]">
+          <table class="w-full min-w-[550px] text-left font-sans text-xs text-[#9da7ba]">
             <thead class="border-b border-[var(--color-glass-edge)] bg-white/[0.03] font-mono uppercase text-[#9da7ba]">
               <tr>
-                <th class="p-3">Código</th>
-                <th class="p-3">Alumno</th>
-                <th class="p-3">Alias</th>
-                <th class="p-3 text-center">Asistencia Hoy</th>
+                <th class="p-3.5 whitespace-nowrap">Código</th>
+                <th class="p-3.5 whitespace-nowrap">Alumno</th>
+                <th class="p-3.5 whitespace-nowrap">Alias</th>
+                <th class="p-3.5 whitespace-nowrap text-center">Asistencia Hoy</th>
               </tr>
             </thead>
             <tbody id="attendees-table-body" class="divide-y divide-[var(--color-glass-edge)]">
@@ -278,8 +278,8 @@ import Footer from "../../components/Footer.astro";
         </div>
       </div>
 
-      <div class="mt-6 flex justify-end border-t border-[var(--color-glass-edge)] pt-4">
-        <button type="button" id="btn-done-attendees" class="rounded-full bg-white/10 px-5 py-2 font-mono text-xs font-medium text-white hover:bg-white/20 transition-all">
+      <div class="mt-6 flex justify-end border-t border-[var(--color-glass-edge)] pt-5 shrink-0">
+        <button type="button" id="btn-done-attendees" class="w-full sm:w-auto rounded-full bg-white/10 px-6 py-2.5 font-mono text-xs font-medium text-white hover:bg-white/20 transition-all">
           Listo / Cerrar
         </button>
       </div>
@@ -295,7 +295,6 @@ import Footer from "../../components/Footer.astro";
   let currentAdminId: string | null = null;
   const todayDate = new Date().toISOString().split('T')[0];
 
-  // Helper para notificaciones Toast
   function showToast(title: string, message: string, isError = false) {
     const toast = document.getElementById('admin-toast');
     const toastTitle = document.getElementById('toast-title');
@@ -312,7 +311,6 @@ import Footer from "../../components/Footer.astro";
     setTimeout(() => toast.classList.add('hidden'), 3500);
   }
 
-  // 1. Autenticación en el cliente con Supabase Session
   const checkAdminAuth = async () => {
     const { data: { session } } = await supabase.auth.getSession();
     if (!session?.user) {
@@ -334,7 +332,6 @@ import Footer from "../../components/Footer.astro";
 
     currentAdminId = session.user.id;
 
-    // Actualizar Badge del Administrador
     const userAvatar = document.getElementById("user-avatar");
     const userName = document.getElementById("user-name");
     const userRole = document.getElementById("user-role");
@@ -346,7 +343,6 @@ import Footer from "../../components/Footer.astro";
     return true;
   };
 
-  // 2. Cargar Métricas Principales (Cards)
   const loadDashboardStats = async () => {
     try {
       const [profilesRes, workshopsRes, registrationsRes] = await Promise.all([
@@ -367,7 +363,6 @@ import Footer from "../../components/Footer.astro";
     }
   };
 
-  // 3. Cargar Instructores para el Modal
   const loadInstructors = async () => {
     const select = document.getElementById("select-instructor") as HTMLSelectElement | null;
     if (!select) return;
@@ -385,7 +380,6 @@ import Footer from "../../components/Footer.astro";
     }
   };
 
-  // 4. Renderizar Tabla de Talleres
   const loadWorkshops = async () => {
     const tableBody = document.getElementById("workshops-table-body");
     if (!tableBody) return;
@@ -417,48 +411,48 @@ import Footer from "../../components/Footer.astro";
 
       const tr = document.createElement("tr");
       tr.className = "transition-colors hover:bg-white/[0.02]";
+      // Modificación: Agregar nowrap a todas las columnas menos al título
       tr.innerHTML = `
-        <td class="p-3.5">
+        <td class="p-3.5 whitespace-normal min-w-[220px]">
           <p class="font-medium text-white">${w.title}</p>
-          <p class="font-mono text-[10px] text-[#9da7ba]">${w.slug}</p>
+          <p class="font-mono text-[10px] text-[#9da7ba] mt-0.5">${w.slug}</p>
         </td>
-        <td class="p-3.5 text-white">
+        <td class="p-3.5 text-white whitespace-nowrap">
           ${instructorName}
         </td>
-        <td class="p-3.5">
-          <span class="rounded-full px-2 py-0.5 font-mono text-[10px] uppercase border ${
+        <td class="p-3.5 whitespace-nowrap">
+          <span class="rounded-full px-2.5 py-1 font-mono text-[10px] uppercase border ${
             w.status === 'registro_abierto' ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400' :
             w.status === 'proximamente' ? 'border-amber-500/30 bg-amber-500/10 text-amber-300' :
             'border-slate-500/30 bg-slate-500/10 text-slate-400'
           }">
-            ${w.status}
+            ${w.status.replace('_', ' ')}
           </span>
         </td>
-        <td class="p-3.5 font-mono text-[11px]">
+        <td class="p-3.5 font-mono text-[11px] whitespace-nowrap">
           <p class="text-white">${w.day_of_week} - ${w.start_time?.slice(0, 5)} hrs</p>
-          <p class="text-[#9da7ba]">Aula: ${w.classroom}</p>
+          <p class="text-[#9da7ba] mt-0.5">Aula: ${w.classroom}</p>
         </td>
-        <td class="p-3.5 font-mono text-[11px]">
-          <span class="${isFull ? 'font-bold text-rose-400' : 'text-emerald-400'}">
+        <td class="p-3.5 text-center font-mono text-[11px] whitespace-nowrap">
+          <span class="px-2 py-1 rounded-md bg-white/5 border border-white/5 ${isFull ? 'font-bold text-rose-400 border-rose-500/30' : 'text-emerald-400'}">
             ${regCount} / ${w.max_capacity}
           </span>
         </td>
-        <td class="p-3.5 text-right">
+        <td class="p-3.5 text-right whitespace-nowrap">
           <button 
             type="button"
             data-workshop-id="${w.id}"
             data-workshop-title="${w.title}"
-            class="btn-view-attendees inline-flex items-center gap-1.5 rounded-full border border-[var(--color-glass-edge)] bg-white/5 px-3 py-1 font-mono text-[11px] text-white transition-all hover:bg-[var(--color-astra-500)] hover:text-black"
+            class="btn-view-attendees inline-flex items-center gap-1.5 rounded-full border border-[var(--color-glass-edge)] bg-white/5 px-4 py-1.5 font-mono text-[11px] text-white transition-all hover:bg-[var(--color-astra-500)] hover:text-black"
           >
             <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
-            Lista & Asistencia
+            Asistencia
           </button>
         </td>
       `;
       tableBody.appendChild(tr);
     });
 
-    // Eventos para abrir el modal de asistencia
     document.querySelectorAll(".btn-view-attendees").forEach(btn => {
       btn.addEventListener("click", (e) => {
         const target = e.currentTarget as HTMLButtonElement;
@@ -469,7 +463,6 @@ import Footer from "../../components/Footer.astro";
     });
   };
 
-  // 5. Controles del Modal de Creación
   const modalCreate = document.getElementById("modal-create-workshop");
   const btnOpenCreate = document.getElementById("btn-open-create-modal");
   const btnCloseCreate = document.getElementById("btn-close-create-modal");
@@ -483,7 +476,6 @@ import Footer from "../../components/Footer.astro";
   btnCloseCreate?.addEventListener("click", closeCreateModal);
   btnCancelCreate?.addEventListener("click", closeCreateModal);
 
-  // Generador dinámico de Slug URL
   inputTitle?.addEventListener("input", () => {
     if (inputSlug) {
       inputSlug.value = inputTitle.value
@@ -494,7 +486,6 @@ import Footer from "../../components/Footer.astro";
     }
   });
 
-  // Envío del Formulario de Creación
   formCreate?.addEventListener("submit", async (e) => {
     e.preventDefault();
     const btnSubmit = document.getElementById("btn-submit-workshop") as HTMLButtonElement | null;
@@ -534,7 +525,6 @@ import Footer from "../../components/Footer.astro";
     loadWorkshops();
   });
 
-  // 6. Modal de Alumnos Inscritos y Control de Asistencias
   const modalAttendees = document.getElementById("modal-attendees");
   const btnCloseAttendees = document.getElementById("btn-close-attendees-modal");
   const btnDoneAttendees = document.getElementById("btn-done-attendees");
@@ -551,7 +541,7 @@ import Footer from "../../components/Footer.astro";
 
     attendeesTitle.textContent = title;
     attendeesSubtitle.textContent = "Consultando base de datos...";
-    attendeesTableBody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-[#9da7ba]">Cargando participantes...</td></tr>`;
+    attendeesTableBody.innerHTML = `<tr><td colspan="4" class="p-5 text-center text-[#9da7ba]">Cargando participantes...</td></tr>`;
     modalAttendees.classList.remove("hidden");
 
     const { data: registrations, error } = await supabase
@@ -575,7 +565,7 @@ import Footer from "../../components/Footer.astro";
       .order("registered_at", { ascending: true });
 
     if (error) {
-      attendeesTableBody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-rose-400">Error: ${error.message}</td></tr>`;
+      attendeesTableBody.innerHTML = `<tr><td colspan="4" class="p-5 text-center text-rose-400">Error: ${error.message}</td></tr>`;
       return;
     }
 
@@ -597,24 +587,25 @@ import Footer from "../../components/Footer.astro";
       const isAttendedToday = attendancesList.some((a: any) => a.session_date === todayDate && a.attended);
 
       const tr = document.createElement("tr");
-      tr.className = "hover:bg-white/[0.01]";
+      tr.className = "hover:bg-white/[0.01] transition-colors";
       tr.innerHTML = `
-        <td class="p-3 font-mono text-[#9da7ba]">${code}</td>
-        <td class="p-3 font-medium text-white">${fullName}</td>
-        <td class="p-3 font-mono text-[var(--color-astra-300)]">${alias}</td>
-        <td class="p-3 text-center">
-          <input
-            type="checkbox"
-            data-registration-id="${reg.id}"
-            ${isAttendedToday ? "checked" : ""}
-            class="attendance-checkbox h-4 w-4 rounded border-[var(--color-glass-edge)] bg-white/10 text-[var(--color-astra-500)] focus:ring-0 cursor-pointer"
-          />
+        <td class="p-3.5 font-mono text-[#9da7ba] whitespace-nowrap">${code}</td>
+        <td class="p-3.5 font-medium text-white whitespace-nowrap">${fullName}</td>
+        <td class="p-3.5 font-mono text-[var(--color-astra-300)] whitespace-nowrap">${alias}</td>
+        <td class="p-3.5 text-center whitespace-nowrap">
+          <div class="inline-flex items-center justify-center p-1 rounded-lg hover:bg-white/5 transition-colors">
+            <input
+              type="checkbox"
+              data-registration-id="${reg.id}"
+              ${isAttendedToday ? "checked" : ""}
+              class="attendance-checkbox h-4.5 w-4.5 rounded border-[var(--color-glass-edge)] bg-white/10 text-[var(--color-astra-500)] focus:ring-0 cursor-pointer transition-all"
+            />
+          </div>
         </td>
       `;
       attendeesTableBody.appendChild(tr);
     });
 
-    // Checkbox Listener para guardar asistencia en tiempo real
     document.querySelectorAll(".attendance-checkbox").forEach(box => {
       box.addEventListener("change", async (e) => {
         const input = e.target as HTMLInputElement;
@@ -646,7 +637,6 @@ import Footer from "../../components/Footer.astro";
     });
   };
 
-  // Inicialización de la vista
   (async () => {
     const isAllowed = await checkAdminAuth();
     if (isAllowed) {
