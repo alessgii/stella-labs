@@ -9,7 +9,7 @@ const year = new Date().getFullYear();
     <!-- Fila superior -->
     <div class="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-8">
       <!-- Columna de Marca -->
-      <div class="space-y-4 md:col-span-6 lg:col-span-5">
+      <div class="space-y-4 md:col-span-12 lg:col-span-4">
         <a
           href="/"
           class="group inline-flex items-center gap-2.5 transition-opacity hover:opacity-90"
@@ -63,122 +63,123 @@ const year = new Date().getFullYear();
           Teleinformática.
         </p>
       </div>
-<!-- Herramientas -->
-<div class="space-y-3 md:col-span-3 lg:col-span-4">
-  <p class="font-mono text-xs uppercase tracking-[0.10em] text-[#d1e4fa]">
-    Herramientas
-  </p>
-  <ul class="space-y-2 font-sans text-sm text-[#9da7ba]">
-    <li>
-      <a href="/eventos" class="transition-colors hover:text-white">
-        Registro de eventos
-      </a>
-    </li>
-    <li>
-      <a
-        href="/torneos"
-        class="inline-flex items-center gap-2 transition-colors hover:text-white"
-      >
-        <span>Torneos de videojuegos</span>
-        <span
-          class="rounded-[var(--radius-badge,6px)] border border-cosmic-500/25 bg-cosmic-500/15 px-1.5 py-0.5 font-mono text-[10px] tracking-wider text-cosmic-300"
-        >
-          Liga
-        </span>
-      </a>
-    </li>
-    <li>
-      <a href="/juegos" class="transition-colors hover:text-white">
-        Mini juegos
-      </a>
-    </li>
-  </ul>
-</div>
 
-<!-- Comunidad -->
-<div class="space-y-3 md:col-span-3 lg:col-span-4">
-  <p class="font-mono text-xs uppercase tracking-[0.10em] text-[#d1e4fa]">
-    Comunidad
-  </p>
-  <ul class="space-y-2 font-sans text-sm text-[#9da7ba]">
-    <li>
-      <a href="/guias" class="transition-colors hover:text-white">
-        Guías
-      </a>
-    </li>
-    <li>
-      <a href="/labs" class="transition-colors hover:text-white">
-        Labs
-      </a>
-    </li>
-    <li>
-      <a href="/sugerencias" class="transition-colors hover:text-white">
-        Sugerencias
-      </a>
-    </li>
-  </ul>
-</div>
-
-    <!-- Navegación -->
-    <div class="space-y-3 md:col-span-3 lg:col-span-3">
-      <p class="font-mono text-xs uppercase tracking-[0.10em] text-[#d1e4fa]">
-        Navegación
-      </p>
-      <ul class="space-y-2 font-sans text-sm text-[#9da7ba]">
-        <li>
-          <a href="/" class="transition-colors hover:text-white"> Inicio </a>
-        </li>
-        <li>
-          <a href="/acerca-de" class="transition-colors hover:text-white">
-            Acerca de
-          </a>
-        </li>
-        <li>
-          <a href="/contacto" class="transition-colors hover:text-white">
-            Contacto
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://teleinformatica.stellalabs.tech"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 text-xs text-[#9da7ba] transition-colors hover:text-astra-300"
-          >
-            Portal de la carrera
-            <svg
-              class="h-3 w-3"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
+      <!-- Herramientas -->
+      <div class="space-y-3 md:col-span-4 lg:col-span-3">
+        <p class="font-mono text-xs uppercase tracking-[0.10em] text-[#d1e4fa]">
+          Herramientas
+        </p>
+        <ul class="space-y-2 font-sans text-sm text-[#9da7ba]">
+          <li>
+            <a href="/eventos" class="transition-colors hover:text-white">
+              Registro de eventos
+            </a>
+          </li>
+          <li>
+            <a
+              href="/torneos"
+              class="inline-flex items-center gap-2 transition-colors hover:text-white"
             >
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-              ></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  </div>
+              <span>Torneos de videojuegos</span>
+              <span
+                class="rounded-[var(--radius-badge,6px)] border border-cosmic-500/25 bg-cosmic-500/15 px-1.5 py-0.5 font-mono text-[10px] tracking-wider text-cosmic-300"
+              >
+                Liga
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="/juegos" class="transition-colors hover:text-white">
+              Mini juegos
+            </a>
+          </li>
+        </ul>
+      </div>
 
-  <!-- Barra inferior -->
-  <div
-    class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[var(--color-glass-edge)] pt-8 font-sans text-xs text-[#9da7ba] sm:flex-row"
-  >
-    <p>
-      StellaLabs — © {year}. Ingeniería en Teleinformática, CUCSur.
-    </p>
+      <!-- Comunidad -->
+      <div class="space-y-3 md:col-span-4 lg:col-span-2">
+        <p class="font-mono text-xs uppercase tracking-[0.10em] text-[#d1e4fa]">
+          Comunidad
+        </p>
+        <ul class="space-y-2 font-sans text-sm text-[#9da7ba]">
+          <li>
+            <a href="/guias" class="transition-colors hover:text-white">
+              Guías
+            </a>
+          </li>
+          <li>
+            <a href="/labs" class="transition-colors hover:text-white">
+              Labs
+            </a>
+          </li>
+          <li>
+            <a href="/sugerencias" class="transition-colors hover:text-white">
+              Sugerencias
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Navegación -->
+      <div class="space-y-3 md:col-span-4 lg:col-span-3">
+        <p class="font-mono text-xs uppercase tracking-[0.10em] text-[#d1e4fa]">
+          Navegación
+        </p>
+        <ul class="space-y-2 font-sans text-sm text-[#9da7ba]">
+          <li>
+            <a href="/" class="transition-colors hover:text-white"> Inicio </a>
+          </li>
+          <li>
+            <a href="/acerca-de" class="transition-colors hover:text-white">
+              Acerca de
+            </a>
+          </li>
+          <li>
+            <a href="/contacto" class="transition-colors hover:text-white">
+              Contacto
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://teleinformatica.stellalabs.tech"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 text-xs text-[#9da7ba] transition-colors hover:text-astra-300"
+            >
+              Portal de la carrera
+              <svg
+                class="h-3 w-3"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                ></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Barra inferior -->
     <div
-      class="flex items-center gap-2 font-mono text-[11px] tracking-wider text-[#9da7ba]"
+      class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[var(--color-glass-edge)] pt-8 font-sans text-xs text-[#9da7ba] sm:flex-row"
     >
-      <span
-        class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)] animate-pulse"
-      ></span>
-      Sistemas operativos
+      <p>
+        StellaLabs — © {year}. Ingeniería en Teleinformática, CUCSur.
+      </p>
+      <div
+        class="flex items-center gap-2 font-mono text-[11px] tracking-wider text-[#9da7ba]"
+      >
+        <span
+          class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)] animate-pulse"
+        ></span>
+        Sistemas operativos
+      </div>
     </div>
   </div>
 </footer>
