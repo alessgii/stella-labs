@@ -1,0 +1,26 @@
+---
+import '../otp/airport.css';
+import AirportApp from '../otp/App';
+---
+
+<!doctype html>
+<html lang="es" class="otp-page">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/otp/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aeropuerto Internacional Henri Coandă — Mapa 3D &amp; Red CAN</title>
+  </head>
+  <body class="otp-page">
+    <div id="root" class="otp-root">
+      <AirportApp client:only="react">
+        <div
+          slot="fallback"
+          class="flex h-screen w-screen items-center justify-center bg-white text-[14px] font-medium text-black"
+        >
+          Cargando mapa 3D…
+        </div>
+      </AirportApp>
+    </div>
+  </body>
+</html>
